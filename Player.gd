@@ -1,35 +1,37 @@
 extends CharacterBody2D
 
 var input_dir : Vector2
-var speed : float = 200.0
+var speed : float = 50.0
 var attack : bool = false
-@onready var _animation = $AnimatedSprite2D
+@onready var _animation = $AnimationPlayer
+@onready var _sprite = $Sprite2D
 
 func _ready():
 	pass
 
 func _process(delta):
 	if attack:
+		pass
 		if _animation.is_playing():
 			return
 		else:
 			attack = false
-
+#
 	if !attack:
 		if input_dir.length() > 0:
-			_animation.play("Walk")
+			_animation.play("walk")
 		else:
-			_animation.play("Idle")
+			_animation.play("idle")
 	
 	if Input.is_action_just_pressed("attack"):
 		attack = true
-		_animation.play("Attack")
+		_animation.play("attack1")
 	
 	
 	if input_dir.x < 0:
-		_animation.flip_h = true
+		_sprite.scale.x = -1
 	elif input_dir.x > 0:
-		_animation.flip_h = false
+		_sprite.scale.x = 1
 
 func _physics_process(delta):
 	if attack:
@@ -39,4 +41,12 @@ func _physics_process(delta):
 		
 	velocity = input_dir * speed
 	move_and_slide()
-	
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		area.take_damage()
+
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("hurtbox"):
+		body.take_damage()

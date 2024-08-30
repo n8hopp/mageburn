@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d07y383d3okop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6fmu"]
+size = Vector2(20, 26)
+
+[node name="Sword Hitbox" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, -4)
+shape = SubResource("RectangleShape2D_r6fmu")
+debug_color = Color(1, 0.41601, 0.574751, 0.42)
