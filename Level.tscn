@@ -361,7 +361,7 @@ texture = ExtResource("1_dnnkg")
 19:7/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_c7ujl"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 sources/0 = SubResource("TileSetAtlasSource_ohjmb")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lnl05"]

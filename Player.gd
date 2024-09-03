@@ -3,8 +3,10 @@ extends CharacterBody2D
 var input_dir : Vector2
 var speed : float = 50.0
 var attack : bool = false
+var knockback_coef = 200.0
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
+
 
 func _ready():
 	pass
@@ -49,4 +51,6 @@ func _on_hitbox_area_entered(area):
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("hurtbox"):
+		var knockback = global_position.direction_to(body.global_position)
+		body.knockback = knockback * knockback_coef
 		body.take_damage()

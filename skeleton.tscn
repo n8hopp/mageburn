@@ -1,7 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=16 format=3 uid="uid://3gspkn7wbrat"]
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://Skeleton.gd" id="1_fxnhd"]
+[ext_resource type="Script" path="res://SkeletonMachine.gd" id="3_ckrbo"]
+[ext_resource type="Script" path="res://Path.gd" id="4_jnyvl"]
+[ext_resource type="Script" path="res://Attack.gd" id="5_d3qlm"]
+[ext_resource type="Script" path="res://Hit.gd" id="6_bp8s2"]
+[ext_resource type="Script" path="res://Dead.gd" id="7_2c1ic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
 size = Vector2(17.25, 16)
@@ -146,3 +151,23 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="SkeletonMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "animation_player")]
+script = ExtResource("3_ckrbo")
+current_state = NodePath("Path")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="Path" type="Node" parent="SkeletonMachine" node_paths=PackedStringArray("parent", "nav_agent")]
+script = ExtResource("4_jnyvl")
+parent = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+
+[node name="Attack" type="Node" parent="SkeletonMachine"]
+script = ExtResource("5_d3qlm")
+
+[node name="Hit" type="Node" parent="SkeletonMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("6_bp8s2")
+parent = NodePath("../..")
+
+[node name="Dead" type="Node" parent="SkeletonMachine"]
+script = ExtResource("7_2c1ic")
