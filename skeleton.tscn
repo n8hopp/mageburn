@@ -134,12 +134,14 @@ _data = {
 texture_filter = 1
 collision_mask = 0
 script = ExtResource("1_fxnhd")
+movement_speed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_2s03p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_etx3f")
 hframes = 8
 vframes = 7
@@ -161,6 +163,7 @@ animation_player = NodePath("../AnimationPlayer")
 script = ExtResource("4_jnyvl")
 parent = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
+walk_speed = 5.0
 
 [node name="Attack" type="Node" parent="SkeletonMachine"]
 script = ExtResource("5_d3qlm")

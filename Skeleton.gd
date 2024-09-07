@@ -21,6 +21,9 @@ func take_damage():
 	if hitpoints <= 0:
 		$SkeletonMachine.change_state("Dead")
 		dead = true
+		set_collision_layer_value(3, false)
+		set_collision_layer_value(1, false)
+		z_index = 0
 	else:
 		# base level hitstun stuff - prob change how we do this later
 		$SkeletonMachine.change_state("Hit")
