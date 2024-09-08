@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddfbn1ajlagis"]
+
+[ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_jwlph"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gr8gi"]
+line_spacing = 1.0
+font_size = 52
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Popup" type="PanelContainer"]
+texture_filter = 1
+offset_right = 386.0
+offset_bottom = 262.0
+scale = Vector2(4, 4)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_jwlph")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "hiiiiiiiiiiiiii"
+label_settings = SubResource("LabelSettings_gr8gi")
+text_overrun_behavior = 1

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ca1ktew34wyrx"]
+
+[ext_resource type="StyleBox" uid="uid://dmkku4kq6nt1w" path="res://assets/ui/popup_panel.tres" id="1_dpgob"]
+[ext_resource type="StyleBox" uid="uid://dhlks6ved148j" path="res://assets/ui/popup_border.tres" id="2_3vho8"]
+
+[resource]
+default_base_scale = 2.0
+MarginContainer/constants/margin_bottom = 32
+MarginContainer/constants/margin_left = 32
+MarginContainer/constants/margin_right = 32
+MarginContainer/constants/margin_top = 32
+Panel/styles/panel = ExtResource("1_dpgob")
+PanelContainer/styles/panel = ExtResource("2_3vho8")
