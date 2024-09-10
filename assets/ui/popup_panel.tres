@@ -1,13 +1,13 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dmkku4kq6nt1w"]
 
-[ext_resource type="Texture2D" uid="uid://bnxr8xhalahkq" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_1x.png" id="1_3h1q7"]
+[ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="1_mda76"]
 
 [resource]
-texture = ExtResource("1_3h1q7")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
+texture = ExtResource("1_mda76")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-region_rect = Rect2(95, 0, 25, 24)
+region_rect = Rect2(380, 0, 100, 96)

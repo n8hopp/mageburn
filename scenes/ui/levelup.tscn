@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d20h50bvjr1h8"]
+[gd_scene load_steps=6 format=3 uid="uid://d20h50bvjr1h8"]
 
 [ext_resource type="Texture2D" uid="uid://byjefcies42ni" path="res://assets/ui/Cryo's Mini GUI/Buttons/buttons_4x.png" id="1_80auk"]
-[ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/popup.tscn" id="2_12dot"]
 [ext_resource type="StyleBox" uid="uid://dmkku4kq6nt1w" path="res://assets/ui/popup_panel.tres" id="2_l3t1e"]
 [ext_resource type="StyleBox" uid="uid://dhlks6ved148j" path="res://assets/ui/popup_border.tres" id="3_72ist"]
 
@@ -57,10 +56,3 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_btg5e")
-
-[node name="Popup" parent="." instance=ExtResource("2_12dot")]
-layout_mode = 1
-offset_left = -356.0
-offset_top = -436.0
-offset_right = 356.0
-offset_bottom = 436.0
