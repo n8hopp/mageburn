@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://ca1ktew34wyrx"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://ca1ktew34wyrx"]
 
 [ext_resource type="StyleBox" uid="uid://dmkku4kq6nt1w" path="res://assets/ui/popup_panel.tres" id="1_dpgob"]
 [ext_resource type="FontFile" uid="uid://bfp3vdqnuro18" path="res://assets/ui/alagard.ttf" id="1_p0a8l"]
@@ -6,6 +6,18 @@
 [ext_resource type="StyleBox" uid="uid://dhlks6ved148j" path="res://assets/ui/popup_border.tres" id="2_3vho8"]
 [ext_resource type="Texture2D" uid="uid://cd8igu6vc3nbv" path="res://assets/ui/Cryo's Mini GUI/Buttons/checkyes.png" id="3_uv7eg"]
 [ext_resource type="Texture2D" uid="uid://cgcswhrxsklxc" path="res://assets/ui/Cryo's Mini GUI/Buttons/checkno.png" id="4_f5jv5"]
+[ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="7_b3hlo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b23sc"]
+texture = ExtResource("1_sptpt")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(132, 4, 88, 56)
+modulate_color = Color(0.741176, 0.741176, 0.741176, 0.784314)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ihypx"]
 
@@ -40,6 +52,24 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(132, 4, 88, 56)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nmcyu"]
+texture = ExtResource("7_b3hlo")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(256, 352, 96, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7gykq"]
+texture = ExtResource("7_b3hlo")
+texture_margin_top = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 432, 64, 16)
+
 [resource]
 default_font = ExtResource("1_p0a8l")
 Button/colors/font_color = Color(0.454902, 0.247059, 0.223529, 1)
@@ -60,7 +90,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_p0a8l")
-Button/styles/disabled = null
+Button/styles/disabled = SubResource("StyleBoxTexture_b23sc")
 Button/styles/focus = SubResource("StyleBoxEmpty_ihypx")
 Button/styles/hover = SubResource("StyleBoxTexture_5x5k8")
 Button/styles/normal = SubResource("StyleBoxTexture_5x5k8")
@@ -75,7 +105,7 @@ CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
 CheckBox/constants/check_v_offset = 0
 CheckBox/constants/h_separation = 0
 CheckBox/constants/outline_size = 0
-CheckBox/font_sizes/font_size = 32
+CheckBox/font_sizes/font_size = 48
 CheckBox/fonts/font = ExtResource("1_p0a8l")
 CheckBox/icons/checked = null
 CheckBox/icons/checked_disabled = null
@@ -158,5 +188,5 @@ ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
 ProgressBar/constants/outline_size = 0
 ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = ExtResource("1_p0a8l")
-ProgressBar/styles/background = null
-ProgressBar/styles/fill = null
+ProgressBar/styles/background = SubResource("StyleBoxTexture_nmcyu")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_7gykq")

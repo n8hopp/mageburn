@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddfbn1ajlagis"]
+[gd_scene load_steps=17 format=3 uid="uid://ddfbn1ajlagis"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_jwlph"]
+[ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="2_klxv7"]
+[ext_resource type="Texture2D" uid="uid://byjefcies42ni" path="res://assets/ui/Cryo's Mini GUI/Buttons/buttons_4x.png" id="2_n3din"]
+[ext_resource type="Texture2D" uid="uid://p0wturnatm5m" path="res://assets/ui/dice icons-2.png" id="4_l4yoy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gr8gi"]
 line_spacing = 1.0
@@ -13,6 +16,43 @@ font_color = Color(0.721569, 0.435294, 0.313726, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_fdhkn"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_34src"]
+atlas = ExtResource("2_klxv7")
+region = Rect2(320, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omf68"]
+atlas = ExtResource("2_n3din")
+region = Rect2(420, 36, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y84b"]
+atlas = ExtResource("2_n3din")
+region = Rect2(396, 36, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t688h"]
+atlas = ExtResource("2_klxv7")
+region = Rect2(352, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlmp3"]
+atlas = ExtResource("2_klxv7")
+region = Rect2(448, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aynrk"]
+atlas = ExtResource("2_klxv7")
+region = Rect2(416, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq33i"]
+atlas = ExtResource("2_klxv7")
+region = Rect2(480, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6jbf"]
+atlas = ExtResource("2_klxv7")
+region = Rect2(384, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eqa1"]
+atlas = ExtResource("4_l4yoy")
+region = Rect2(516, 16, 100, 108)
+margin = Rect2(60, 2.08165e-12, 120, 2.08165e-12)
+
 [node name="Popup" type="PanelContainer"]
 texture_filter = 1
 anchors_preset = 8
@@ -21,9 +61,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -439.0
-offset_top = -461.0
+offset_top = -492.0
 offset_right = 439.0
-offset_bottom = 461.0
+offset_bottom = 492.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jwlph")
@@ -69,8 +109,12 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 32
 
-[node name="label_hp" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="hp_select" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="label_hp" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.454902, 0.247059, 0.223529, 1)
 theme_override_font_sizes/normal_font_size = 48
@@ -80,21 +124,19 @@ hitpoint increase...
 [/ul]"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select"]
 layout_mode = 2
 alignment = 1
 
-[node name="CheckBox2" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CheckBox2" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.454902, 0.247059, 0.223529, 1)
-theme_override_colors/font_pressed_color = Color(0.454902, 0.247059, 0.223529, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.454902, 0.247059, 0.223529, 1)
 theme_override_colors/font_focus_color = Color(0.454902, 0.247059, 0.223529, 1)
 button_group = SubResource("ButtonGroup_fdhkn")
 text = " fixed {amount} hp"
 flat = true
 
-[node name="CheckBox3" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CheckBox3" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.454902, 0.247059, 0.223529, 1)
@@ -102,3 +144,260 @@ button_group = SubResource("ButtonGroup_fdhkn")
 text = " 1d10 hp"
 flat = true
 expand_icon = true
+
+[node name="stat_select" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="label_hp" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.454902, 0.247059, 0.223529, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[ul]
+ability score increase...
+[/ul]"
+fit_content = true
+
+[node name="statblock" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 16
+columns = 3
+
+[node name="str_icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_34src")
+stretch_mode = 2
+
+[node name="str_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "strength:"
+
+[node name="str_selector" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/str_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.908769, 2.01599e-06, 4.1443e-07, 1)
+theme_override_colors/icon_focus_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+disabled = true
+icon = SubResource("AtlasTexture_omf68")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/str_selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "{00}"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/str_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+icon = SubResource("AtlasTexture_0y84b")
+
+[node name="dex_icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_t688h")
+stretch_mode = 2
+
+[node name="dex_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "dexerity:"
+
+[node name="dex_selector" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/dex_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.908769, 2.01599e-06, 4.1443e-07, 1)
+theme_override_colors/icon_focus_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+disabled = true
+icon = SubResource("AtlasTexture_omf68")
+
+[node name="dex_amount" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/dex_selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "{00}"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/dex_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+icon = SubResource("AtlasTexture_0y84b")
+
+[node name="con_icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vlmp3")
+stretch_mode = 2
+
+[node name="con_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "constitution:"
+
+[node name="con_selector" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/con_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.908769, 2.01599e-06, 4.1443e-07, 1)
+theme_override_colors/icon_focus_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+disabled = true
+icon = SubResource("AtlasTexture_omf68")
+
+[node name="dex_amount" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/con_selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "{00}"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/con_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+icon = SubResource("AtlasTexture_0y84b")
+
+[node name="int_icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_aynrk")
+stretch_mode = 2
+
+[node name="int_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "intelligence:"
+
+[node name="int_selector" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/int_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.908769, 2.01599e-06, 4.1443e-07, 1)
+theme_override_colors/icon_focus_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+disabled = true
+icon = SubResource("AtlasTexture_omf68")
+
+[node name="dex_amount" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/int_selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "{00}"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/int_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+icon = SubResource("AtlasTexture_0y84b")
+
+[node name="wis_icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hq33i")
+stretch_mode = 2
+
+[node name="wis_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "wisdom:"
+
+[node name="wis_selector" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/wis_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.908769, 2.01599e-06, 4.1443e-07, 1)
+theme_override_colors/icon_focus_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+disabled = true
+icon = SubResource("AtlasTexture_omf68")
+
+[node name="wis_amount" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/wis_selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "{00}"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/wis_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+icon = SubResource("AtlasTexture_0y84b")
+
+[node name="cha_icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_y6jbf")
+stretch_mode = 2
+
+[node name="cha_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "charisma:"
+
+[node name="cha_selector" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/cha_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.908769, 2.01599e-06, 4.1443e-07, 1)
+theme_override_colors/icon_focus_color = Color(0.909804, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+disabled = true
+icon = SubResource("AtlasTexture_omf68")
+
+[node name="cha_amount" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/cha_selector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "{00}"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/statblock/cha_selector"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.0333333, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.567089, 0.576937, 0.582739, 1)
+icon = SubResource("AtlasTexture_0y84b")
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.838897, 0.838897, 0.838897, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.57902, 0.57902, 0.57902, 1)
+icon = SubResource("AtlasTexture_4eqa1")
+icon_alignment = 1
