@@ -25,7 +25,7 @@ func _process(delta):
 		else:
 			_animation.play("idle")
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack1"):
 		attack = true
 		_animation.play("attack1")
 	
