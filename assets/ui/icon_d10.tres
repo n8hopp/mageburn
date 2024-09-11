@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bay744jp4fn0r"]
+
+[ext_resource type="Texture2D" uid="uid://p0wturnatm5m" path="res://assets/ui/dice icons-2.png" id="1_cmiod"]
+
+[resource]
+atlas = ExtResource("1_cmiod")
+region = Rect2(516, 16, 100, 108)
+margin = Rect2(60, 2.08165e-12, 120, 2.08165e-12)
