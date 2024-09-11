@@ -1,36 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d50exvyq23wo"]
+[gd_scene load_steps=2 format=3 uid="uid://d50exvyq23wo"]
 
 [ext_resource type="Script" path="res://scripts/player/player_variables.gd" id="1_jlqa3"]
-[ext_resource type="Script" path="res://scripts/basic/dice/die.gd" id="2_7w8sj"]
-[ext_resource type="Texture2D" uid="uid://bay744jp4fn0r" path="res://assets/ui/icon_d10.tres" id="3_07hu7"]
 
 [node name="PlayerVariables" type="Node"]
 script = ExtResource("1_jlqa3")
-
-[node name="D4" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-
-[node name="D6" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-sides = 6
-
-[node name="D8" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-sides = 8
-
-[node name="D10" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-sides = 10
-icon = ExtResource("3_07hu7")
-
-[node name="D12" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-sides = 12
-
-[node name="D20" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-sides = 20
-
-[node name="D100" type="Node" parent="."]
-script = ExtResource("2_7w8sj")
-sides = 100

@@ -10,6 +10,8 @@ extends Node
 @export var wisdom : int
 @export var charisma : int
 @export var hit_die : Die
+@export var current_experience : int
+@export var experience_to_level : int
 
 @export_category("Ability 1 Stats")
 @export var j_damage_multiplier : float
