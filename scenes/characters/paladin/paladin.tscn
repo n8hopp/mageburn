@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dyj5krx8y6t6q"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_w8qh2"]
+[ext_resource type="Script" path="res://scripts/player/paladin.gd" id="1_o2e00"]
 [ext_resource type="Texture2D" uid="uid://m0yaxwx2au0v" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_v2ixv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmel2"]
@@ -64,6 +64,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_xr2ul"]
 resource_name = "hurt"
 length = 0.500013
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -126,10 +127,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar0cw"]
 size = Vector2(27, 26)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Paladin" type="CharacterBody2D"]
 texture_filter = 2
 collision_mask = 2
-script = ExtResource("1_w8qh2")
+script = ExtResource("1_o2e00")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mmel2")
