@@ -163,7 +163,7 @@ animation_player = NodePath("../AnimationPlayer")
 script = ExtResource("4_jnyvl")
 parent = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
-walk_speed = 5.0
+walk_speed = 15.0
 
 [node name="Attack" type="Node" parent="SkeletonMachine"]
 script = ExtResource("5_d3qlm")
