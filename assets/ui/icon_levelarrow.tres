@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://doqjlx5ghppvk"]
+
+[ext_resource type="Texture2D" uid="uid://blinuqjhd3ji0" path="res://assets/ui/Cryo's Mini GUI/Buttons/levelupicon.png" id="1_kk38b"]
+
+[resource]
+atlas = ExtResource("1_kk38b")
+region = Rect2(0, 0, 64, 88)
+margin = Rect2(78, 10, 156, 20)
