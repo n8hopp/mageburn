@@ -20,12 +20,14 @@ extends Node
 @export var j_knockback_multiplier : float
 
 @export_category("Ability 2 Stats")
+@export var k_locked : bool
 @export var k_damage_multiplier : float
 @export var k_speed_multiplier : float
 @export var k_cooldown_multiplier : float
 @export var k_knockback_multiplier : float
 
 @export_category("Ability 3 Stats")
+@export var l_locked : bool
 @export var l_damage_multiplier : float
 @export var l_speed_multiplier : float
 @export var l_cooldown_multiplier : float

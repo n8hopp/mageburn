@@ -23,10 +23,11 @@ func _ready():
 func _on_confirm_pressed():
 	if confirm_button.dice_mode:
 		# change to increase health by this amount
-		print(PlayerVariables.hit_die.roll() + PlayerVariables.con_bonus)
+		PlayerVariables.current_health_pool += (PlayerVariables.hit_die.roll() + PlayerVariables.con_bonus)
 	else:
 		# change to increase health by this amount
-		print(standard_increase + PlayerVariables.con_bonus)
+		PlayerVariables.current_health_pool += (standard_increase + PlayerVariables.con_bonus)
+	PlayerVariables.level += 1
 		
 func _initialize_stat_block():
 	stat_select_block.visible = true
