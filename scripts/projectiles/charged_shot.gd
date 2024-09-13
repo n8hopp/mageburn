@@ -1,8 +1,8 @@
 extends Area2D
 
 var velocity = Vector2.ZERO
-var range = 200.0
-var speed = 200.0
+var range = 300.0
+var speed = 400.0
 var start_position = Vector2.ZERO
 var knockback_coef = 300.0
 
