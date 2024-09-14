@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhvjys782asf2"]
+[gd_scene load_steps=4 format=3 uid="uid://dhvjys782asf2"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_6745f"]
+[ext_resource type="Script" path="res://scenes/ui/deathpopup.gd" id="2_35amj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
 line_spacing = 1.0
@@ -20,6 +21,7 @@ offset_bottom = -0.320047
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6745f")
+script = ExtResource("2_35amj")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -44,7 +46,7 @@ Died"
 label_settings = SubResource("LabelSettings_dwdhi")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="QuitGameButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 689.0
 offset_top = 612.0
@@ -53,10 +55,14 @@ offset_bottom = 692.0
 theme_override_font_sizes/font_size = 50
 text = "Live another day"
 
-[node name="Button2" type="Button" parent="Panel"]
+[node name="TryAgainButton" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 153.0
 offset_top = 612.0
 offset_right = 562.0
 offset_bottom = 692.0
 theme_override_font_sizes/font_size = 50
 text = "Fight again"
+
+[connection signal="pressed" from="Panel/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="Panel/TryAgainButton" to="." method="_on_try_again_button_pressed"]

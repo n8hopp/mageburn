@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dih7r6yshu0xn"]
+[gd_scene load_steps=4 format=3 uid="uid://dih7r6yshu0xn"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_dumui"]
+[ext_resource type="Script" path="res://scenes/ui/startscreen.gd" id="2_rmt6j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
 line_spacing = 1.0
@@ -13,6 +14,7 @@ offset_top = 137.0
 offset_right = 1632.0
 offset_bottom = 976.0
 theme = ExtResource("1_dumui")
+script = ExtResource("2_rmt6j")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -33,7 +35,7 @@ text = "Mageburn"
 label_settings = SubResource("LabelSettings_dwdhi")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="StartButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 508.0
 offset_top = 606.0
@@ -42,3 +44,5 @@ offset_bottom = 713.0
 theme = ExtResource("1_dumui")
 theme_override_font_sizes/font_size = 80
 text = "Start"
+
+[connection signal="pressed" from="Panel/StartButton" to="." method="_on_start_button_pressed"]

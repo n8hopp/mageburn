@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_kl0c7"]
 [ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_4qewj"]
-[ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/player.tscn" id="3_2wbw0"]
+[ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_2wbw0"]
 [ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/popup.tscn" id="4_i6se4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohjmb"]
