@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_2c1ic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
-size = Vector2(17.25, 16)
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_shdrh"]
 length = 0.001
@@ -138,7 +138,7 @@ script = ExtResource("1_fxnhd")
 movement_speed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_2s03p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -40,7 +40,7 @@ func _physics_process(delta):
 
 func instance_xp_orb():
 	var xp_orb = xp_orb_drop.instantiate()
-	xp_orb.position = global_position
+	xp_orb.global_position = global_position
 	xp_orb.z_index = 1
 	get_tree().current_scene.add_child(xp_orb)
 	
