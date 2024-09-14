@@ -14,5 +14,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		queue_free()
+		PlayerVariables.current_experience += 1
+		if PlayerVariables.current_experience == PlayerVariables.experience_to_level:
+			GameManager.level_up.emit()
 

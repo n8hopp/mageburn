@@ -2,7 +2,7 @@ extends Node
 
 @export_category("Basic Stats")
 @export var current_health_pool : int
-@export var level : int = 4
+@export var level : int = 1
 @export var strength : int
 @export var dexterity : int
 @export var constitution : int
@@ -10,26 +10,28 @@ extends Node
 @export var wisdom : int
 @export var charisma : int
 @export var hit_die : Die
-@export var current_experience : int
-@export var experience_to_level : int
+@export var current_experience : int = 0
+@export var experience_to_level : int = 25
 
 @export_category("Ability 1 Stats")
-@export var j_damage_multiplier : float
-@export var j_speed_multiplier : float
-@export var j_cooldown_multiplier : float
-@export var j_knockback_multiplier : float
+@export var j_damage : float # paladin: str
+@export var j_speed : float # paladin: dex
+@export var j_cooldown : float # paladin: dex/wis
+@export var j_knockback : float # paladin: str
 
 @export_category("Ability 2 Stats")
-@export var k_damage_multiplier : float
-@export var k_speed_multiplier : float
-@export var k_cooldown_multiplier : float
-@export var k_knockback_multiplier : float
+@export var k_locked : bool = true # level 5
+@export var k_damage : float # paladin: str
+@export var k_speed : float # paladin: str
+@export var k_cooldown : float # paladin: dex/wis
+@export var k_knockback : float # paladin: str
 
 @export_category("Ability 3 Stats")
-@export var l_damage_multiplier : float
-@export var l_speed_multiplier : float
-@export var l_cooldown_multiplier : float
-@export var l_knockback_multiplier : float
+@export var l_locked : bool = true # level 10
+@export var l_damage : float # paladin: str + int
+@export var l_speed : float # paladin: dex + wis
+@export var l_cooldown : float # paladin: dex + wis
+@export var l_knockback : float # paladin: str + cha
 
 # ability modifiers - what we actually use when rolling
 var str_bonus : int
@@ -61,6 +63,24 @@ func _ready():
 	hit_die.icon = preload("res://assets/ui/icon_d10.tres")
 	
 	calculate_bonuses()
+	
+func level_up():
+	if level == 5:
+		k_locked = false
+	
+	if level == 10:
+		k_locked = false
+	
+	# numbers will be for paladin; diff for other classes
+	j_damage = strength/2
+	j_knockback = strength
+	#TODO: implement other ability scaling
+	
+	k_damage = dexterity
+	
+	l_damage = intelligence * 2
+	
+
 
 
 

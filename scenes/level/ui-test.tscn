@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuxr2h1825djg"]
+[gd_scene load_steps=8 format=3 uid="uid://bwxc47p4qnv8n"]
 
-[ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_16bwb"]
-[ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_6rl5y"]
-[ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_gujq1"]
+[ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_rocgs"]
+[ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_t2eth"]
+[ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_yucpn"]
+[ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/level_up.tscn" id="4_o3whr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohjmb"]
-texture = ExtResource("1_16bwb")
+texture = ExtResource("1_rocgs")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -381,98 +382,100 @@ layer_0/tile_data = PackedInt32Array(131074, 65536, 5, 131075, 131072, 5, 131076
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_lnl05")
 
-[node name="Skeleton" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Skeleton" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(420, 198)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton2" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton2" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(590, 177)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton3" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton3" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(363, 248)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton4" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton4" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(379, 343)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton5" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton5" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(600, 262)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton6" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton6" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(580, 356)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton7" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton7" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(492, 188)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton8" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton8" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(548, 118)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton9" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton9" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(665, 168)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton10" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton10" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(330, 183)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton11" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton11" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(288, 274)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton12" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton12" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(667, 261)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Skeleton13" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_6rl5y")]
+[node name="Skeleton13" parent="Enemies" node_paths=PackedStringArray("follow_target") instance=ExtResource("2_t2eth")]
 z_index = 1
 position = Vector2(637, 335)
 collision_layer = 5
 collision_mask = 4
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 
-[node name="Player" parent="." instance=ExtResource("3_gujq1")]
+[node name="Player" parent="." instance=ExtResource("3_yucpn")]
 z_index = 2
 position = Vector2(484, 283)
 
@@ -485,3 +488,7 @@ limit_bottom = 2240
 limit_smoothed = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="level_up" parent="CanvasLayer" instance=ExtResource("4_o3whr")]

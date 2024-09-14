@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://ddfbn1ajlagis"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_jwlph"]
-[ext_resource type="Script" path="res://scenes/ui/level_up.gd" id="2_2b4as"]
+[ext_resource type="Script" path="res://scripts/ui/level-up/level_up.gd" id="2_2b4as"]
 [ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="2_klxv7"]
 [ext_resource type="Texture2D" uid="uid://byjefcies42ni" path="res://assets/ui/Cryo's Mini GUI/Buttons/buttons_4x.png" id="2_n3din"]
-[ext_resource type="Script" path="res://scenes/ui/stat_selector.gd" id="3_nrh0t"]
+[ext_resource type="Script" path="res://scripts/ui/stat_selector.gd" id="3_nrh0t"]
 [ext_resource type="Texture2D" uid="uid://doqjlx5ghppvk" path="res://assets/ui/icon_levelarrow.tres" id="4_jehdm"]
 [ext_resource type="Script" path="res://scripts/ui/level-up/dicebutton.gd" id="5_0deqm"]
 
@@ -52,6 +52,7 @@ atlas = ExtResource("2_klxv7")
 region = Rect2(384, 288, 32, 32)
 
 [node name="level_up" type="PanelContainer"]
+visible = false
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
