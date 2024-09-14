@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu325uo8tbjn6"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/wave_attack.gd" id="1_nyt3e"]
+[ext_resource type="Texture2D" uid="uid://ddr0b0sg5c3ps" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight(Split Effects)/Knight-Attack02_Effect.png" id="2_gqso7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4d0r"]
+size = Vector2(25, 33)
+
+[node name="WaveAttack" type="Area2D"]
+script = ExtResource("1_nyt3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17.5, -6.5)
+shape = SubResource("RectangleShape2D_v4d0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_gqso7")
+hframes = 10
+frame = 7
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

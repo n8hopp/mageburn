@@ -72,15 +72,3 @@ func place_trap():
 	var trap_instance = trap_scene.instantiate()
 	trap_instance.position = global_position
 	get_tree().current_scene.add_child(trap_instance)
-	
-
-#func _on_hitbox_area_entered(area):
-	#if area.is_in_group("hurtbox"):
-		#area.take_damage()
-#
-#
-#func _on_hitbox_body_entered(body):
-	#if body.is_in_group("hurtbox"):
-		#var knockback = global_position.direction_to(body.global_position)
-		#body.knockback = knockback * knockback_coef
-		#body.take_damage()

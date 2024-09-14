@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5a23fra4oi1q"]
+
+[ext_resource type="Script" path="res://scenes/characters/paladin/fire_arc_attack.gd" id="1_8wjk2"]
+[ext_resource type="Texture2D" uid="uid://b217b8hn2w6ty" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight(Split Effects)/Temp_Fire_Arc2.png" id="2_pg3ae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dikbt"]
+size = Vector2(33, 29)
+
+[sub_resource type="Animation" id="Animation_31m43"]
+resource_name = "arc_spread"
+length = 2.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_esysb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wvkpy"]
+_data = {
+"RESET": SubResource("Animation_esysb"),
+"arc_spread": SubResource("Animation_31m43")
+}
+
+[node name="FireArcAttack" type="Area2D"]
+script = ExtResource("1_8wjk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23.5, -1.5)
+shape = SubResource("RectangleShape2D_dikbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wvkpy")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_pg3ae")
+hframes = 24
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
