@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 var input_dir : Vector2
+var attack_dir : Vector2
 var speed : float = 50.0
 var attack : bool = false
 var knockback_coef = 200.0
+var wave_attack_scene = preload("res://scenes/characters/paladin/wave_attack.tscn")
+var fire_attack_scene = preload("res://scenes/characters/paladin/fire_arc_attack.tscn")
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
 
@@ -28,6 +31,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("attack1"):
 		attack = true
 		_animation.play("attack1")
+	elif Input.is_action_just_pressed("attack2"):
+		attack = true
+		_animation.play("attack2")
+	elif Input.is_action_just_pressed("attack3"):
+		attack = true
+		_animation.play("attack3")
 	
 	
 	if input_dir.x < 0:
@@ -40,9 +49,24 @@ func _physics_process(delta):
 		return
 		
 	input_dir = Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down").normalized()
+	
+	if input_dir.length() != 0:
+		attack_dir = input_dir
 		
 	velocity = input_dir * speed
 	move_and_slide()
+	
+func wave_attack():
+	var wave_attack_instance = wave_attack_scene.instantiate()
+	wave_attack_instance.position = global_position
+	get_tree().current_scene.add_child(wave_attack_instance)
+	wave_attack_instance.set_direction(attack_dir)
+	
+func fire_attack():
+	var fire_attack_instance = fire_attack_scene.instantiate()
+	fire_attack_instance.position = global_position
+	get_tree().current_scene.add_child(fire_attack_instance)
+	fire_attack_instance.set_direction(attack_dir)
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("hurtbox"):
