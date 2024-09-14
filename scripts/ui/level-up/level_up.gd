@@ -70,7 +70,7 @@ func _on_visibility_changed():
 		fixed_increase_label.text = format_label % [standard_increase,modifier_symbol,abs(PlayerVariables.con_bonus)]
 		
 		var class_label = "%s - level %s"
-		#class_level_label = class_labe
+		class_level_label.text = class_label % ["Paladin", PlayerVariables.level+1]
 		if PlayerVariables.level % 4 == 0:
 			_initialize_stat_block()
 		else:

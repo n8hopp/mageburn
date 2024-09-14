@@ -7,7 +7,7 @@ func _ready():
 	pass # Replace with function body.
 
 
-"res://scenes/level/Xplevel.tscn"# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -17,4 +17,5 @@ func _on_body_entered(body):
 		PlayerVariables.current_experience += 1
 		if PlayerVariables.current_experience == PlayerVariables.experience_to_level:
 			GameManager.level_up.emit()
+		queue_free()
 

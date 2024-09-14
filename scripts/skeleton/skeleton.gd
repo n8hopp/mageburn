@@ -13,7 +13,7 @@ var pause_pathfinding = false
 var stun_frames = 0
 var knockback : Vector2 = Vector2.ZERO
 
-var xp_orb_drop = preload("res://scenes/xp.tscn")
+var xp_orb_drop = preload("res://scenes/basic_items/xp.tscn")
 
 func take_damage():
 	if dead:

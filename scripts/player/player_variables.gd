@@ -3,14 +3,16 @@ extends Node
 @export_category("Basic Stats")
 @export var current_health_pool : int
 @export var level : int = 1
-@export var strength : int
-@export var dexterity : int
-@export var constitution : int
-@export var intelligence : int
-@export var wisdom : int
-@export var charisma : int
+#default standard array for martial class (paladin)
+#TODO: change based on class selected
+@export var strength : int = 15
+@export var dexterity : int = 12
+@export var constitution : int = 14
+@export var intelligence : int = 8
+@export var wisdom : int = 10
+@export var charisma : int = 14
 @export var hit_die : Die
-@export var current_experience : int = 0
+@export var current_experience : int = 23
 @export var experience_to_level : int = 25
 
 @export_category("Ability 1 Stats")
