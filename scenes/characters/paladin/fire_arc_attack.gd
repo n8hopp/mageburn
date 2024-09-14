@@ -11,6 +11,7 @@ var knockback_coef = 100.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_position = global_position
+	_animation.play("arc_spread")
 
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * speed
@@ -26,5 +27,4 @@ func _on_body_entered(body):
 	if body.is_in_group("hurtbox"):
 		var knockback = global_position.direction_to(body.global_position)
 		body.knockback = knockback * knockback_coef
-		_animation.play("arc_spread")
 		body.take_damage()
