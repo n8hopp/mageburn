@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwxc47p4qnv8n"]
+[gd_scene load_steps=9 format=3 uid="uid://bwxc47p4qnv8n"]
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_rocgs"]
 [ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_t2eth"]
 [ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_yucpn"]
 [ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/level_up.tscn" id="4_o3whr"]
+[ext_resource type="PackedScene" uid="uid://bpsu201lxxu0o" path="res://scenes/ui/texture_progress_bar.tscn" id="5_gmqcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohjmb"]
 texture = ExtResource("1_rocgs")
@@ -492,3 +493,9 @@ editor_draw_limits = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="level_up" parent="CanvasLayer" instance=ExtResource("4_o3whr")]
+
+[node name="TextureProgressBar" parent="CanvasLayer" instance=ExtResource("5_gmqcy")]
+offset_left = 57.0
+offset_top = 58.0
+offset_right = 90.0
+offset_bottom = 68.0
