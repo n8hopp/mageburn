@@ -4,12 +4,25 @@ var input_dir : Vector2
 var attack_dir : Vector2
 var speed : float = 50.0
 var attack : bool = false
+var dead : bool = false
 var knockback_coef = 200.0
 var wave_attack_scene = preload("res://scenes/characters/paladin/wave_attack.tscn")
 var fire_attack_scene = preload("res://scenes/characters/paladin/fire_arc_attack.tscn")
+var player_variables_scene = preload("res://scenes/basic_items/PlayerVariables.tscn")
+var player_variables = player_variables_scene.instantiate()
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
 
+func take_hit(dmg_amount : int): 
+	if dead: 
+		return
+		
+	player_variables.current_hp  -= dmg_amount
+	_animation.play("hurt")
+	
+	if player_variables.current_hp <= 0:
+		_animation.play("death")
+		dead = true
 
 func _ready():
 	pass

@@ -28,3 +28,5 @@ func _on_body_entered(body):
 		var knockback = global_position.direction_to(body.global_position)
 		body.knockback = knockback * knockback_coef
 		body.take_damage()
+
+
