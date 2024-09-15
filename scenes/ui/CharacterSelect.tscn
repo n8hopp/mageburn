@@ -1,0 +1,210 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk30rxewummb3"]
+
+[ext_resource type="Script" path="res://scenes/ui/CharacterSelect.gd" id="1_pjdxg"]
+[ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_x3jg5"]
+[ext_resource type="Texture2D" uid="uid://ds18p7nx6ms8f" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Archer/Archer/Archer-Idle.png" id="2_5aqfi"]
+[ext_resource type="Texture2D" uid="uid://c5go5u4h3hgeo" path="res://assets/ui/littleKnight.tres" id="4_6t31u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjw36"]
+line_spacing = 1000.0
+font_size = 128
+font_color = Color(0.454902, 0.247059, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yslmk"]
+font_size = 64
+font_color = Color(0.454902, 0.247059, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_joa4q"]
+font_size = 64
+font_color = Color(0.454902, 0.247059, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j8j0o"]
+font_size = 64
+font_color = Color(0.454902, 0.247059, 0.223529, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etuak"]
+atlas = ExtResource("2_5aqfi")
+region = Rect2(36, 40, 30, 17)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fux2m"]
+font_size = 256
+font_color = Color(0.454902, 0.247059, 0.223529, 1)
+
+[node name="HeroSelect" type="PanelContainer"]
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("1_x3jg5")
+script = ExtResource("1_pjdxg")
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Hero Select"
+label_settings = SubResource("LabelSettings_bjw36")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 64
+columns = 3
+
+[node name="Ranger Label" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Ranger Label"]
+texture_filter = 1
+layout_mode = 2
+text = "Ranger"
+label_settings = SubResource("LabelSettings_yslmk")
+horizontal_alignment = 1
+
+[node name="Paladin Label" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Paladin Label"]
+texture_filter = 1
+layout_mode = 2
+text = "Paladin"
+label_settings = SubResource("LabelSettings_joa4q")
+horizontal_alignment = 1
+
+[node name="Third Char text" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Third Char text"]
+texture_filter = 1
+layout_mode = 2
+text = "WANTED"
+label_settings = SubResource("LabelSettings_j8j0o")
+horizontal_alignment = 1
+
+[node name="Ranger_Container" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Ranger_Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Ranger" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Ranger_Container/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_etuak")
+stretch_mode = 5
+
+[node name="RangerClassButton" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Ranger_Container/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="RangerButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Ranger_Container"]
+layout_mode = 2
+flat = true
+
+[node name="Paladin_Container" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Paladin_Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Paladin" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Paladin_Container/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_6t31u")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="PaladinButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Paladin_Container"]
+layout_mode = 2
+flat = true
+
+[node name="ThirdChar_Container" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/ThirdChar_Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Third Charater Holder" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/ThirdChar_Container/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/ThirdChar_Container/MarginContainer/Third Charater Holder"]
+texture_filter = 1
+layout_mode = 2
+text = "?"
+label_settings = SubResource("LabelSettings_fux2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Ranger_Container/RangerButton" to="." method="_on_ranger_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/Paladin_Container/PaladinButton" to="." method="_on_paladin_button_pressed"]
