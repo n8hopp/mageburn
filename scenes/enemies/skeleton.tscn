@@ -201,5 +201,4 @@ parent = NodePath("../..")
 [node name="Dead" type="Node" parent="SkeletonMachine"]
 script = ExtResource("7_2c1ic")
 
-[connection signal="area_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

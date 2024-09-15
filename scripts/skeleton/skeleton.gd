@@ -44,8 +44,6 @@ func instance_xp_orb():
 	xp_orb.z_index = 1
 	get_tree().current_scene.add_child(xp_orb)
 
-func _on_hitbox_area_entered(area):
-	print("Hit")
-	if area.is_in_group("player_hurtbox"):
-		print("Hit Player")
-		area.take_hit(1)
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("player_hurtbox"):
+		body.take_hit(1)
