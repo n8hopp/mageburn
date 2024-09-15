@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=17 format=3 uid="uid://3gspkn7wbrat"]
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
+size = Vector2(14, 17)
 
 [sub_resource type="Animation" id="Animation_shdrh"]
 length = 0.001
@@ -52,6 +55,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [16, 17, 18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_f4r8n"]
@@ -133,7 +148,7 @@ _data = {
 [node name="Skeleton" type="CharacterBody2D" groups=["hurtbox"]]
 z_index = 2
 texture_filter = 1
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_fxnhd")
 movement_speed = 5.0
 
@@ -147,6 +162,16 @@ texture = ExtResource("1_etx3f")
 hframes = 8
 vframes = 7
 frame = 48
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+position = Vector2(15, -1.5)
+shape = SubResource("RectangleShape2D_u0th3")
+disabled = true
+debug_color = Color(1, 1, 1, 0.0901961)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -175,3 +200,5 @@ parent = NodePath("../..")
 
 [node name="Dead" type="Node" parent="SkeletonMachine"]
 script = ExtResource("7_2c1ic")
+
+[connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

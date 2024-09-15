@@ -43,4 +43,7 @@ func instance_xp_orb():
 	xp_orb.global_position = global_position
 	xp_orb.z_index = 1
 	get_tree().current_scene.add_child(xp_orb)
-	
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("player_hurtbox"):
+		body.take_hit(1)
