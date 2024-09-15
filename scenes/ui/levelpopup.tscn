@@ -372,6 +372,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(46, 47, 901, 47, 903, 4
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Level" type="Node2D"]
+texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
