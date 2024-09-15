@@ -84,6 +84,7 @@ func level_up():
 	k_damage = dexterity
 	
 	l_damage = intelligence * 2
+	current_experience = 0
 	
 
 
