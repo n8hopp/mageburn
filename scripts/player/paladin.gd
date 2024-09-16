@@ -4,17 +4,35 @@ var input_dir : Vector2
 var attack_dir : Vector2
 var speed : float = 50.0
 var attack : bool = false
+var dead : bool = false
 var knockback_coef = 200.0
 var wave_attack_scene = preload("res://scenes/characters/paladin/wave_attack.tscn")
 var fire_attack_scene = preload("res://scenes/characters/paladin/fire_arc_attack.tscn")
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
 
+func take_hit(dmg_amount : int): 
+	if dead: 
+		return
+		
+	PlayerVariables.current_hp  -= dmg_amount
+	
+	# Commented out due to Idle and Walk animations overriding it. Also want to
+	# change the animation to just flash player red instead of playing animation
+	# and stun locking player
+	#_animation.play("hurt")
+	
+	if PlayerVariables.current_hp <= 0:
+		_animation.play("death")
+		dead = true
 
 func _ready():
 	pass
 
 func _process(delta):
+	if dead:
+		return
+		
 	if attack:
 		pass
 		if _animation.is_playing():
@@ -45,7 +63,7 @@ func _process(delta):
 		_sprite.scale.x = 1
 
 func _physics_process(delta):
-	if attack:
+	if attack or dead:
 		return
 		
 	input_dir = Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down").normalized()

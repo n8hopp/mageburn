@@ -1,7 +1,10 @@
 extends Node
 
 @export_category("Basic Stats")
-@export var current_health_pool : int
+@export var current_health_pool : int = 10
+
+var current_hp : int = current_health_pool
+
 @export var level : int = 1
 #default standard array for martial class (paladin)
 #TODO: change based on class selected
@@ -81,6 +84,7 @@ func level_up():
 	k_damage = dexterity
 	
 	l_damage = intelligence * 2
+	current_experience = 0
 	
 
 

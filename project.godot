@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mageburn"
-run/main_scene="res://scenes/level/level.tscn"
+run/main_scene="res://scenes/ui/startscreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
@@ -24,6 +24,8 @@ GameManager="*res://scenes/basic_items/game_manager.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 
 [dotnet]

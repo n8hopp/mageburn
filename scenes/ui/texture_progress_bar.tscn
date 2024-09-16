@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpsu201lxxu0o"]
+
+[ext_resource type="Texture2D" uid="uid://bnxr8xhalahkq" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_1x.png" id="1_0eei4"]
+[ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="2_3ui4i"]
+[ext_resource type="Script" path="res://scripts/texture_progress_bar.gd" id="3_elvms"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqkwk"]
+atlas = ExtResource("1_0eei4")
+region = Rect2(0, 88, 40, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpj8d"]
+atlas = ExtResource("2_3ui4i")
+region = Rect2(0, 440, 64, 8)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+texture_filter = 1
+offset_right = 47.0
+offset_bottom = 13.0
+scale = Vector2(6, 6)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_over = SubResource("AtlasTexture_tqkwk")
+texture_progress = SubResource("AtlasTexture_mpj8d")
+script = ExtResource("3_elvms")

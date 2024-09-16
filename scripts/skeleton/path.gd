@@ -19,8 +19,8 @@ func on_physics_process(_delta: float) -> void:
 	parent.move_and_slide()
 	
 	if parent.velocity.x > 0:
-		parent._sprite.flip_h = false
+		parent._sprite.scale.x = 1
 	elif parent.velocity.x < 0:
-		parent._sprite.flip_h = true
+		parent._sprite.scale.x = -1
 		
 	state_machine.animation_player.play("walk")

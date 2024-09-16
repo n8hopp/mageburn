@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuxr2h1825djg"]
+[gd_scene load_steps=9 format=3 uid="uid://cuxr2h1825djg"]
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_16bwb"]
 [ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_6rl5y"]
 [ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_gujq1"]
 [ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/level_up.tscn" id="4_f5j4w"]
+[ext_resource type="PackedScene" uid="uid://bpsu201lxxu0o" path="res://scenes/ui/texture_progress_bar.tscn" id="5_earkx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohjmb"]
 texture = ExtResource("1_16bwb")
@@ -476,6 +477,7 @@ follow_target = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("3_gujq1")]
 z_index = 2
 position = Vector2(484, 283)
+collision_mask = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -490,3 +492,9 @@ editor_draw_limits = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Popup" parent="CanvasLayer" instance=ExtResource("4_f5j4w")]
+
+[node name="TextureProgressBar" parent="CanvasLayer" instance=ExtResource("5_earkx")]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 120.0
+offset_bottom = 68.0
