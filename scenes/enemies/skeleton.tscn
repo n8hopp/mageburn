@@ -1,18 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=19 format=3 uid="uid://3gspkn7wbrat"]
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
+[ext_resource type="Script" path="res://scenes/enemies/Hurtbox.gd" id="3_5srus"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton_machine.gd" id="3_ckrbo"]
 [ext_resource type="Script" path="res://scripts/skeleton/path.gd" id="4_jnyvl"]
 [ext_resource type="Script" path="res://scripts/skeleton/attack.gd" id="5_d3qlm"]
 [ext_resource type="Script" path="res://scripts/skeleton/hit.gd" id="6_bp8s2"]
 [ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_2c1ic"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_axffb"]
+radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
 size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_shdrh"]
 length = 0.001
@@ -169,16 +173,17 @@ _data = {
 "walk": SubResource("Animation_fkewm")
 }
 
-[node name="Skeleton" type="CharacterBody2D" groups=["hurtbox"]]
+[node name="Skeleton" type="CharacterBody2D"]
 z_index = 2
 texture_filter = 1
-collision_mask = 2
+collision_layer = 8
+collision_mask = 10
 script = ExtResource("1_fxnhd")
 movement_speed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_2s03p")
+position = Vector2(2.08165e-12, 3)
+shape = SubResource("CircleShape2D_axffb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -196,6 +201,13 @@ position = Vector2(15, -1.5)
 shape = SubResource("RectangleShape2D_u0th3")
 disabled = true
 debug_color = Color(1, 1, 1, 0.0901961)
+
+[node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["hurtbox"]]
+script = ExtResource("3_5srus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_2s03p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
