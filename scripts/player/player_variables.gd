@@ -49,6 +49,8 @@ var cha_bonus : int
 # used when increasing stats every 4 levels
 var skill_points : int
 
+signal death
+
 func calculate_bonuses():
 	str_bonus = floori((strength-10.0)/2.0)
 	dex_bonus = floori((dexterity-10.0)/2.0)
@@ -85,7 +87,8 @@ func level_up():
 	
 	l_damage = intelligence * 2
 	current_experience = 0
-	
+
+
 
 
 

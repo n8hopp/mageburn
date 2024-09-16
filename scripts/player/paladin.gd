@@ -25,6 +25,7 @@ func take_hit(dmg_amount : int):
 	if PlayerVariables.current_hp <= 0:
 		_animation.play("death")
 		dead = true
+		PlayerVariables.death.emit()
 
 func _ready():
 	pass
