@@ -3,7 +3,7 @@ extends PanelContainer
 
 func _on_paladin_button_pressed():
 	#character = "Paladin"
-	get_tree().change_scene_to_file("res://scenes/level/level.tscn")
+	get_tree().change_scene_to_file("res://scenes/level/PaladinHellMode.tscn")
 
 
 func _on_ranger_button_pressed():
