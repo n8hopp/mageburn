@@ -433,6 +433,7 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Popup" parent="CanvasLayer" instance=ExtResource("5_1vaqq")]
+process_mode = 3
 
 [node name="TextureProgressBar" parent="CanvasLayer" instance=ExtResource("6_tuqw4")]
 offset_left = 56.0
