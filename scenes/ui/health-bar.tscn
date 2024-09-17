@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bcic4r3wkmn5f"]
-
-[node name="TextureProgressBar" type="TextureProgressBar"]
-offset_right = 40.0
-offset_bottom = 40.0
-nine_patch_stretch = true
