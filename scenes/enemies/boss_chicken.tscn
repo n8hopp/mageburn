@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://hlf75qg8wppn"]
+
+[ext_resource type="Texture2D" uid="uid://bt530oxu4o4n2" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Boss Chicken/ChickenIdle-Sheet.png" id="1_l4kip"]
+
+[sub_resource type="Animation" id="Animation_tv50n"]
+resource_name = "idle"
+length = 0.50001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_f4ekg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_doxx8"]
+resource_name = "attack1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86o6h"]
+_data = {
+"RESET": SubResource("Animation_f4ekg"),
+"attack1": SubResource("Animation_doxx8"),
+"idle": SubResource("Animation_tv50n")
+}
+
+[node name="bossChicken" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_l4kip")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_86o6h")
+}
