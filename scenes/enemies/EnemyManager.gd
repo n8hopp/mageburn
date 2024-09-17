@@ -1,6 +1,7 @@
 extends Area2D
 
 var skeleton = preload("res://scenes/enemies/skeleton.tscn")
+var slime = preload("res://scenes/enemies/slime.tscn")
 
 @onready var playable_area = find_child("CollisionShape2D").shape.size
 
@@ -33,7 +34,12 @@ func _on_timer_3_timeout():
 # if it fails to find a valid location 10 times: give up
 func instance_new_enemy():
 	# create an enemy obj and get its size
-	var enemy = skeleton.instantiate()
+	var enemy # 50% skeletons, 50% slimes
+	if randf() > 0.5:
+		enemy = skeleton.instantiate()
+	else:
+		enemy = slime.instantiate()
+
 	var enemy_size = enemy.find_child("CollisionShape2D").shape.size
 	
 	var failed_to_spawn_counter = 0
