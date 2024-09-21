@@ -1,0 +1,258 @@
+[gd_scene load_steps=21 format=3 uid="uid://dl5jln4s50a5d"]
+
+[ext_resource type="Script" path="res://scripts/BoarRider/Boarrider.gd" id="1_0yalm"]
+[ext_resource type="Texture2D" uid="uid://cyt2ocwk03k22" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc rider/Orc rider/Orc rider.png" id="2_xlqg1"]
+[ext_resource type="Script" path="res://scenes/enemies/Hurtbox.gd" id="3_l00p6"]
+[ext_resource type="Script" path="res://scripts/BoarRider/BoarRiderMachine.gd" id="4_c4siv"]
+[ext_resource type="Script" path="res://scripts/BoarRider/BoarRiderPath.gd" id="5_rjwpy"]
+[ext_resource type="Script" path="res://scripts/BoarRider/BoarRiderAttack.gd" id="6_76esj"]
+[ext_resource type="Script" path="res://scripts/BoarRider/BoarRiderHit.gd" id="7_ml15i"]
+[ext_resource type="Script" path="res://scripts/BoarRider/BoarRiderDead.gd" id="8_jg5mr"]
+[ext_resource type="Script" path="res://scripts/BoarRider/BoarRiderCharge.gd" id="9_jknwu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axffb"]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_shdrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_iyeao"]
+resource_name = "attack1"
+length = 1.00001
+step = 0.111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.888889),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [33, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_f4r8n"]
+resource_name = "die"
+length = 1.00003
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 7), Vector2i(3, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_ax8t4"]
+resource_name = "hurt"
+length = 1.00003
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [66, 69]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sfvf3"]
+resource_name = "idle"
+length = 0.70001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_fkewm"]
+resource_name = "walk"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [11, 18]
+}
+
+[sub_resource type="Animation" id="Animation_ltdkc"]
+resource_name = "charge"
+length = 1.00001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 29]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ck52t"]
+_data = {
+"RESET": SubResource("Animation_shdrh"),
+"attack1": SubResource("Animation_iyeao"),
+"charge": SubResource("Animation_ltdkc"),
+"die": SubResource("Animation_f4r8n"),
+"hurt": SubResource("Animation_ax8t4"),
+"idle": SubResource("Animation_sfvf3"),
+"walk": SubResource("Animation_fkewm")
+}
+
+[node name="BoarRider" type="CharacterBody2D"]
+z_index = 2
+texture_filter = 1
+collision_layer = 8
+collision_mask = 10
+script = ExtResource("1_0yalm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, 3)
+shape = SubResource("CircleShape2D_axffb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_xlqg1")
+hframes = 11
+vframes = 8
+frame = 66
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+position = Vector2(15, -1.5)
+shape = SubResource("RectangleShape2D_u0th3")
+disabled = true
+debug_color = Color(1, 1, 1, 0.0901961)
+
+[node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["hurtbox"]]
+script = ExtResource("3_l00p6")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_2s03p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ck52t")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="BoarRiderMachine" type="Node" parent="."]
+script = ExtResource("4_c4siv")
+
+[node name="BoarRiderPath" type="Node" parent="BoarRiderMachine"]
+script = ExtResource("5_rjwpy")
+
+[node name="BoarRiderAttack" type="Node" parent="BoarRiderMachine"]
+script = ExtResource("6_76esj")
+
+[node name="BoarRiderHit" type="Node" parent="BoarRiderMachine"]
+script = ExtResource("7_ml15i")
+
+[node name="BoarRiderDead" type="Node" parent="BoarRiderMachine"]
+script = ExtResource("8_jg5mr")
+
+[node name="BoarRiderCharge" type="Node" parent="BoarRiderMachine"]
+script = ExtResource("9_jknwu")
+
+[connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
