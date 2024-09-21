@@ -4,7 +4,7 @@ extends HBoxContainer
 @onready var down_button = get_node("btn_down")
 @onready var label = get_node("Label")
 @onready var parent_panel = $"../../../../../../../../../.."
-@onready var confirm = $"../../../../../Confirm"
+@onready var confirm = $"../../../../../../../VBoxContainer/Confirm"
 var label_num = 0
 var min_num = 0
 var max_num = 20

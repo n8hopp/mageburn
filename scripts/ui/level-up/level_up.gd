@@ -1,8 +1,9 @@
 extends PanelContainer
 
-@onready var confirm_button = $Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Confirm
+@onready var confirm_button = $Panel/MarginContainer/VBoxContainer/VBoxContainer/Confirm
 @onready var fixed_increase_label = $Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select/HBoxContainer/fixed
 @onready var class_level_label = $Panel/MarginContainer/VBoxContainer/classlevel
+@onready var dice_increase_label = $Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select/HBoxContainer/dice
 @onready var stat_select_block = $Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select
 # standard increase is the average roll of the die, rounded up
 # & average roll is 1+sides / 2
@@ -27,10 +28,14 @@ func _ready():
 func _on_confirm_pressed():
 	if confirm_button.dice_mode:
 		# change to increase health by this amount
-		PlayerVariables.current_health_pool += (PlayerVariables.hit_die.roll() + PlayerVariables.con_bonus)
+		var hp_increase = PlayerVariables.hit_die.roll() + PlayerVariables.con_bonus
+		PlayerVariables.current_health_pool += hp_increase
+		PlayerVariables.current_hp += hp_increase
 	else:
 		# change to increase health by this amount
-		PlayerVariables.current_health_pool += (standard_increase + PlayerVariables.con_bonus)
+		var hp_increase = standard_increase + PlayerVariables.con_bonus
+		PlayerVariables.current_health_pool += hp_increase
+		PlayerVariables.current_hp += hp_increase
 	PlayerVariables.level += 1
 	
 	if stat_select_block.visible == true:
@@ -66,9 +71,11 @@ func _initialize_stat_block():
 	
 func _on_visibility_changed():
 	if visible == true:
-		var format_label = "fixed %s %s %s hp"
-		fixed_increase_label.text = format_label % [standard_increase,modifier_symbol,abs(PlayerVariables.con_bonus)]
+		var fixed_format_label = "fixed %s %s %s hp"
+		fixed_increase_label.text = fixed_format_label % [standard_increase,modifier_symbol,abs(PlayerVariables.con_bonus)]
 		
+		var dice_format_label = "1d10 %s %s hp"
+		dice_increase_label.text = dice_format_label % [modifier_symbol, abs(PlayerVariables.con_bonus)]
 		var class_label = "%s - level %s"
 		class_level_label.text = class_label % ["Paladin", PlayerVariables.level+1]
 		if PlayerVariables.level % 4 == 0:
@@ -79,8 +86,10 @@ func _on_visibility_changed():
 func _toggle_visible():
 	if paused:
 		paused = false
+		get_tree().paused = false
 		hide()
 	else:
 		paused = true
+		get_tree().paused = true
 		show()
 	

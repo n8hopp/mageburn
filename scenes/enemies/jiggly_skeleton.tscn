@@ -1,22 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=16 format=3 uid="uid://dglfx668l3r0e"]
 
-[ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
-[ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
-[ext_resource type="Script" path="res://scenes/enemies/Hurtbox.gd" id="3_5srus"]
-[ext_resource type="Script" path="res://scripts/skeleton/skeleton_machine.gd" id="3_ckrbo"]
-[ext_resource type="Script" path="res://scripts/skeleton/path.gd" id="4_jnyvl"]
-[ext_resource type="Script" path="res://scripts/skeleton/attack.gd" id="5_d3qlm"]
-[ext_resource type="Script" path="res://scripts/skeleton/hit.gd" id="6_bp8s2"]
-[ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_2c1ic"]
+[ext_resource type="Script" path="res://scripts/skeleton/jiggle_skeleton.gd" id="1_2madf"]
+[ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="2_53bkv"]
+[ext_resource type="Script" path="res://scripts/skeleton/skeleton_machine.gd" id="3_3v2ai"]
+[ext_resource type="Script" path="res://scripts/skeleton/path.gd" id="4_bk6vq"]
+[ext_resource type="Script" path="res://scripts/skeleton/attack.gd" id="5_6o8cf"]
+[ext_resource type="Script" path="res://scripts/skeleton/hit.gd" id="6_chl73"]
+[ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_fykd7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_axffb"]
-radius = 4.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
-size = Vector2(14, 17)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbsf7"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
+size = Vector2(17.25, 16)
 
 [sub_resource type="Animation" id="Animation_shdrh"]
 length = 0.001
@@ -44,18 +37,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2i(0, 6)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_iyeao"]
 resource_name = "attack1"
@@ -71,18 +52,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [16, 17, 18, 19, 20, 21]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_f4r8n"]
@@ -115,18 +84,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [40, 41, 42, 43]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Hitbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_sfvf3"]
@@ -173,42 +130,23 @@ _data = {
 "walk": SubResource("Animation_fkewm")
 }
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="JiggleSkeleton" type="CharacterBody2D" groups=["hurtbox"]]
 z_index = 2
 texture_filter = 1
-collision_layer = 8
-collision_mask = 10
-script = ExtResource("1_fxnhd")
+collision_mask = 0
+script = ExtResource("1_2madf")
 movement_speed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 3)
-shape = SubResource("CircleShape2D_axffb")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_2s03p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-texture = ExtResource("1_etx3f")
+texture = ExtResource("2_53bkv")
 hframes = 8
 vframes = 7
 frame = 48
-
-[node name="Hitbox" type="Area2D" parent="Sprite2D"]
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
-position = Vector2(15, -1.5)
-shape = SubResource("RectangleShape2D_u0th3")
-disabled = true
-debug_color = Color(1, 1, 1, 0.0901961)
-
-[node name="Hurtbox" type="Area2D" parent="Sprite2D"]
-collision_layer = 2
-collision_mask = 3
-
-[node name="HurtboxShape" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
-position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_rbsf7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -218,25 +156,22 @@ libraries = {
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="SkeletonMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "animation_player")]
-script = ExtResource("3_ckrbo")
+script = ExtResource("3_3v2ai")
 current_state = NodePath("Path")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="Path" type="Node" parent="SkeletonMachine" node_paths=PackedStringArray("parent", "nav_agent")]
-script = ExtResource("4_jnyvl")
+script = ExtResource("4_bk6vq")
 parent = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 walk_speed = 15.0
 
 [node name="Attack" type="Node" parent="SkeletonMachine"]
-script = ExtResource("5_d3qlm")
+script = ExtResource("5_6o8cf")
 
 [node name="Hit" type="Node" parent="SkeletonMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("6_bp8s2")
+script = ExtResource("6_chl73")
 parent = NodePath("../..")
 
 [node name="Dead" type="Node" parent="SkeletonMachine"]
-script = ExtResource("7_2c1ic")
-
-[connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="Sprite2D/Hurtbox" to="." method="_on_hitbox_body_entered"]
+script = ExtResource("7_fykd7")
