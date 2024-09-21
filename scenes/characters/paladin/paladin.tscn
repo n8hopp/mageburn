@@ -241,5 +241,15 @@ shape = SubResource("RectangleShape2D_ar0cw")
 disabled = true
 debug_color = Color(2.69532e-06, 0.722601, 0.841319, 0.42)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = -128
+limit_top = -128
+limit_right = 4032
+limit_bottom = 2240
+limit_smoothed = true
+position_smoothing_speed = 4.0
+editor_draw_limits = true
+
 [connection signal="area_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

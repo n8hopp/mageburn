@@ -23,3 +23,9 @@ func _on_body_entered(body):
 		var knockback = global_position.direction_to(body.global_position)
 		body.knockback = knockback * knockback_coef 
 		body.take_damage()
+
+func _on_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		var knockback = global_position.direction_to(area.global_position)
+		area.knockback = knockback * knockback_coef
+		area.take_damage()

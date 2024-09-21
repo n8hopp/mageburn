@@ -70,7 +70,7 @@ func instance_new_enemy():
 		enemy.z_index = 1
 		
 		# check if enemy location is too close to player
-		var player = get_tree().current_scene.find_child("Player")
+		var player = PlayerVariables.follow_target
 		var player_pos = player.global_position
 		enemy.follow_target = player
 		if enemy.global_position.distance_to(player_pos) >= (16*10) and player.visible == true:
