@@ -34,7 +34,7 @@ func _on_timer_3_timeout():
 func instance_new_enemy():
 	# create an enemy obj and get its size
 	var enemy = skeleton.instantiate()
-	var enemy_size = enemy.find_child("CollisionShape2D").shape.size
+	var enemy_size = enemy.find_child("Sprite2D").find_child("Hurtbox").find_child("CollisionShape2D").shape.size
 	
 	var failed_to_spawn_counter = 0
 	var spawned_enemy = false
@@ -64,7 +64,7 @@ func instance_new_enemy():
 		enemy.z_index = 1
 		
 		# check if enemy location is too close to player
-		var player = get_tree().current_scene.find_child("Player")
+		var player = PlayerVariables.follow_target
 		var player_pos = player.global_position
 		enemy.follow_target = player
 		if enemy.global_position.distance_to(player_pos) >= (16*10) and player.visible == true:

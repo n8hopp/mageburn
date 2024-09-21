@@ -46,4 +46,4 @@ func instance_xp_orb():
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("player_hurtbox"):
-		body.take_hit(1)
+		body.get_parent().take_hit(1)

@@ -50,6 +50,8 @@ var cha_bonus : int
 var skill_points : int
 
 signal death
+var selected_class = &""
+var follow_target : CharacterBody2D
 
 func calculate_bonuses():
 	str_bonus = floori((strength-10.0)/2.0)
