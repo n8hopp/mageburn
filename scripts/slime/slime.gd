@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("player_hurtbox"):
-		body.take_hit(1)
+		body.get_parent().take_hit(1)
 
 func instance_child_slimes():	
 	var child1 = child_slime1.instantiate()
