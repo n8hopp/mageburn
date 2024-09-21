@@ -15,13 +15,6 @@ func on_physics_process(_delta: float) -> void:
 	
 	var current_agent_position: Vector2 = parent.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
-	
-	#var curr_speed = 100
-	#if curr_speed <= 0:
-		#curr_speed = 100
-	#else:
-		#curr_speed -= 1
-	
 	parent.velocity = current_agent_position.direction_to(next_path_position) * walk_speed
 	parent.move_and_slide()
 	

@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D
 
 @export var follow_target : CharacterBody2D
-@export var hitpoints = 5
-@export var level = 10
+@export var hitpoints = 4
+@export var level = 2
 
 @export var movement_speed : float = 15.0
 @export var dead = false
@@ -21,6 +21,7 @@ var child_slime2 = preload("res://scenes/enemies/slime.tscn")
 func _ready():
 	scale.x = (0.5*level) + 0.25
 	scale.y = (0.5*level) + 0.25
+	hitpoints = (0.5*level)*4 + 1
 
 func take_damage():
 	if dead:
@@ -48,17 +49,21 @@ func _on_hitbox_body_entered(body):
 func instance_child_slimes():	
 	var child1 = child_slime1.instantiate()
 	child1.global_position = global_position
-	child1.global_position.x -= 5 # offset to the left
+	child1.global_position.x -= randf_range(-5, 5)
+	child1.global_position.y += 2
 	child1.level = level -1
 	child1.follow_target = follow_target
 	get_tree().current_scene.add_child(child1)
-
+	
 	var child2 = child_slime2.instantiate()
 	child2.global_position = global_position
-	child2.global_position.x += 5 # offset to the left
+	child2.global_position.x += randf_range(-5, 5)
+	child2.global_position.y += 2
 	child2.level = level -1
 	child2.follow_target = follow_target
 	get_tree().current_scene.add_child(child2)
+	
+	queue_free()
 
 func instance_xp_orb():
 	var xp_orb = xp_orb_drop.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=19 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/slime/attack.gd" id="5_4kgq1"]
 [ext_resource type="Script" path="res://scripts/slime/hit.gd" id="6_lib44"]
 [ext_resource type="Script" path="res://scripts/slime/dead.gd" id="7_r0np6"]
+[ext_resource type="Script" path="res://scripts/slime/summon.gd" id="8_pyw5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
 size = Vector2(16, 16)
@@ -146,9 +147,26 @@ tracks/0/keys = {
 "values": [12, 17]
 }
 
+[sub_resource type="Animation" id="Animation_isghn"]
+resource_name = "summon"
+length = 1.00003
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(3, 5), Vector2i(0, 5)]
+}
+
 [sub_resource type="Animation" id="Animation_fkewm"]
 resource_name = "walk"
-length = 0.70001
+length = 1.00002
 step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -157,7 +175,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 5]
@@ -169,10 +187,10 @@ tracks/1/path = NodePath("SlimeMachine/Path:walk_speed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3334, 0.6668),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.166667, 0.5, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [30.0, 0.0, 30.0]
+"values": [0.0, 50.0, 50.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ck52t"]
@@ -182,6 +200,7 @@ _data = {
 "die": SubResource("Animation_f4r8n"),
 "hurt": SubResource("Animation_ax8t4"),
 "idle": SubResource("Animation_sfvf3"),
+"summon": SubResource("Animation_isghn"),
 "walk": SubResource("Animation_fkewm")
 }
 
@@ -221,7 +240,7 @@ libraries = {
 
 [node name="SlimeMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "animation_player")]
 script = ExtResource("3_2wdpa")
-current_state = NodePath("Path")
+current_state = NodePath("Summon")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="Path" type="Node" parent="SlimeMachine" node_paths=PackedStringArray("parent", "nav_agent")]
@@ -239,4 +258,11 @@ script = ExtResource("6_lib44")
 [node name="Dead" type="Node" parent="SlimeMachine"]
 script = ExtResource("7_r0np6")
 
+[node name="Summon" type="Node" parent="SlimeMachine"]
+script = ExtResource("8_pyw5i")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timer" to="SlimeMachine/Dead" method="_on_timer_timeout"]

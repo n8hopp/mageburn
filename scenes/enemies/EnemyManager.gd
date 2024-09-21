@@ -35,7 +35,7 @@ func _on_timer_3_timeout():
 func instance_new_enemy():
 	# create an enemy obj and get its size
 	var enemy # 50% skeletons, 50% slimes
-	if randf() > 0.9:
+	if randf() > 0.7:
 		enemy = skeleton.instantiate()
 	else:
 		enemy = slime.instantiate()
