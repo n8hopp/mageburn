@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body.is_in_group("player_hurtbox"):
 		PlayerVariables.current_experience += 1
 		if PlayerVariables.current_experience == PlayerVariables.experience_to_level:
 			GameManager.level_up.emit()
