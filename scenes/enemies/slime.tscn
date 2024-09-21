@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=20 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
@@ -9,11 +9,14 @@
 [ext_resource type="Script" path="res://scripts/slime/dead.gd" id="7_r0np6"]
 [ext_resource type="Script" path="res://scripts/slime/summon.gd" id="8_pyw5i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pcjk"]
+radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
 size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iusa0"]
+size = Vector2(18, 12)
 
 [sub_resource type="Animation" id="Animation_shdrh"]
 length = 0.001
@@ -212,8 +215,8 @@ collision_mask = 2
 script = ExtResource("1_j5enk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_2s03p")
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_3pcjk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -230,6 +233,14 @@ position = Vector2(15, -1.5)
 shape = SubResource("RectangleShape2D_u0th3")
 disabled = true
 debug_color = Color(1, 1, 1, 0.0901961)
+
+[node name="Hurtbox" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 1)
+collision_layer = 2
+collision_mask = 3
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
+shape = SubResource("RectangleShape2D_iusa0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -265,4 +276,5 @@ script = ExtResource("8_pyw5i")
 one_shot = true
 
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Sprite2D/Hurtbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timer" to="SlimeMachine/Dead" method="_on_timer_timeout"]

@@ -40,7 +40,7 @@ func instance_new_enemy():
 	else:
 		enemy = slime.instantiate()
 
-	var enemy_size = enemy.find_child("CollisionShape2D").shape.size
+	var enemy_size = enemy.find_child("HurtboxShape").shape.size
 	
 	var failed_to_spawn_counter = 0
 	var spawned_enemy = false
