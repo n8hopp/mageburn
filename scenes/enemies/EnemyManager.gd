@@ -34,7 +34,8 @@ func _on_timer_3_timeout():
 func instance_new_enemy():
 	# create an enemy obj and get its size
 	var enemy = skeleton.instantiate()
-	var enemy_size = enemy.find_child("CollisionShape2D").shape.size
+	var enemy_size = enemy.find_child("HurtboxShape").shape.size
+	#var enemy_size = enemy.find_child("Sprite2D/Hurtbox/CollisionShape2D").shape.size
 	
 	var failed_to_spawn_counter = 0
 	var spawned_enemy = false

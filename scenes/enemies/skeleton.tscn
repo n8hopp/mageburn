@@ -205,7 +205,7 @@ debug_color = Color(1, 1, 1, 0.0901961)
 [node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["hurtbox"]]
 script = ExtResource("3_5srus")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_2s03p")
 
