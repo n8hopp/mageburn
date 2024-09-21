@@ -385,8 +385,11 @@ layer_0/tile_data = PackedInt32Array(131074, 65536, 5, 131075, 131072, 5, 131076
 navigation_polygon = SubResource("NavigationPolygon_lnl05")
 
 [node name="Slime" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_81bye")]
-position = Vector2(406, 257)
+position = Vector2(360, 360)
 follow_target = NodePath("../Player")
+hitpoints = 5
+movement_speed = 30.0
+dead = false
 
 [node name="Player" parent="." instance=ExtResource("3_dvai8")]
 z_index = 2

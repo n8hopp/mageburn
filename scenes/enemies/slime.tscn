@@ -162,6 +162,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0, 5]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlimeMachine/Path:walk_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3334, 0.6668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [30.0, 0.0, 30.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ck52t"]
 _data = {
@@ -176,6 +188,7 @@ _data = {
 [node name="Slime" type="CharacterBody2D" groups=["hurtbox"]]
 z_index = 2
 texture_filter = 1
+scale = Vector2(1.5, 1.5)
 collision_mask = 2
 script = ExtResource("1_j5enk")
 
@@ -211,9 +224,11 @@ script = ExtResource("3_2wdpa")
 current_state = NodePath("Path")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="Path" type="Node" parent="SlimeMachine" node_paths=PackedStringArray("nav_agent")]
+[node name="Path" type="Node" parent="SlimeMachine" node_paths=PackedStringArray("parent", "nav_agent")]
 script = ExtResource("4_4cjjn")
+parent = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
+walk_speed = 0.0
 
 [node name="Attack" type="Node" parent="SlimeMachine"]
 script = ExtResource("5_4kgq1")
