@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=18 format=3 uid="uid://3gspkn7wbrat"]
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
@@ -15,7 +15,7 @@ radius = 4.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
 size = Vector2(14, 17)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s03p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbsf7"]
 size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_shdrh"]
@@ -202,12 +202,13 @@ shape = SubResource("RectangleShape2D_u0th3")
 disabled = true
 debug_color = Color(1, 1, 1, 0.0901961)
 
-[node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["hurtbox"]]
-script = ExtResource("3_5srus")
+[node name="Hurtbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
 position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_2s03p")
+shape = SubResource("RectangleShape2D_rbsf7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -238,3 +239,4 @@ parent = NodePath("../..")
 script = ExtResource("7_2c1ic")
 
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Sprite2D/Hurtbox" to="." method="_on_hitbox_body_entered"]
