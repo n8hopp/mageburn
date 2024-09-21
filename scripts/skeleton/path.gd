@@ -2,7 +2,7 @@ extends StateMachineState
 
 @export var parent : CharacterBody2D
 @export var nav_agent : NavigationAgent2D
-@onready var follow_target : CharacterBody2D = parent.follow_target
+@onready var follow_target : CharacterBody2D = PlayerVariables.follow_target
 @export var walk_speed : float = 30.0
 
 # Called every physics frame when this state is active.

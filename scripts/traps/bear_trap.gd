@@ -22,7 +22,15 @@ func _on_body_entered(body):
 			_trap_circle.show()
 			$TrapTimer.start()
 			activated_trap(body)
-			
+
+func _on_area_entered(area):
+	if single_use == false:
+		if area.is_in_group("hurtbox"):
+			single_use = true
+			_animation.play("close")
+			_trap_circle.show()
+			$TrapTimer.start()
+			activated_trap(area)
 
 func activated_trap(body: Node2D):
 	body.velocity = Vector2(0,0)
