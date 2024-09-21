@@ -5,13 +5,15 @@ extends StateMachineState
 @onready var follow_target : CharacterBody2D = parent.follow_target
 @export var walk_speed : float = 45.0
 
+var player = get_tree().current_scene.find_child("Player")
+
 # Called every physics frame when this state is active.
 func on_physics_process(_delta: float) -> void:
 	nav_agent.target_position = follow_target.global_position
-	
+	var player_pos = player.global_position
 	#if we've already gotten to our player, we don't need to anymore
-	if nav_agent.is_navigation_finished():
-		state_machine.change_state("BoarRiderAttack")
+	if parent.global_position.distance_to(player_pos) >= (16*4):
+		state_machine.change_state("BoarRiderCharge")
 	
 	var current_agent_position: Vector2 = parent.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
