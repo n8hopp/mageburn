@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhvjys782asf2"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_6745f"]
-[ext_resource type="Script" path="res://scenes/ui/deathpopup.gd" id="2_35amj"]
+[ext_resource type="Script" path="res://scripts/ui/deathpopup.gd" id="2_35amj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
 line_spacing = 1.0
