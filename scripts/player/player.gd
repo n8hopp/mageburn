@@ -20,7 +20,7 @@ func take_hit(dmg_amount : int):
 	if PlayerVariables.current_hp <= 0:
 		player_class._animation.play("death")
 		dead = true
-		#PlayerVariables.death.emit()
+		PlayerVariables.death.emit()
 		
 
 # Called when the node enters the scene tree for the first time.
@@ -32,27 +32,20 @@ func _ready():
 		add_child(paladin)
 		PlayerVariables.follow_target = paladin
 		
-		PlayerVariables.strength = player_class.paladin_stats["str"]
-		PlayerVariables.dexterity = player_class.paladin_stats["dex"]
-		PlayerVariables.constitution = player_class.paladin_stats["cons"]
-		PlayerVariables.intelligence = player_class.paladin_stats["intel"]
-		PlayerVariables.wisdom = player_class.paladin_stats["wisdom"]
-		PlayerVariables.charisma = player_class.paladin_stats["charisma"]
-		PlayerVariables.current_health_pool = player_class.paladin_stats["health"]
-		
 	elif PlayerVariables.selected_class == "Archer":
 		var archer = archer_scene.instantiate()
 		player_class = archer
 		add_child(archer)
 		PlayerVariables.follow_target = archer
 		
-		PlayerVariables.strength = player_class.archer_stats["str"]
-		PlayerVariables.dexterity = player_class.archer_stats["dex"]
-		PlayerVariables.constitution = player_class.archer_stats["cons"]
-		PlayerVariables.intelligence = player_class.archer_stats["intel"]
-		PlayerVariables.wisdom = player_class.archer_stats["wisdom"]
-		PlayerVariables.charisma = player_class.archer_stats["charisma"]
-		PlayerVariables.current_health_pool = player_class.archer_stats["health"]
+	PlayerVariables.strength = player_class.stats["str"]
+	PlayerVariables.dexterity = player_class.stats["dex"]
+	PlayerVariables.constitution = player_class.stats["cons"]
+	PlayerVariables.intelligence = player_class.stats["intel"]
+	PlayerVariables.wisdom = player_class.stats["wisdom"]
+	PlayerVariables.charisma = player_class.stats["charisma"]
+	PlayerVariables.current_health_pool = player_class.stats["health"]
+	PlayerVariables.current_hp = player_class.stats["health"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,7 +74,12 @@ func _process(delta):
 		player_class._animation.play("attack2")
 	elif Input.is_action_just_pressed("attack3"):
 		attack = true
-		player_class._animation.play("attack3")
+		# Archer trap placement doesn't have a 3rd attack animation that calls 
+		# the function within the animation so we have to do it manually instead
+		if PlayerVariables.selected_class == "Archer":
+			player_class.place_trap()
+		else:
+			player_class._animation.play("attack3")
 	
 	if input_dir.x < 0:
 		player_class._sprite.scale.x = -1
