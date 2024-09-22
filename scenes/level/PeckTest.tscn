@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btub3plbs6tg7"]
+[gd_scene load_steps=13 format=3 uid="uid://cd14lfcu3ep30"]
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_2wlft"]
 [ext_resource type="PackedScene" uid="uid://jkwc6y6akd4m" path="res://scenes/characters/player/player.tscn" id="2_l6u3d"]

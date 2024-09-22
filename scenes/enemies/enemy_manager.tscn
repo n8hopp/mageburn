@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://6mb8nigb5j13"]
+
+[ext_resource type="Script" path="res://scenes/enemies/EnemyManager.gd" id="1_hqikf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hidy"]
+size = Vector2(896, 464)
+
+[node name="EnemyManager" type="Area2D"]
+visible = false
+position = Vector2(448, 232)
+script = ExtResource("1_hqikf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7hidy")
+
+[node name="Timer1" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 29.0
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 89.0
+autostart = true
+
+[connection signal="timeout" from="Timer1" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer1" to="." method="_on_timer_1_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
