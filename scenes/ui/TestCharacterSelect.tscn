@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxg2cofmrucg8"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_km1kk"]
-[ext_resource type="Script" path="res://scenes/ui/TestCharacterSelect.gd" id="2_qqckx"]
+[ext_resource type="Script" path="res://scripts/ui/TestCharacterSelect.gd" id="2_qqckx"]
 [ext_resource type="Texture2D" uid="uid://ds18p7nx6ms8f" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Archer/Archer/Archer-Idle.png" id="3_v2n4q"]
 [ext_resource type="Texture2D" uid="uid://c5go5u4h3hgeo" path="res://assets/ui/littleKnight.tres" id="4_s2gum"]
 

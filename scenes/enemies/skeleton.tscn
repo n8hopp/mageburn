@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
+
 [ext_resource type="Script" path="res://scenes/enemies/hurtbox.gd" id="3_5srus"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton_machine.gd" id="3_ckrbo"]
 [ext_resource type="Script" path="res://scripts/skeleton/path.gd" id="4_jnyvl"]
