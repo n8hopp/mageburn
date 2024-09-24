@@ -398,7 +398,7 @@ follow_target = NodePath("../Player")
 z_index = 5
 position = Vector2(320, 320)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 limit_left = -128
 limit_top = -128
@@ -454,9 +454,9 @@ offset_top = -28.72
 offset_right = 22.0798
 offset_bottom = 19.28
 
-[connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_1_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_timeout"]
-[connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_1_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_timeout"]
-[connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_3_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_3_timeout"]
