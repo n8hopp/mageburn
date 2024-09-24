@@ -21,7 +21,8 @@ func _on_body_entered(body):
 			_animation.play("close")
 			_trap_circle.show()
 			$TrapTimer.start()
-			activated_trap(body)
+			#Commented out as slimes are not an Area2D??
+			#activated_trap(body)
 
 func _on_area_entered(area):
 	if single_use == false:
@@ -32,8 +33,8 @@ func _on_area_entered(area):
 			$TrapTimer.start()
 			activated_trap(area)
 
-func activated_trap(body: Node2D):
-	body.velocity = Vector2(0,0)
+func activated_trap(area: Area2D):
+	pass
 
 
 func _on_timer_timeout():
@@ -42,3 +43,4 @@ func _on_timer_timeout():
 
 func _on_trap_timer_timeout():
 	queue_free()
+	

@@ -6,6 +6,8 @@ var speed = 400.0
 var start_position = Vector2.ZERO
 var knockback_coef = 300.0
 
+var enemies_hit : Array
+
 func _ready():
 	start_position = global_position
 	
@@ -26,6 +28,8 @@ func _on_body_entered(body):
 
 func _on_area_entered(area):
 	if area.is_in_group("hurtbox"):
-		var knockback = global_position.direction_to(area.global_position)
-		area.knockback = knockback * knockback_coef
-		area.take_damage()
+		if !enemies_hit.has(area):
+			var knockback = global_position.direction_to(area.global_position)
+			area.knockback = knockback * knockback_coef
+			enemies_hit.append(area)
+			area.take_damage()

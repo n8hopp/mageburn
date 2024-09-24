@@ -6,6 +6,7 @@ var speed = 150.0
 var start_position = Vector2.ZERO
 var knockback_coef = 300.0
 var enemies_hit : Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_position = global_position
@@ -34,4 +35,4 @@ func _on_area_entered(area):
 			var knockback = global_position.direction_to(area.global_position)
 			area.knockback = knockback * knockback_coef
 			enemies_hit.append(area)
-		area.take_damage()
+			area.take_damage()
