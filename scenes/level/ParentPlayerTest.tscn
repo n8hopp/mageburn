@@ -388,8 +388,7 @@ position = Vector2(445.672, 230.663)
 
 [node name="BossChicken" parent="." instance=ExtResource("2_ry42n")]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="BossChicken"]
-scale = Vector2(0.25, 0.25)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_lnl05")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
