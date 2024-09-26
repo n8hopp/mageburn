@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=21 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
+[ext_resource type="Script" path="res://scenes/enemies/hurtbox.gd" id="3_2rym7"]
 [ext_resource type="Script" path="res://scripts/slime/slime_machine.gd" id="3_2wdpa"]
 [ext_resource type="Script" path="res://scripts/slime/path.gd" id="4_4cjjn"]
 [ext_resource type="Script" path="res://scripts/slime/attack.gd" id="5_4kgq1"]
@@ -207,11 +208,12 @@ _data = {
 "walk": SubResource("Animation_fkewm")
 }
 
-[node name="Slime" type="CharacterBody2D" groups=["hurtbox"]]
+[node name="Slime" type="CharacterBody2D"]
 z_index = 2
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
-collision_mask = 2
+collision_layer = 8
+collision_mask = 10
 script = ExtResource("1_j5enk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -234,10 +236,9 @@ shape = SubResource("RectangleShape2D_u0th3")
 disabled = true
 debug_color = Color(1, 1, 1, 0.0901961)
 
-[node name="Hurtbox" type="Area2D" parent="Sprite2D"]
+[node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["hurtbox"]]
 position = Vector2(0, 1)
-collision_layer = 2
-collision_mask = 3
+script = ExtResource("3_2rym7")
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
 shape = SubResource("RectangleShape2D_iusa0")

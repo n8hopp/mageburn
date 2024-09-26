@@ -94,6 +94,20 @@ tracks/1/keys = {
 "method": &"wave_attack"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["k"],
+"method": &"_start_cooldown"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rbfbn"]
 resource_name = "attack3"
@@ -123,6 +137,20 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"fire_attack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["l"],
+"method": &"_start_cooldown"
 }]
 }
 

@@ -20,16 +20,34 @@ func _ready():
 func fire_arrow():
 	var arrow_instance = arrow_scene.instantiate()
 	arrow_instance.position = global_position
+	
+	# stat scaling
+	var base_damage = 8
+	arrow_instance.damage = base_damage + (PlayerVariables.strength * 0.7) # Bow still scales with Strength but less
+	
 	get_tree().current_scene.add_child(arrow_instance)
 	arrow_instance.set_direction(get_parent().attack_dir)
 
 func fire_charged_shot():
 	var charged_shot_instance = charged_shot_scene.instantiate()
 	charged_shot_instance.position = global_position
+	
+	# stat scaling
+	var base_damage = 15
+	charged_shot_instance.pierce_amount = 8 + (PlayerVariables.dexterity * 0.5) # Dexterity increases pierce count
+	charged_shot_instance.damage = base_damage + (PlayerVariables.strength * 0.7) # Bow still scales with Strength but less
+	
 	get_tree().current_scene.add_child(charged_shot_instance)
 	charged_shot_instance.set_direction(get_parent().attack_dir)
 	
 func place_trap():
 	var trap_instance = trap_scene.instantiate()
 	trap_instance.position = global_position
+	
+	#var base_duration = 5.0
+	#var duration = base_duration + (PlayerVariables.constitution * 0.2) # Constitution increases trap duration
+	#var radius = 1.0 + (PlayerVariables.wisdom * 0.1) # Wisdom increases trap radius
 	get_tree().current_scene.add_child(trap_instance)
+
+func _start_cooldown(attack_name : String):
+	PlayerVariables.cooldown_ability(attack_name)

@@ -23,11 +23,14 @@ func _ready():
 	scale.y = (0.5*level) + 0.25
 	hitpoints = (0.5*level)*4 + 1
 
-func take_damage():
+func take_damage(num):
 	if dead:
 		return
 	
-	hitpoints -= 1
+	#TODO: remove; only for testing damage purposes
+	num = 1
+	
+	hitpoints -= num
 	if hitpoints <= 0:
 		$SlimeMachine.change_state("Dead")
 		dead = true

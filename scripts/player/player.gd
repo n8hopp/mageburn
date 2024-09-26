@@ -6,6 +6,7 @@ var speed : float = 50.0
 var attack : bool = false
 var dead : bool = false
 var knockback_coef = 200.0
+
 @export var player_class : CharacterBody2D
 
 var paladin_scene = preload("res://scenes/characters/paladin/paladin.tscn")
@@ -67,18 +68,19 @@ func _process(delta):
 			player_class._animation.play("idle")
 	
 	if Input.is_action_just_pressed("attack1"):
-		attack = true
-		player_class._animation.play("attack1")
+		if !PlayerVariables.l_on_cd:
+			attack = true
+			player_class._animation.play("attack1")
 	elif Input.is_action_just_pressed("attack2"):
 		if PlayerVariables.k_locked:
 			return
-		else:
+		elif !PlayerVariables.k_on_cd:
 			attack = true
 			player_class._animation.play("attack2")
 	elif Input.is_action_just_pressed("attack3"):
 		if PlayerVariables.l_locked:
 			return
-		else:
+		elif !PlayerVariables.l_on_cd:
 			attack = true
 			# Archer trap placement doesn't have a 3rd attack animation that calls 
 			# the function within the animation so we have to do it manually instead

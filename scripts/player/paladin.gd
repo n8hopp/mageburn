@@ -18,24 +18,40 @@ func _ready():
 
 func wave_attack():
 	var wave_attack_instance = wave_attack_scene.instantiate()
+	
 	wave_attack_instance.position = global_position
+	
+	#stat scaling!:
+	var base_damage = 15
+	wave_attack_instance.damage = base_damage + (PlayerVariables.strength * 1.2) # Slightly lower Strength scaling
+	PlayerVariables.k_cooldown.wait_time = 3.0 - (PlayerVariables.dexterity * 0.05) # Dex reduces cooldown
+	#####
+	
 	get_tree().current_scene.add_child(wave_attack_instance)
 	wave_attack_instance.set_direction(get_parent().attack_dir)
 	
 func fire_attack():
 	var fire_attack_instance = fire_attack_scene.instantiate()
 	fire_attack_instance.position = global_position
+	
+	# stat scaling!:
+	var base_damage = 20
+	fire_attack_instance.damage = base_damage + (PlayerVariables.strength * 0.8) + (PlayerVariables.intelligence * 0.5) # Intelligence adds fire scaling
+	PlayerVariables.l_cooldown.wait_time = 10.0 - (PlayerVariables.dexterity * 0.05) # Dex reduces cooldown
+	
 	get_tree().current_scene.add_child(fire_attack_instance)
 	fire_attack_instance.set_direction(get_parent().attack_dir)
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("hurtbox"):
+		#knockback on sword swing
 		var knockback = global_position.direction_to(area.global_position)
 		area.knockback = knockback * knockback_coef
-		area.take_damage()
-
-func _on_hitbox_body_entered(body):
-	if body.is_in_group("hurtbox"):
-		var knockback = global_position.direction_to(body.global_position)
-		body.knockback = knockback * knockback_coef
-		body.take_damage()
+		
+		#damage on sword swing
+		var base_damage = 10
+		var damage = base_damage + (PlayerVariables.strength * 1.5) # Sword swing scales with Strength
+		area.take_damage(damage)
+		
+func _start_cooldown(attack_name : String):
+	PlayerVariables.cooldown_ability(attack_name)
