@@ -78,7 +78,7 @@ func _on_visibility_changed():
 		dice_increase_label.text = dice_format_label % [modifier_symbol, abs(PlayerVariables.con_bonus)]
 		var class_label = "%s - level %s"
 		class_level_label.text = class_label % ["Paladin", PlayerVariables.level+1]
-		if PlayerVariables.level % 4 == 0:
+		if (PlayerVariables.level + 1) % 4 == 0:
 			_initialize_stat_block()
 		else:
 			stat_select_block.visible = false
