@@ -38,6 +38,10 @@ var current_hp : int = current_health_pool
 #@export var l_cooldown : float # paladin: dex + wis
 #@export var l_knockback : float # paladin: str + cha
 
+var j_texture : Texture
+var k_texture : Texture
+var l_texture : Texture
+
 # ability modifiers - what we actually use when rolling
 var str_bonus : int
 var dex_bonus : int
@@ -53,6 +57,8 @@ signal death
 var selected_class = &""
 var follow_target : CharacterBody2D
 
+signal unlock_k
+signal unlock_l
 var j_cooldown = Timer.new()
 var k_cooldown = Timer.new()
 var l_cooldown = Timer.new()
@@ -99,9 +105,11 @@ func modifier_symbol(bonus):
 func level_up():
 	if level == 5:
 		k_locked = false
+		unlock_k.emit()
 	
 	if level == 10:
 		l_locked = false
+		unlock_l.emit()
 	
 	current_experience = 0
 	

@@ -9,6 +9,9 @@ var knockback_coef = 200.0
 var arrow_scene = preload("res://scenes/characters/archer/arrow.tscn")
 var charged_shot_scene = preload("res://scenes/characters/archer/charged_shot.tscn")
 var trap_scene = preload("res://scenes/characters/archer/bear_trap.tscn")
+@export var j_texture : Texture
+@export var k_texture : Texture
+@export var l_texture : Texture
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
 var stats : Dictionary = {"str": 0, "dex": 0, "cons": 0, 

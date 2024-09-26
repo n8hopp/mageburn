@@ -37,4 +37,4 @@ func _on_area_entered(area):
 			var knockback = global_position.direction_to(area.global_position)
 			area.knockback = knockback * knockback_coef
 			enemies_hit.append(area)
-			area.take_damage()
+			area.take_damage(damage)

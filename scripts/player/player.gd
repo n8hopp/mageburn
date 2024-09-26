@@ -47,6 +47,10 @@ func _ready():
 	PlayerVariables.charisma = player_class.stats["charisma"]
 	PlayerVariables.current_health_pool = player_class.stats["health"]
 	PlayerVariables.current_hp = player_class.stats["health"]
+	
+	PlayerVariables.j_texture = player_class.j_texture
+	PlayerVariables.k_texture = player_class.k_texture
+	PlayerVariables.l_texture = player_class.l_texture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

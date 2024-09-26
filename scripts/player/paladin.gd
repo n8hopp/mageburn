@@ -8,6 +8,9 @@ var dead : bool = false
 var knockback_coef = 200.0
 var wave_attack_scene = preload("res://scenes/characters/paladin/wave_attack.tscn")
 var fire_attack_scene = preload("res://scenes/characters/paladin/fire_arc_attack.tscn")
+@export var j_texture : Texture
+@export var k_texture : Texture
+@export var l_texture : Texture
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
 var stats : Dictionary = {"str": 0, "dex": 0, "cons": 0, 
