@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsdq1v2gix37b"]
+[gd_scene load_steps=12 format=3 uid="uid://dug37tqe6ufsb"]
 
-[ext_resource type="Theme" uid="uid://c1rdi6720ehg1" path="res://assets/ui/theme_ability_ui.tres" id="1_t05ou"]
-[ext_resource type="Texture2D" uid="uid://cagscsebu3w2p" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons17.png" id="2_7pr8f"]
+[ext_resource type="Theme" path="res://assets/ui/theme_ability_ui.tres" id="1_t05ou"]
+[ext_resource type="Texture2D" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons17.png" id="2_7pr8f"]
 [ext_resource type="Shader" path="res://scenes/ui/locked_icon.gdshader" id="3_8xg11"]
 [ext_resource type="Script" path="res://scenes/ui/j_texture.gd" id="3_lfrxw"]
 [ext_resource type="Script" path="res://scenes/ui/k_texture.gd" id="4_yqebk"]
@@ -86,7 +86,7 @@ layout_mode = 2
 texture = ExtResource("2_7pr8f")
 script = ExtResource("4_yqebk")
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2"]
+[node name="KCooldown" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -94,12 +94,12 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/background = SubResource("StyleBoxFlat_25anh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mn0cy")
 max_value = 24.0
-step = 1.0
+step = 0.1
 value = 14.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2"]
+[node name="KCoolLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer2"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -127,6 +127,28 @@ material = SubResource("ShaderMaterial_7s6vv")
 layout_mode = 2
 texture = ExtResource("2_7pr8f")
 script = ExtResource("5_cb3dd")
+
+[node name="LCooldown" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer3/PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_25anh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mn0cy")
+max_value = 24.0
+step = 1.0
+value = 14.0
+fill_mode = 3
+show_percentage = false
+
+[node name="LCoolLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3/PanelContainer2"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "5.0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2

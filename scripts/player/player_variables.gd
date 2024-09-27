@@ -59,6 +59,9 @@ var follow_target : CharacterBody2D
 
 signal unlock_k
 signal unlock_l
+signal cooldown_j
+signal cooldown_k
+signal cooldown_l
 var j_cooldown = Timer.new()
 var k_cooldown = Timer.new()
 var l_cooldown = Timer.new()
@@ -118,12 +121,15 @@ func cooldown_ability(ability_name):
 		'j':
 			j_on_cd = true
 			j_cooldown.start()
+			cooldown_j.emit()
 		'k':
 			k_on_cd = true
 			k_cooldown.start()
+			cooldown_k.emit()
 		'l':
 			l_on_cd = true
 			l_cooldown.start()
+			cooldown_l.emit()
 
 func _on_cd_end(ability_name):
 	match ability_name:
