@@ -78,16 +78,8 @@ func level_up():
 		k_locked = false
 	
 	if level == 10:
-		k_locked = false
+		l_locked = false
 	
-	# numbers will be for paladin; diff for other classes
-	j_damage = strength/2
-	j_knockback = strength
-	#TODO: implement other ability scaling
-	
-	k_damage = dexterity
-	
-	l_damage = intelligence * 2
 	current_experience = 0
 
 

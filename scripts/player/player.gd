@@ -70,16 +70,22 @@ func _process(delta):
 		attack = true
 		player_class._animation.play("attack1")
 	elif Input.is_action_just_pressed("attack2"):
-		attack = true
-		player_class._animation.play("attack2")
-	elif Input.is_action_just_pressed("attack3"):
-		attack = true
-		# Archer trap placement doesn't have a 3rd attack animation that calls 
-		# the function within the animation so we have to do it manually instead
-		if PlayerVariables.selected_class == "Archer":
-			player_class.place_trap()
+		if PlayerVariables.k_locked:
+			return
 		else:
-			player_class._animation.play("attack3")
+			attack = true
+			player_class._animation.play("attack2")
+	elif Input.is_action_just_pressed("attack3"):
+		if PlayerVariables.l_locked:
+			return
+		else:
+			attack = true
+			# Archer trap placement doesn't have a 3rd attack animation that calls 
+			# the function within the animation so we have to do it manually instead
+			if PlayerVariables.selected_class == "Archer":
+				player_class.place_trap()
+			else:
+				player_class._animation.play("attack3")
 	
 	if input_dir.x < 0:
 		player_class._sprite.scale.x = -1
