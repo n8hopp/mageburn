@@ -2,7 +2,7 @@ extends Area2D
 
 var start_position = Vector2.ZERO
 var velocity = Vector2.ZERO
-var range = 100.0
+var range = 400.0
 var speed = 100.0
 var knockback_coef = 100.0
 @onready var _animation = $AnimationPlayer
@@ -26,9 +26,10 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("hurtbox"):
-		var knockback = global_position.direction_to(body.global_position)
-		body.knockback = knockback * knockback_coef
-		body.take_damage()
+		if !enemies_hit.has(body):
+			var knockback = global_position.direction_to(body.global_position)
+			body.knockback = knockback * knockback_coef
+			body.take_damage()
 		
 func _on_area_entered(area):
 	if area.is_in_group("hurtbox"):
@@ -36,4 +37,4 @@ func _on_area_entered(area):
 			var knockback = global_position.direction_to(area.global_position)
 			area.knockback = knockback * knockback_coef
 			enemies_hit.append(area)
-		area.take_damage()
+			area.take_damage()
