@@ -17,7 +17,9 @@ func take_hit(dmg_amount : int):
 		return
 	
 	PlayerVariables.current_hp -= dmg_amount
-	
+	player_class.modulate = Color(1,0,0,1)
+	$FlashTimer.start()
+
 	if PlayerVariables.current_hp <= 0:
 		player_class._animation.play("death")
 		dead = true
@@ -112,3 +114,7 @@ func _physics_process(delta):
 	player_class.velocity = input_dir * speed
 	player_class.move_and_slide()
 	
+
+
+func _on_flash_timer_timeout():
+	player_class.modulate = Color(1,1,1,1)
