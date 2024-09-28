@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dug37tqe6ufsb"]
 
-[ext_resource type="Theme" path="res://assets/ui/theme_ability_ui.tres" id="1_t05ou"]
+[ext_resource type="Theme" uid="uid://cisdto7c2727r" path="res://assets/ui/theme_ability_ui.tres" id="1_t05ou"]
 [ext_resource type="Texture2D" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons17.png" id="2_7pr8f"]
 [ext_resource type="Shader" path="res://scenes/ui/locked_icon.gdshader" id="3_8xg11"]
 [ext_resource type="Script" path="res://scenes/ui/j_texture.gd" id="3_lfrxw"]
@@ -95,7 +95,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_25anh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mn0cy")
 max_value = 24.0
 step = 0.1
-value = 14.0
 fill_mode = 3
 show_percentage = false
 
@@ -136,8 +135,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/background = SubResource("StyleBoxFlat_25anh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mn0cy")
 max_value = 24.0
-step = 1.0
-value = 14.0
+step = 0.1
 fill_mode = 3
 show_percentage = false
 

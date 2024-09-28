@@ -14,6 +14,7 @@ var stun_frames = 0
 var knockback : Vector2 = Vector2.ZERO
 
 var xp_orb_drop = preload("res://scenes/basic_items/xp.tscn")
+var damage_number = preload("res://scenes/ui/number_popup.tscn")
 
 func take_damage(num):
 	if dead:
@@ -21,7 +22,14 @@ func take_damage(num):
 	
 	#TODO: remove; only for testing damage purposes
 	num = 1
+	
 	hitpoints -= num
+	
+	var number_ui = damage_number.instantiate()
+	number_ui.numtype = number_ui.NUMTYPE.DAMAGE
+	number_ui.number = num
+	add_child(number_ui)
+	
 	if hitpoints <= 0:
 		$SkeletonMachine.change_state("Dead")
 		dead = true

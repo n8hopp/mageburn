@@ -17,26 +17,37 @@ extends PanelContainer
 @onready var wis_selector = stat_select_block.find_child("wis_selector")
 @onready var cha_selector = stat_select_block.find_child("cha_selector")
 
+var heal_number = preload("res://scenes/ui/number_popup.tscn")
+
 var paused : bool = false
 
 signal out_of_points
 signal points_free
 
+
 func _ready():
 	GameManager.level_up.connect(_toggle_visible)
 	
 func _on_confirm_pressed():
+	var number_ui = heal_number.instantiate()
+	number_ui.numtype = number_ui.NUMTYPE.HEAL
+	
 	if confirm_button.dice_mode:
 		# change to increase health by this amount
 		var hp_increase = PlayerVariables.hit_die.roll() + PlayerVariables.con_bonus
 		PlayerVariables.current_health_pool += hp_increase
 		PlayerVariables.current_hp += hp_increase
+		number_ui.number = hp_increase
+
 	else:
 		# change to increase health by this amount
 		var hp_increase = standard_increase + PlayerVariables.con_bonus
 		PlayerVariables.current_health_pool += hp_increase
 		PlayerVariables.current_hp += hp_increase
+		number_ui.number = hp_increase
 	PlayerVariables.level += 1
+	
+	PlayerVariables.follow_target.add_child(number_ui)
 	
 	if stat_select_block.visible == true:
 		PlayerVariables.strength = str_selector.label_num
