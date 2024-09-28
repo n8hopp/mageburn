@@ -202,6 +202,10 @@ shape = SubResource("RectangleShape2D_u0th3")
 disabled = true
 debug_color = Color(1, 1, 1, 0.0901961)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Sprite2D/Hitbox/CollisionShape2D"]
+path_desired_distance = 12.0
+target_desired_distance = 8.0
+
 [node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["hurtbox"]]
 script = ExtResource("3_5srus")
 
@@ -214,8 +218,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ck52t")
 }
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
 [node name="SkeletonMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "animation_player")]
 script = ExtResource("3_ckrbo")
 current_state = NodePath("Path")
@@ -224,7 +226,7 @@ animation_player = NodePath("../AnimationPlayer")
 [node name="Path" type="Node" parent="SkeletonMachine" node_paths=PackedStringArray("parent", "nav_agent")]
 script = ExtResource("4_jnyvl")
 parent = NodePath("../..")
-nav_agent = NodePath("../../NavigationAgent2D")
+nav_agent = NodePath("../../Sprite2D/Hitbox/CollisionShape2D/NavigationAgent2D")
 walk_speed = 15.0
 
 [node name="Attack" type="Node" parent="SkeletonMachine"]
