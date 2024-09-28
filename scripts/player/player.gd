@@ -118,4 +118,5 @@ func _physics_process(delta):
 
 func _on_death_timer_timeout():
 	PlayerVariables.death.emit()
+func _on_flash_timer_timeout():
 	player_class.modulate = Color(1,1,1,1)
