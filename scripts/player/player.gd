@@ -29,7 +29,6 @@ func _ready():
 	if PlayerVariables.selected_class == "Paladin":
 		var paladin = paladin_scene.instantiate()
 		player_class = paladin
-		print(player_class)
 		add_child(paladin)
 		PlayerVariables.follow_target = paladin
 		
