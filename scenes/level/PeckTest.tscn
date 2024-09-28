@@ -438,9 +438,9 @@ offset_bottom = 19.28
 [node name="BossChicken" parent="." instance=ExtResource("8_r26pt")]
 position = Vector2(401, 251)
 
-[connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_1_timeout"]
-[connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_2_timeout"]
-[connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_3_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_timeout"]
