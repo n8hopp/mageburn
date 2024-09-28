@@ -15,11 +15,13 @@ var knockback : Vector2 = Vector2.ZERO
 
 var xp_orb_drop = preload("res://scenes/basic_items/xp.tscn")
 
-func take_damage():
+func take_damage(num):
 	if dead:
 		return
 	
-	hitpoints -= 1
+	#TODO: remove; only for testing damage purposes
+	num = 1
+	hitpoints -= num
 	if hitpoints <= 0:
 		$SkeletonMachine.change_state("Dead")
 		dead = true

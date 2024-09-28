@@ -2,7 +2,8 @@ extends Area2D
 
 var velocity = Vector2.ZERO
 var range = 100.0
-var speed = 100.0
+var speed = 200.0
+var damage
 var start_position = Vector2.ZERO
 var knockback_coef = 200.0
 
@@ -24,7 +25,7 @@ func _on_body_entered(body):
 	if body.is_in_group("hurtbox"):
 		var knockback = global_position.direction_to(body.global_position)
 		body.knockback = knockback * knockback_coef
-		body.take_damage()
+		body.take_damage(damage)
 
 func _on_area_entered(area):
 	if area.is_in_group("hurtbox"):
@@ -32,4 +33,4 @@ func _on_area_entered(area):
 			var knockback = global_position.direction_to(area.global_position)
 			area.knockback = knockback * knockback_coef
 			enemies_hit.append(area)
-			area.take_damage()
+			area.take_damage(damage)
