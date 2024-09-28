@@ -72,7 +72,7 @@ func _process(delta):
 			player_class._animation.play("idle")
 	
 	if Input.is_action_just_pressed("attack1"):
-		if !PlayerVariables.l_on_cd:
+		if !PlayerVariables.j_on_cd:
 			attack = true
 			player_class._animation.play("attack1")
 	elif Input.is_action_just_pressed("attack2"):
