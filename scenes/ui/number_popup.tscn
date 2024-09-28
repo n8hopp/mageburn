@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://djdbaqe272lm0"]
+
+[ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_y62t1"]
+[ext_resource type="Script" path="res://scripts/ui/number_popup.gd" id="2_8ac31"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_icwn0"]
+font_size = 32
+font_color = Color(1, 0, 0, 1)
+outline_size = 8
+
+[node name="NumberPopup" type="Control" node_paths=PackedStringArray("label")]
+z_index = 10
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_top = -16.0
+offset_bottom = -16.0
+scale = Vector2(0.33, 0.33)
+theme = ExtResource("1_y62t1")
+script = ExtResource("2_8ac31")
+label = NodePath("Label")
+damage_color = Color(1, 0, 0, 1)
+heal_color = Color(0.364706, 0.745098, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "-8"
+label_settings = SubResource("LabelSettings_icwn0")
