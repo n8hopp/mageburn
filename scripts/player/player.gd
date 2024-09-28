@@ -16,7 +16,7 @@ func take_hit(dmg_amount : int):
 		return
 	
 	PlayerVariables.current_hp -= dmg_amount
-	player_class.modulate = Color(1,0,0,0.5)
+	player_class.modulate = Color(1,0,0,1)
 	$FlashTimer.start()
 
 	if PlayerVariables.current_hp <= 0:
