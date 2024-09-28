@@ -17,22 +17,33 @@ var knockback : Vector2 = Vector2.ZERO
 var xp_orb_drop = preload("res://scenes/basic_items/xp.tscn")
 var child_slime1 = preload("res://scenes/enemies/slime.tscn")
 var child_slime2 = preload("res://scenes/enemies/slime.tscn")
+var damage_number = preload("res://scenes/ui/number_popup.tscn")
 
 func _ready():
 	scale.x = (0.5*level) + 0.25
 	scale.y = (0.5*level) + 0.25
 	hitpoints = (0.5*level)*4 + 1
 
-func take_damage():
+func take_damage(num):
 	if dead:
 		return
 	
-	hitpoints -= 1
+	#TODO: remove; only for testing damage purposes
+	num = 1
+	
+	hitpoints -= num
+	
+	var number_ui = damage_number.instantiate()
+	number_ui.numtype = number_ui.NUMTYPE.DAMAGE
+	number_ui.number = num
+	add_child(number_ui)
+	
 	if hitpoints <= 0:
 		$SlimeMachine.change_state("Dead")
 		dead = true
 		set_collision_layer_value(3, false)
 		set_collision_layer_value(1, false)
+		set_collision_layer_value(4, false)
 		z_index = 0
 	else:
 		# base level hitstun stuff - prob change how we do this later
