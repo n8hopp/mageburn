@@ -9,3 +9,4 @@ func _on_paladin_button_pressed():
 func _on_ranger_button_pressed():
 	PlayerVariables.selected_class = "Archer"
 	get_tree().change_scene_to_file("res://scenes/level/ParentPlayerTest.tscn")
+

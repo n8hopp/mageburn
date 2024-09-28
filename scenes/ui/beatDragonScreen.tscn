@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://c32u78j6geawe"]
+
+[ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_ve14l"]
+[ext_resource type="Script" path="res://scripts/ui/deathpopup.gd" id="2_7e21v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
+line_spacing = 1.0
+font_size = 200
+font_color = Color(0.819608, 0, 0.0196078, 1)
+
+[node name="Deathpopup" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.176
+anchor_top = 0.159
+anchor_right = 0.85
+anchor_bottom = 0.904
+offset_left = -0.920027
+offset_top = -34.72
+offset_right = -4.57764e-05
+offset_bottom = -0.320047
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ve14l")
+script = ExtResource("2_7e21v")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.02
+anchor_bottom = 1.029
+offset_left = -5.0
+offset_top = 114.0
+offset_right = -22.94
+offset_bottom = -258.939
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+text = "You slayed
+the dragon
+"
+label_settings = SubResource("LabelSettings_dwdhi")
+horizontal_alignment = 1
+
+[node name="QuitGameButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 612.0
+offset_right = 1098.0
+offset_bottom = 692.0
+theme_override_font_sizes/font_size = 50
+text = "Enjoy victory"
+
+[node name="TryAgainButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 612.0
+offset_right = 562.0
+offset_bottom = 692.0
+theme_override_font_sizes/font_size = 50
+text = "Endless battle"
+
+[connection signal="pressed" from="Panel/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="Panel/TryAgainButton" to="." method="_on_try_again_button_pressed"]
