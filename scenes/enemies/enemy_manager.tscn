@@ -6,7 +6,6 @@
 size = Vector2(896, 464)
 
 [node name="EnemyManager" type="Area2D"]
-visible = false
 position = Vector2(448, 232)
 script = ExtResource("1_hqikf")
 
@@ -21,13 +20,14 @@ autostart = true
 wait_time = 29.0
 autostart = true
 
-[node name="Timer3" type="Timer" parent="."]
-wait_time = 89.0
+[node name="DragonTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Timer1" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer1" to="." method="_on_timer_1_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer1" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
-[connection signal="timeout" from="Timer3" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DragonTimer" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="DragonTimer" to="." method="_on_timer_timeout"]
