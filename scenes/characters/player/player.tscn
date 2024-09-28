@@ -4,3 +4,9 @@
 
 [node name="PlayerScript" type="Node2D"]
 script = ExtResource("1_os5be")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cd14lfcu3ep30"]
+[gd_scene load_steps=12 format=3 uid="uid://cd14lfcu3ep30"]
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_2wlft"]
 [ext_resource type="PackedScene" uid="uid://jkwc6y6akd4m" path="res://scenes/characters/player/player.tscn" id="2_l6u3d"]
-[ext_resource type="Script" path="res://scenes/enemies/EnemyManager.gd" id="4_mshmv"]
 [ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/level_up.tscn" id="5_wn0f5"]
 [ext_resource type="PackedScene" uid="uid://bpsu201lxxu0o" path="res://scenes/ui/texture_progress_bar.tscn" id="6_sbp64"]
 [ext_resource type="PackedScene" uid="uid://cgse00mbor3jw" path="res://scenes/ui/xp_textured_bar.tscn" id="7_aayv1"]
@@ -396,7 +395,6 @@ navigation_polygon = SubResource("NavigationPolygon_lnl05")
 [node name="EnemyManager" type="Area2D" parent="."]
 visible = false
 position = Vector2(448, 232)
-script = ExtResource("4_mshmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyManager"]
 shape = SubResource("RectangleShape2D_7hidy")

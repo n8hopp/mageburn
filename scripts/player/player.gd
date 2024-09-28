@@ -20,7 +20,7 @@ func take_hit(dmg_amount : int):
 	if PlayerVariables.current_hp <= 0:
 		player_class._animation.play("death")
 		dead = true
-		PlayerVariables.death.emit()
+		$DeathTimer.start()
 		
 
 # Called when the node enters the scene tree for the first time.
@@ -107,3 +107,7 @@ func _physics_process(delta):
 	player_class.velocity = input_dir * speed
 	player_class.move_and_slide()
 	
+
+
+func _on_death_timer_timeout():
+	PlayerVariables.death.emit()
