@@ -1,9 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://7axa6x7ucs38"]
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_kulum"]
+[ext_resource type="PackedScene" uid="uid://hlf75qg8wppn" path="res://scenes/enemies/boss_chicken.tscn" id="2_ry42n"]
 [ext_resource type="PackedScene" uid="uid://jkwc6y6akd4m" path="res://scenes/characters/player/player.tscn" id="3_siw42"]
-[ext_resource type="PackedScene" uid="uid://dug37tqe6ufsb" path="res://scenes/ui/ingame_ui.tscn" id="4_bvxm2"]
-[ext_resource type="PackedScene" uid="uid://6mb8nigb5j13" path="res://scenes/enemies/enemy_manager.tscn" id="4_fn3os"]
 [ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/level_up.tscn" id="5_lci2k"]
 [ext_resource type="PackedScene" uid="uid://bpsu201lxxu0o" path="res://scenes/ui/texture_progress_bar.tscn" id="6_gsoor"]
 [ext_resource type="PackedScene" uid="uid://cgse00mbor3jw" path="res://scenes/ui/xp_textured_bar.tscn" id="7_cbrkd"]
@@ -388,15 +387,13 @@ layer_0/tile_data = PackedInt32Array(131074, 131072, 6, 131075, 131072, 6, 13107
 [node name="PlayerScript" parent="." instance=ExtResource("3_siw42")]
 position = Vector2(445.672, 230.663)
 
-[node name="EnemyManager" parent="." instance=ExtResource("4_fn3os")]
-visible = true
+[node name="BossChicken" parent="." instance=ExtResource("2_ry42n")]
+visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_lnl05")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Ingame UI" parent="CanvasLayer" instance=ExtResource("4_bvxm2")]
 
 [node name="Popup" parent="CanvasLayer" instance=ExtResource("5_lci2k")]
 process_mode = 3

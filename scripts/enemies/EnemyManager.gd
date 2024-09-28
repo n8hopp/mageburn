@@ -2,6 +2,7 @@ extends Area2D
 
 var skeleton = preload("res://scenes/enemies/skeleton.tscn")
 var slime = preload("res://scenes/enemies/slime.tscn")
+var dragon = preload("res://scenes/enemies/boss_chicken.tscn")
 
 @onready var playable_area = find_child("CollisionShape2D").shape.size
 
@@ -9,60 +10,70 @@ var slime = preload("res://scenes/enemies/slime.tscn")
 func _ready():
 	$Timer1.start()
 	$Timer2.start()
-	$Timer3.start()
+	$DragonTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _on_timer_1_timeout():
-	instance_new_enemy()
+	var enemy
+	if randf() > 0.1:
+		enemy = skeleton.instantiate()
+	else:
+		enemy = slime.instantiate()
+	instance_new_enemy(enemy)
 	print("Enemy incoming!")
 
 func _on_timer_2_timeout():
 	for x in range(1,10):
-		instance_new_enemy()
+		var enemy
+		if randf() > 0.25:
+			enemy = skeleton.instantiate()
+		else:
+			enemy = slime.instantiate()
+		instance_new_enemy(enemy)
 	print("Wave incoming!!")
 
 func _on_timer_3_timeout():
-	for x in range(1, 50):
-		instance_new_enemy()
-	print("Tsunami incoming!!!")
+	var enemy = dragon.instantiate()
+	instance_new_enemy(enemy)
+	print("Dragon incoming!!!")
 
 
 # find valid position to spawn enemy, then spawn it.
 # if it fails to find a valid location 10 times: give up
-func instance_new_enemy():
+func instance_new_enemy(enemy_instance):
 	# create an enemy obj and get its size
-	var enemy # 50% skeletons, 50% slimes
-	if randf() > 0.7:
-		enemy = skeleton.instantiate()
-	else:
-		enemy = slime.instantiate()
-
+	var enemy = enemy_instance
 	var enemy_size = enemy.find_child("HurtboxShape").shape.size
 	
-	var failed_to_spawn_counter = 0
+	# TODO: remove the spawn_attmp_limit if it is the dragon that is trying to be spawned in.
+	var spawn_attempt_limit = 10
 	var spawned_enemy = false
-	while spawned_enemy == false and failed_to_spawn_counter < 10:
+	while spawned_enemy == false and spawn_attempt_limit > 0:
 		# choose a random point in the playable area
 		# (referenced to center of EnemyManager's CollisionShape2D)
 		var randx = randf_range( -playable_area.x/2, playable_area.x/2 )
 		var randy = randf_range( -playable_area.y/2, playable_area.y/2 )
 		
+		# TODO: REMOVE THIS DEBUG OVERRIDE
+		randx = 1 - playable_area.x/2 - enemy_size.x/2
+		randy = 1 - playable_area.y/2 - enemy_size.y/2
+		
 		# ensure enemy spawns entirely within the boundry
 		# left boundry
 		if randx < enemy_size.x/2:
-			randx += enemy_size.x/2
+			randx = enemy_size.x/2 - playable_area.x/2 + 5 # +5 for good measure
 		# top boundry
 		if randy < enemy_size.y/2:
-			randy += enemy_size.y/2
+			randy = enemy_size.y/2 - playable_area.y/2 + 5 # +5 for good measure 
 		# right boundry
-		if randx > playable_area.x/2 + enemy_size.x/2:
-			randx -= enemy_size.x/2
+		if randx > playable_area.x/2 - enemy_size.x/2:
+			randx = playable_area.x/2 - enemy_size.x/2 - 5 # -5 for good measure
 		# bottom boundry
-		if randy > playable_area.y/2 + enemy_size.y/2:
-			randy -= enemy_size.y/2
+		if randy > playable_area.y/2 - enemy_size.y/2:
+			randy = playable_area.y/2 - enemy_size.y/2 - 5 # -5 for good measure
 		
 		# get the global coordinates for the enemy
 		enemy.global_position.x = global_position.x + randx
@@ -78,5 +89,5 @@ func instance_new_enemy():
 			#print("spawned an enemy")
 			spawned_enemy = true
 		else:
-			failed_to_spawn_counter += 1
+			spawn_attempt_limit -= 1
 			#print("failed to spawn an enemy")
