@@ -3,6 +3,7 @@ extends Area2D
 var skeleton = preload("res://scenes/enemies/skeleton.tscn")
 var slime = preload("res://scenes/enemies/slime.tscn")
 var dragon = preload("res://scenes/enemies/boss_chicken.tscn")
+var boar = preload("res://scenes/enemies/boar.tscn")
 
 @onready var playable_area = find_child("CollisionShape2D").shape.size
 
