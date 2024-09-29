@@ -2,7 +2,7 @@ extends Area2D
 
 var start_position = Vector2.ZERO
 var velocity = Vector2.ZERO
-var range = 400.0
+var range = 100.0
 var speed = 100.0
 var knockback_coef = 100.0
 var damage : float

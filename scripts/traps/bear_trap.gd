@@ -5,6 +5,8 @@ var single_use = false
 @onready var _animation = $AnimationPlayer
 @onready var _trap_circle = $TrapCircle
 
+var enemies_stunned : Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_position = global_position
@@ -31,11 +33,8 @@ func _on_area_entered(area):
 			_animation.play("close")
 			_trap_circle.show()
 			$TrapTimer.start()
-			activated_trap(area)
-
-func activated_trap(area: Area2D):
-	pass
-
+			area.get_parent().get_parent().get_stunned()
+			enemies_stunned.append(area)
 
 func _on_timer_timeout():
 	queue_free()
@@ -43,4 +42,6 @@ func _on_timer_timeout():
 
 func _on_trap_timer_timeout():
 	queue_free()
+	for enemy in enemies_stunned:
+		enemy.get_parent().get_parent().get_unstunned()
 	
