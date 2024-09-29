@@ -55,6 +55,7 @@ var skill_points : int
 
 signal death
 var selected_class = &""
+var nux_mode = false
 var follow_target : CharacterBody2D
 
 signal unlock_k
