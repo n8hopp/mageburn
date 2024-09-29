@@ -13,14 +13,14 @@ func on_physics_process(_delta: float) -> void:
 	if nav_agent.is_navigation_finished():
 		state_machine.change_state("Attack")
 	
-	var current_agent_position: Vector2 = parent.global_position
+	var current_agent_position: Vector2 = $"../../Sprite2D/Hitbox/CollisionShape2D".global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	parent.velocity = current_agent_position.direction_to(next_path_position) * walk_speed
 	parent.move_and_slide()
 	
-	if parent.velocity.x > 0:
+	if parent.global_position.direction_to(follow_target.global_position).x > 0:
 		parent._sprite.scale.x = 1
-	elif parent.velocity.x < 0:
+	elif parent.global_position.direction_to(follow_target.global_position).x < 0:
 		parent._sprite.scale.x = -1
 		
 	state_machine.animation_player.play("walk")

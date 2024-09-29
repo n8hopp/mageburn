@@ -454,9 +454,9 @@ offset_top = -28.72
 offset_right = 22.0798
 offset_bottom = 19.28
 
-[connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_1_timeout"]
-[connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer1" to="EnemyManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_2_timeout"]
-[connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer2" to="EnemyManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_3_timeout"]
+[connection signal="timeout" from="EnemyManager/Timer3" to="EnemyManager" method="_on_timer_timeout"]

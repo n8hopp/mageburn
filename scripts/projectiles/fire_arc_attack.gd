@@ -5,6 +5,7 @@ var velocity = Vector2.ZERO
 var range = 400.0
 var speed = 100.0
 var knockback_coef = 100.0
+var damage : float
 @onready var _animation = $AnimationPlayer
 
 var enemies_hit : Array

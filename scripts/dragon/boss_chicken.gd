@@ -17,12 +17,19 @@ var knockback : Vector2 = Vector2.ZERO
 @export var sleeby : bool = false
 
 var xp_orb_drop = preload("res://scenes/basic_items/xp.tscn")
+var damage_number = preload("res://scenes/ui/number_popup.tscn")
 
-func take_damage():
+func take_damage(num):
 	if dead:
 		return
 	
-	hitpoints -= 1
+	hitpoints -= num
+	
+	var number_ui = damage_number.instantiate()
+	number_ui.numtype = number_ui.NUMTYPE.DAMAGE
+	number_ui.number = num
+	add_child(number_ui)
+	
 	if hitpoints <= 0:
 		$BossMachine.change_state("Dead")
 		dead = true
