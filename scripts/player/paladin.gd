@@ -13,8 +13,15 @@ var fire_attack_scene = preload("res://scenes/characters/paladin/fire_arc_attack
 @export var l_texture : Texture
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
-var stats : Dictionary = {"str": 0, "dex": 0, "cons": 0, 
-	"intel": 0, "wisdom": 0, "charisma": 0, "health": 15}
+var stats : Dictionary = {
+		"str": 5, 
+		"dex": 3, 
+		"cons": 4, 
+		"intel": 2, 
+		"wisdom": 1, 
+		"charisma": 2, 
+		"health": 15 
+		}
 
 func _ready():
 	pass
@@ -25,8 +32,8 @@ func wave_attack():
 	wave_attack_instance.position = global_position
 	
 	#stat scaling!:
-	var base_damage = 15
-	wave_attack_instance.damage = base_damage + (PlayerVariables.strength * 1.2) # Slightly lower Strength scaling
+	var base_damage = 5
+	wave_attack_instance.damage = roundf(base_damage + (PlayerVariables.strength * 0.6)) # Slightly lower Strength scaling
 	PlayerVariables.k_cooldown.wait_time = 3.0 - (PlayerVariables.dexterity * 0.05) # Dex reduces cooldown
 	#####
 	
@@ -38,8 +45,8 @@ func fire_attack():
 	fire_attack_instance.position = global_position
 	
 	# stat scaling!:
-	var base_damage = 20
-	fire_attack_instance.damage = base_damage + (PlayerVariables.strength * 0.8) + (PlayerVariables.intelligence * 0.5) # Intelligence adds fire scaling
+	var base_damage = 10
+	fire_attack_instance.damage = roundf(base_damage + (PlayerVariables.strength * 0.8) + (PlayerVariables.intelligence * 1.0)) # Intelligence adds fire scaling
 	PlayerVariables.l_cooldown.wait_time = 10.0 - (PlayerVariables.dexterity * 0.05) # Dex reduces cooldown
 	
 	get_tree().current_scene.add_child(fire_attack_instance)
@@ -52,8 +59,8 @@ func _on_hitbox_area_entered(area):
 		area.knockback = knockback * knockback_coef
 		
 		#damage on sword swing
-		var base_damage = 10
-		var damage = base_damage + (PlayerVariables.strength * 1.5) # Sword swing scales with Strength
+		var base_damage = 5
+		var damage = roundf(base_damage + (PlayerVariables.strength * 0.8)) # Sword swing scales with Strength
 		area.take_damage(damage)
 		
 func _start_cooldown(attack_name : String):

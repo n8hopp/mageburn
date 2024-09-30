@@ -15,8 +15,8 @@ var current_hp : int = current_health_pool
 @export var wisdom : int = 10
 @export var charisma : int = 14
 @export var hit_die : Die
-@export var current_experience : int = 23
-@export var experience_to_level : int = 25
+@export var current_experience : int = 0
+@export var experience_to_level : int = 5
 
 #@export_category("Ability 1 Stats")
 #@export var j_damage : float # paladin: str
@@ -115,6 +115,8 @@ func level_up():
 		unlock_l.emit()
 	
 	current_experience = 0
+	experience_to_level = experience_to_level + 5
+	follow_target.speed = 50.0 + (2.5 * dexterity)
 	
 func cooldown_ability(ability_name):
 	match ability_name:
@@ -140,6 +142,19 @@ func _on_cd_end(ability_name):
 		'l':
 			l_on_cd = false
 
+func crit_roll(damage):
+	cha_bonus = floori((charisma-10.0)/2.0)
+	var d20 = Die.new(20)
+	var critted : bool = false
+	var roll = d20.roll() 
+	var mod_roll = roll + cha_bonus
+	print(mod_roll)
+	if roll == 20 or mod_roll > 20:
+		damage = damage * 2
+		critted = true
+		
+	print("damage: " + str(damage))
+	return [damage, critted]
 
 
 

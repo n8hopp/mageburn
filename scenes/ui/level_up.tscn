@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddfbn1ajlagis"]
+[gd_scene load_steps=20 format=3 uid="uid://ddfbn1ajlagis"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_jwlph"]
 [ext_resource type="Script" path="res://scripts/ui/level-up/level_up.gd" id="2_2b4as"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ui/stat_selector.gd" id="3_nrh0t"]
 [ext_resource type="Texture2D" uid="uid://doqjlx5ghppvk" path="res://assets/ui/icon_levelarrow.tres" id="4_jehdm"]
 [ext_resource type="Script" path="res://scripts/ui/level-up/dicebutton.gd" id="5_0deqm"]
+[ext_resource type="Script" path="res://scenes/ui/con_selector.gd" id="6_mub86"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gr8gi"]
 line_spacing = 1.0
@@ -116,6 +117,7 @@ layout_mode = 2
 
 [node name="label_hp" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/hp_select"]
 layout_mode = 2
+tooltip_text = "improve this value by upgrading your constitution!"
 theme_override_colors/default_color = Color(0.454902, 0.247059, 0.223529, 1)
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
@@ -170,9 +172,8 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
-text = "points remaining:"
+text = "hover on ability icons for description"
 
 [node name="statblock" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -183,6 +184,7 @@ columns = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+tooltip_text = "improves physical attack damage!"
 texture = SubResource("AtlasTexture_34src")
 stretch_mode = 2
 
@@ -231,6 +233,7 @@ icon = SubResource("AtlasTexture_0y84b")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+tooltip_text = "improves cooldowns and movement speed!"
 texture = SubResource("AtlasTexture_t688h")
 stretch_mode = 2
 
@@ -279,6 +282,7 @@ icon = SubResource("AtlasTexture_0y84b")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+tooltip_text = "improves hp gains on levelup!"
 texture = SubResource("AtlasTexture_vlmp3")
 stretch_mode = 2
 
@@ -293,7 +297,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 32
 alignment = 2
-script = ExtResource("3_nrh0t")
+script = ExtResource("6_mub86")
 
 [node name="btn_down" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/stat_select/MarginContainer/VBoxContainer/statblock/con_selector"]
 layout_mode = 2
@@ -327,6 +331,7 @@ icon = SubResource("AtlasTexture_0y84b")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+tooltip_text = "improves magic damage!"
 texture = SubResource("AtlasTexture_aynrk")
 stretch_mode = 2
 
@@ -375,6 +380,7 @@ icon = SubResource("AtlasTexture_0y84b")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+tooltip_text = "improves the range of AOE abilities!"
 texture = SubResource("AtlasTexture_hq33i")
 stretch_mode = 2
 
@@ -423,6 +429,7 @@ icon = SubResource("AtlasTexture_0y84b")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+tooltip_text = "increases critical strike (2x damage) chance!"
 texture = SubResource("AtlasTexture_y6jbf")
 stretch_mode = 2
 

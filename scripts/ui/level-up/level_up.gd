@@ -10,6 +10,7 @@ extends PanelContainer
 @onready var standard_increase : float = roundi((PlayerVariables.hit_die.sides+1.0)/2.0)
 @onready var modifier_symbol : String = PlayerVariables.modifier_symbol(PlayerVariables.con_bonus)
 
+var con_increase_mod
 @onready var str_selector = stat_select_block.find_child("str_selector")
 @onready var dex_selector = stat_select_block.find_child("dex_selector")
 @onready var con_selector = stat_select_block.find_child("con_selector")
@@ -34,14 +35,14 @@ func _on_confirm_pressed():
 	
 	if confirm_button.dice_mode:
 		# change to increase health by this amount
-		var hp_increase = PlayerVariables.hit_die.roll() + PlayerVariables.con_bonus
+		var hp_increase = PlayerVariables.hit_die.roll() + con_increase_mod
 		PlayerVariables.current_health_pool += hp_increase
 		PlayerVariables.current_hp += hp_increase
 		number_ui.number = hp_increase
 
 	else:
 		# change to increase health by this amount
-		var hp_increase = standard_increase + PlayerVariables.con_bonus
+		var hp_increase = standard_increase + con_increase_mod
 		PlayerVariables.current_health_pool += hp_increase
 		PlayerVariables.current_hp += hp_increase
 		number_ui.number = hp_increase
@@ -57,6 +58,7 @@ func _on_confirm_pressed():
 		PlayerVariables.wisdom = wis_selector.label_num
 		PlayerVariables.charisma = cha_selector.label_num
 	PlayerVariables.calculate_bonuses()
+	modifier_symbol = PlayerVariables.modifier_symbol(PlayerVariables.con_bonus)
 	PlayerVariables.level_up()
 	_toggle_visible()
 		
@@ -77,23 +79,31 @@ func _initialize_stat_block():
 	for stat in statblocks:
 		stat.label_num = stat.min_num
 		stat.label.text = str(stat.label_num)
+		stat.down_button.disabled = true
 	
 	points_free.emit()
 	
 func _on_visibility_changed():
 	if visible == true:
+		PlayerVariables.calculate_bonuses()
+		modifier_symbol = PlayerVariables.modifier_symbol(PlayerVariables.con_bonus)
 		var fixed_format_label = "fixed %s %s %s hp"
 		fixed_increase_label.text = fixed_format_label % [standard_increase,modifier_symbol,abs(PlayerVariables.con_bonus)]
 		
 		var dice_format_label = "1d10 %s %s hp"
 		dice_increase_label.text = dice_format_label % [modifier_symbol, abs(PlayerVariables.con_bonus)]
+		
+		#when we first load the popup, our con modifier is just our con bonus
+		con_increase_mod = PlayerVariables.con_bonus
+		
 		var class_label = "%s - level %s"
-		class_level_label.text = class_label % ["Paladin", PlayerVariables.level+1]
-		if (PlayerVariables.level + 1) % 4 == 0:
+		class_level_label.text = class_label % [PlayerVariables.selected_class, PlayerVariables.level+1]
+		if (PlayerVariables.level + 1) % 2 == 0:
 			_initialize_stat_block()
 		else:
 			stat_select_block.visible = false
 			
+
 func _toggle_visible():
 	if paused:
 		paused = false
@@ -103,4 +113,14 @@ func _toggle_visible():
 		paused = true
 		get_tree().paused = true
 		show()
+	
+func con_update(value):
+	# if we change constitution in the stat block, change the displayed modifier with what it would be upon levelup
+	con_increase_mod = floori((value-10.0)/2.0)
+	modifier_symbol = PlayerVariables.modifier_symbol(con_increase_mod)
+	var fixed_format_label = "fixed %s %s %s hp"
+	fixed_increase_label.text = fixed_format_label % [standard_increase,modifier_symbol,abs(con_increase_mod)]
+	
+	var dice_format_label = "1d10 %s %s hp"
+	dice_increase_label.text = dice_format_label % [modifier_symbol, abs(con_increase_mod)]
 	
