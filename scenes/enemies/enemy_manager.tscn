@@ -11,6 +11,7 @@ script = ExtResource("1_hqikf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7hidy")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 7.0

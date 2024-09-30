@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dodd5l003onte"]
+[gd_scene load_steps=8 format=3 uid="uid://dodd5l003onte"]
 
 [ext_resource type="Script" path="res://scripts/traps/bear_trap.gd" id="1_nfvtx"]
 [ext_resource type="Texture2D" uid="uid://cvsklvyhsljju" path="res://assets/traps/Bear_Trap.png" id="2_16u4f"]
-[ext_resource type="Texture2D" uid="uid://b7tu8na82lbku" path="res://assets/traps/Pit_Trap_Spikes.png" id="3_py0x7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub2a5"]
 
@@ -43,8 +42,8 @@ _data = {
 "close": SubResource("Animation_lpaho")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_byua6"]
-size = Vector2(32, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql82k"]
+radius = 20.0
 
 [node name="BearTrap" type="Area2D"]
 visibility_layer = 2
@@ -77,12 +76,8 @@ one_shot = true
 [node name="TrapCircle" type="Area2D" parent="."]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapCircle"]
-shape = SubResource("RectangleShape2D_byua6")
-
-[node name="Sprite2D" type="Sprite2D" parent="TrapCircle"]
-texture_filter = 1
-texture = ExtResource("3_py0x7")
+[node name="TrapCollisionShape" type="CollisionShape2D" parent="TrapCircle"]
+shape = SubResource("CircleShape2D_ql82k")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
