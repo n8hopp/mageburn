@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-var input_dir : Vector2
-var attack_dir = Vector2.RIGHT
 var speed : float = 50.0
 var attack : bool = false
 var dead : bool = false
