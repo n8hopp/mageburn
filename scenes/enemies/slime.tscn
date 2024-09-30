@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=31 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
@@ -9,12 +9,18 @@
 [ext_resource type="Script" path="res://scripts/slime/hit.gd" id="6_lib44"]
 [ext_resource type="Script" path="res://scripts/slime/dead.gd" id="7_r0np6"]
 [ext_resource type="Script" path="res://scripts/slime/summon.gd" id="8_pyw5i"]
+[ext_resource type="AudioStream" uid="uid://dkq0lnetyx71i" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/01_Slime_damage.wav" id="10_5bwt2"]
+[ext_resource type="AudioStream" uid="uid://jvd5kkpuxek2" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/02_Slime_death.wav" id="11_cq4t6"]
+[ext_resource type="AudioStream" uid="uid://cmcoxviyvpkk7" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/04_Slime_jump.wav" id="12_6n2sb"]
+[ext_resource type="AudioStream" uid="uid://fpk2w3w2rfkl" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/05_Slime_land.wav" id="13_jc70f"]
+[ext_resource type="AudioStream" uid="uid://bwj148ygf06dh" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Evil_Snowman/07_Evil_Snowman_Throw_ball.wav" id="14_w7er4"]
+[ext_resource type="Script" path="res://scripts/slime/stun.gd" id="10_d1kii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3pcjk"]
 radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0th3"]
-size = Vector2(24, 13.3333)
+size = Vector2(20, 13.333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iusa0"]
 size = Vector2(18, 12)
@@ -86,6 +92,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [24, 29]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_Attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_f4r8n"]
 resource_name = "die"
@@ -115,6 +135,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_Death")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ax8t4"]
 resource_name = "hurt"
@@ -143,6 +177,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [48, 51]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_Hurt")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_sfvf3"]
@@ -208,6 +256,31 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 50.0, 50.0, 0.0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_UpMove")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFX/SFX_DownMove")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ck52t"]
 _data = {
@@ -220,6 +293,36 @@ _data = {
 "walk": SubResource("Animation_fkewm")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hsi74"]
+playback_mode = 1
+random_pitch = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("10_5bwt2")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStream" id="AudioStream_dffpe"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vfge1"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("12_6n2sb")
+stream_0/weight = 1.0
+stream_1/stream = SubResource("AudioStream_dffpe")
+stream_1/weight = 3.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1li26"]
+playback_mode = 1
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("13_jc70f")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ew6fi"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("14_w7er4")
+stream_0/weight = 1.0
+
 [node name="Slime" type="CharacterBody2D"]
 z_index = 2
 texture_filter = 1
@@ -228,7 +331,7 @@ collision_layer = 8
 collision_mask = 10
 script = ExtResource("1_j5enk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.66667)
 shape = SubResource("CircleShape2D_3pcjk")
 
@@ -243,7 +346,7 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
-position = Vector2(20.6667, 0.666667)
+position = Vector2(19, 0.666667)
 shape = SubResource("RectangleShape2D_u0th3")
 disabled = true
 
@@ -289,8 +392,35 @@ script = ExtResource("7_r0np6")
 [node name="Summon" type="Node" parent="SlimeMachine"]
 script = ExtResource("8_pyw5i")
 
+[node name="Stun" type="Node" parent="SlimeMachine"]
+script = ExtResource("10_d1kii")
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SFX_Hurt" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_hsi74")
+volume_db = -4.0
+
+[node name="SFX_Death" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_cq4t6")
+volume_db = -8.0
+
+[node name="SFX_UpMove" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_vfge1")
+volume_db = -8.0
+pitch_scale = 0.6
+max_polyphony = 2
+
+[node name="SFX_DownMove" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_1li26")
+max_polyphony = 2
+
+[node name="SFX_Attack" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_ew6fi")
+volume_db = -8.0
 
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timer" to="SlimeMachine/Dead" method="_on_timer_timeout"]

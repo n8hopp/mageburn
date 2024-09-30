@@ -1,7 +1,7 @@
 extends Node2D
 
 var input_dir : Vector2
-var attack_dir : Vector2
+var attack_dir = Vector2.RIGHT
 var speed : float = 50.0
 var attack : bool = false
 var dead : bool = false
@@ -40,14 +40,20 @@ func _ready():
 		add_child(archer)
 		PlayerVariables.follow_target = archer
 		
-	PlayerVariables.strength = player_class.stats["str"]
+	if PlayerVariables.nux_mode == true:
+		PlayerVariables.current_health_pool = 1000
+		PlayerVariables.current_hp = 1000
+		PlayerVariables.strength = 30
+	else:
+		PlayerVariables.current_health_pool = player_class.stats["health"]
+		PlayerVariables.current_hp = player_class.stats["health"]
+		PlayerVariables.strength = player_class.stats["str"]
+	
 	PlayerVariables.dexterity = player_class.stats["dex"]
 	PlayerVariables.constitution = player_class.stats["cons"]
 	PlayerVariables.intelligence = player_class.stats["intel"]
 	PlayerVariables.wisdom = player_class.stats["wisdom"]
 	PlayerVariables.charisma = player_class.stats["charisma"]
-	PlayerVariables.current_health_pool = player_class.stats["health"]
-	PlayerVariables.current_hp = player_class.stats["health"]
 	
 	PlayerVariables.j_texture = player_class.j_texture
 	PlayerVariables.k_texture = player_class.k_texture
@@ -111,6 +117,8 @@ func _physics_process(delta):
 	if input_dir.length() != 0:
 		attack_dir = input_dir
 	
+	# just putting it in process, cause i can't be bothered right now
+	speed = 50.0 + (1.5 * PlayerVariables.dexterity)
 	player_class.velocity = input_dir * speed
 	player_class.move_and_slide()
 	

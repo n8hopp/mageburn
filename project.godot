@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 
 PlayerVariables="*res://scenes/basic_items/PlayerVariables.tscn"
 GameManager="*res://scenes/basic_items/game_manager.tscn"
+GlobalMusic="*res://scenes/basic_items/global_music.tscn"
 
 [display]
 
@@ -40,6 +41,10 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/finite_state_machine/plugin.cfg")
+
+[gui]
+
+timers/tooltip_delay_sec=0.0
 
 [input]
 

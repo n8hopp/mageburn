@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://hlf75qg8wppn"]
+[gd_scene load_steps=35 format=3 uid="uid://hlf75qg8wppn"]
 
 [ext_resource type="Script" path="res://scripts/dragon/boss_chicken.gd" id="1_6yaju"]
 [ext_resource type="Texture2D" uid="uid://bt530oxu4o4n2" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Boss Chicken/ChickenIdle-Sheet.png" id="1_l4kip"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scripts/dragon/slash.gd" id="15_24xe2"]
 [ext_resource type="Script" path="res://scripts/dragon/tantrum.gd" id="16_ldxhm"]
 [ext_resource type="Script" path="res://scripts/dragon/second_phase_path.gd" id="17_3ef2i"]
+[ext_resource type="Script" path="res://scripts/dragon/stun.gd" id="18_5u8tn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m30v"]
 size = Vector2(9, 11)
@@ -897,7 +898,7 @@ libraries = {
 "": SubResource("AnimationLibrary_86o6h")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_uneva")
@@ -932,6 +933,9 @@ script = ExtResource("16_ldxhm")
 script = ExtResource("17_3ef2i")
 parent = NodePath("../..")
 nav_agent = NodePath("../../Sprite2D/SlashSensor/SecondPhaseNavAgent")
+
+[node name="Stun" type="Node" parent="BossMachine"]
+script = ExtResource("18_5u8tn")
 
 [connection signal="body_entered" from="Sprite2D/Peck_Hitbox" to="." method="_on_peck_hitbox_body_entered"]
 [connection signal="body_entered" from="Sprite2D/Slash_Hitbox" to="." method="_on_slash_hitbox_body_entered"]
