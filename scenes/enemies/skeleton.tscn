@@ -1,5 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://3gspkn7wbrat"]
-
+[gd_scene load_steps=30 format=3 uid="uid://3gspkn7wbrat"]
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
@@ -10,11 +9,11 @@
 [ext_resource type="Script" path="res://scripts/skeleton/hit.gd" id="6_bp8s2"]
 [ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_2c1ic"]
 [ext_resource type="AudioStream" uid="uid://bfv4jjlhhd7r8" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/02_Skeleton_damage.wav" id="9_cyjxx"]
+[ext_resource type="Script" path="res://scripts/skeleton/stun.gd" id="9_qexxw"]
 [ext_resource type="AudioStream" uid="uid://cjts1iotfha76" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/01_Skeleton_attack.wav" id="10_jjbiu"]
 [ext_resource type="AudioStream" uid="uid://w3ltj2muvqd1" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/07_Skeleton_walk_1.wav" id="11_gk7d7"]
 [ext_resource type="AudioStream" uid="uid://ntu66l1gryqk" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/08_Skeleton_walk_2.wav" id="12_kk6e3"]
 [ext_resource type="AudioStream" uid="uid://dcqjapu3o7a48" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/03_Skeleton_death.wav" id="13_unwoo"]
-[ext_resource type="Script" path="res://scripts/skeleton/stun.gd" id="9_qexxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axffb"]
 radius = 4.0
@@ -337,6 +336,9 @@ parent = NodePath("../..")
 [node name="Dead" type="Node" parent="SkeletonMachine"]
 script = ExtResource("7_2c1ic")
 
+[node name="Stun" type="Node" parent="SkeletonMachine"]
+script = ExtResource("9_qexxw")
+
 [node name="SFX" type="Node" parent="."]
 
 [node name="SFX_Hurt" type="AudioStreamPlayer2D" parent="SFX"]
@@ -355,8 +357,5 @@ attenuation = 7.5
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_p7dv7")
 volume_db = -12.0
-
-[node name="Stun" type="Node" parent="SkeletonMachine"]
-script = ExtResource("9_qexxw")
 
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=32 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
@@ -10,11 +10,11 @@
 [ext_resource type="Script" path="res://scripts/slime/dead.gd" id="7_r0np6"]
 [ext_resource type="Script" path="res://scripts/slime/summon.gd" id="8_pyw5i"]
 [ext_resource type="AudioStream" uid="uid://dkq0lnetyx71i" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/01_Slime_damage.wav" id="10_5bwt2"]
+[ext_resource type="Script" path="res://scripts/slime/stun.gd" id="10_d1kii"]
 [ext_resource type="AudioStream" uid="uid://jvd5kkpuxek2" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/02_Slime_death.wav" id="11_cq4t6"]
 [ext_resource type="AudioStream" uid="uid://cmcoxviyvpkk7" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/04_Slime_jump.wav" id="12_6n2sb"]
 [ext_resource type="AudioStream" uid="uid://fpk2w3w2rfkl" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/05_Slime_land.wav" id="13_jc70f"]
 [ext_resource type="AudioStream" uid="uid://bwj148ygf06dh" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Evil_Snowman/07_Evil_Snowman_Throw_ball.wav" id="14_w7er4"]
-[ext_resource type="Script" path="res://scripts/slime/stun.gd" id="10_d1kii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3pcjk"]
 radius = 4.0
