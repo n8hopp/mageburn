@@ -9,38 +9,37 @@ var boar = preload("res://scenes/enemies/boar.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer1.start()
-	$Timer2.start()
+	$EnemyTimer.start()
+	$WaveTimer.start()
 	$DragonTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func _on_timer_1_timeout():
+func _on_enemy_timer_timeout():
 	var enemy
-	if randf() > 0.1:
+	if randf() > 1:
 		enemy = skeleton.instantiate()
 	else:
 		enemy = slime.instantiate()
 	instance_new_enemy(enemy)
 	print("Enemy incoming!")
 
-func _on_timer_2_timeout():
+func _on_wave_timer_timeout():
 	for x in range(1,10):
 		var enemy
-		if randf() > 0.25:
+		if randf() > 0.0025:
 			enemy = skeleton.instantiate()
 		else:
 			enemy = slime.instantiate()
 		instance_new_enemy(enemy)
 	print("Wave incoming!!")
 
-func _on_timer_3_timeout():
+func _on_dragon_timer_timeout():
 	var enemy = dragon.instantiate()
 	instance_new_enemy(enemy)
 	print("Dragon incoming!!!")
-
 
 # find valid position to spawn enemy, then spawn it.
 # if it fails to find a valid location 10 times: give up
@@ -55,26 +54,11 @@ func instance_new_enemy(enemy_instance):
 	while spawned_enemy == false and spawn_attempt_limit > 0:
 		# choose a random point in the playable area
 		# (referenced to center of EnemyManager's CollisionShape2D)
-		var randx = randf_range( -playable_area.x/2, playable_area.x/2 )
-		var randy = randf_range( -playable_area.y/2, playable_area.y/2 )
+		var randx = randf_range( -playable_area.x/2 + enemy_size.x, playable_area.x/2 - enemy_size.x)
+		var randy = randf_range( -playable_area.y/2 + enemy_size.y, playable_area.y/2 - enemy_size.x)
 		
-		# TODO: REMOVE THIS DEBUG OVERRIDE
-		randx = 1 - playable_area.x/2 - enemy_size.x/2
-		randy = 1 - playable_area.y/2 - enemy_size.y/2
-		
-		# ensure enemy spawns entirely within the boundry
-		# left boundry
-		if randx < enemy_size.x/2:
-			randx = enemy_size.x/2 - playable_area.x/2 + 5 # +5 for good measure
-		# top boundry
-		if randy < enemy_size.y/2:
-			randy = enemy_size.y/2 - playable_area.y/2 + 5 # +5 for good measure 
-		# right boundry
-		if randx > playable_area.x/2 - enemy_size.x/2:
-			randx = playable_area.x/2 - enemy_size.x/2 - 5 # -5 for good measure
-		# bottom boundry
-		if randy > playable_area.y/2 - enemy_size.y/2:
-			randy = playable_area.y/2 - enemy_size.y/2 - 5 # -5 for good measure
+		#randx = -playable_area.x/2 + enemy_size.x + 10
+		#randy = -playable_area.y/2 + enemy_size.y + 10
 		
 		# get the global coordinates for the enemy
 		enemy.global_position.x = global_position.x + randx
@@ -87,7 +71,7 @@ func instance_new_enemy(enemy_instance):
 		enemy.follow_target = player
 		if enemy.global_position.distance_to(player_pos) >= (16*10) and player.visible == true:
 			get_tree().current_scene.add_child(enemy)
-			#print("spawned an enemy")
+			print("spawned an enemy")
 			spawned_enemy = true
 		else:
 			spawn_attempt_limit -= 1
