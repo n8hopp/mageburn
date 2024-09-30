@@ -15,6 +15,7 @@ layout_mode = 2
 
 [node name="NMLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
-text = "*Not quite* infinite health.
-Start with higher stats"
+text = "*Not quite* infinite health
+Start with higher strength
+'X' key will trigger level up"
 horizontal_alignment = 1
