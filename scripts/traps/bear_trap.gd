@@ -41,4 +41,5 @@ func _on_timer_timeout():
 func _on_trap_timer_timeout():
 	queue_free()
 	for enemy in enemies_stunned:
-		enemy.parent.get_unstunned()
+		if is_instance_valid(enemy):
+			enemy.parent.get_unstunned()
