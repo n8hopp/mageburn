@@ -51,11 +51,15 @@ func take_damage(num):
 		$SlimeMachine.change_state("Hit")
 
 func get_stunned():
+	if dead:
+		return
 	stunned = true
 	$SlimeMachine.change_state("Stun")
 	$CollisionBox.disabled = true
 	
 func get_unstunned():
+	if dead:
+		return
 	stunned = false
 	$SlimeMachine.change_state("Path")
 	$CollisionBox.disabled = false

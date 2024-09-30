@@ -48,10 +48,10 @@ func place_trap():
 	var trap_instance = trap_scene.instantiate()
 	trap_instance.position = global_position
 	
-	# Commented out while bear trap gets implemented
-	#var base_duration = 5.0
-	#var duration = base_duration + (PlayerVariables.constitution * 0.2) # Constitution increases trap duration
-	#var radius = 1.0 + (PlayerVariables.wisdom * 0.1) # Wisdom increases trap radius
+	var base_duration = 5.0
+	trap_instance.duration = base_duration + (PlayerVariables.constitution * 0.2) # Constitution increases trap duration
+	trap_instance.trap_radius = 20.0 + (PlayerVariables.wisdom * 0.5) # Wisdom increases trap radius
+	
 	PlayerVariables.l_cooldown.wait_time = 8.0 - (PlayerVariables.dexterity * 0.05) # Dex reduces cooldown
 	
 	# Must manually call this as the placing of the trap has no animation to attach it to.

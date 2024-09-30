@@ -43,11 +43,15 @@ func take_damage(num):
 		$BossMachine.change_state("Hit")
 
 func get_stunned():
+	if dead:
+		return
 	stunned = true
 	$BossMachine.change_state("Stun")
 	$CollisionBox.disabled = true
 	
 func get_unstunned():
+	if dead:
+		return
 	stunned = false
 	$BossMachine.change_state("Path")
 	$CollisionBox.disabled = false
