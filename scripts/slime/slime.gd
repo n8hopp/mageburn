@@ -53,10 +53,12 @@ func take_damage(num):
 func get_stunned():
 	stunned = true
 	$SlimeMachine.change_state("Stun")
+	$CollisionBox.disabled = true
 	
 func get_unstunned():
 	stunned = false
 	$SlimeMachine.change_state("Path")
+	$CollisionBox.disabled = false
 
 func _physics_process(delta):
 	if dead:

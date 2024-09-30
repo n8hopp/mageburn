@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 @export var movement_speed : float = 30.0
 @export var dead = false
+@export var stunned = false
 var pause_pathfinding = false
 var stun_frames = 0
 var knockback : Vector2 = Vector2.ZERO
@@ -41,11 +42,21 @@ func take_damage(num):
 		# base level hitstun stuff - prob change how we do this later
 		$BossMachine.change_state("Hit")
 
+func get_stunned():
+	stunned = true
+	$BossMachine.change_state("Stun")
+	$CollisionBox.disabled = true
+	
+func get_unstunned():
+	stunned = false
+	$BossMachine.change_state("Path")
+	$CollisionBox.disabled = false
+
 func _ready():
 	pass
 
 func _physics_process(delta):
-	if dead:
+	if dead || stunned:
 		return
 
 func instance_xp_orb():
