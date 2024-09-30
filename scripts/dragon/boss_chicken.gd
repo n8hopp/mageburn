@@ -24,11 +24,18 @@ func take_damage(num):
 	if dead:
 		return
 	
-	hitpoints -= num
+	var damage_result = PlayerVariables.crit_roll(num)
+	var damage = damage_result[0]
+	var critted = damage_result[1]
+	
+	hitpoints -= damage
 	
 	var number_ui = damage_number.instantiate()
-	number_ui.numtype = number_ui.NUMTYPE.DAMAGE
-	number_ui.number = num
+	if critted:
+		number_ui.numtype = number_ui.NUMTYPE.CRIT
+	else:
+		number_ui.numtype = number_ui.NUMTYPE.DAMAGE
+	number_ui.number = damage
 	add_child(number_ui)
 	
 	if hitpoints <= 0:

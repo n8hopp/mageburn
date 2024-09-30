@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://ca1ktew34wyrx"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://ca1ktew34wyrx"]
 
 [ext_resource type="StyleBox" uid="uid://dmkku4kq6nt1w" path="res://assets/ui/popup_panel.tres" id="1_dpgob"]
 [ext_resource type="FontFile" uid="uid://bfp3vdqnuro18" path="res://assets/ui/alagard.ttf" id="1_p0a8l"]
@@ -69,6 +69,9 @@ texture_margin_bottom = 8.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 432, 64, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tc1aj"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.65098)
 
 [resource]
 default_font = ExtResource("1_p0a8l")
@@ -190,3 +193,11 @@ ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = ExtResource("1_p0a8l")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_nmcyu")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_7gykq")
+TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
+TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 0)
+TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+TooltipLabel/constants/shadow_offset_x = 0
+TooltipLabel/constants/shadow_offset_y = 0
+TooltipLabel/font_sizes/font_size = 32
+TooltipLabel/fonts/font = ExtResource("1_p0a8l")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_tc1aj")

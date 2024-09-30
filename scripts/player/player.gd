@@ -111,6 +111,8 @@ func _physics_process(delta):
 	if input_dir.length() != 0:
 		attack_dir = input_dir
 	
+	# just putting it in process, cause i can't be bothered right now
+	speed = 50.0 + (1.5 * PlayerVariables.dexterity)
 	player_class.velocity = input_dir * speed
 	player_class.move_and_slide()
 	

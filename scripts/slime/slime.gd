@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D
 
 @export var follow_target : CharacterBody2D
-@export var hitpoints = 4
+@export var hitpoints = 25
 @export var level = 2
 
 @export var movement_speed : float = 15.0
@@ -23,20 +23,24 @@ var damage_number = preload("res://scenes/ui/number_popup.tscn")
 func _ready():
 	scale.x = (0.5*level) + 0.25
 	scale.y = (0.5*level) + 0.25
-	hitpoints = (0.5*level)*4 + 1
+	hitpoints = 10 * level
 
 func take_damage(num):
 	if dead:
 		return
 	
-	#TODO: remove; only for testing damage purposes
-	num = 1
+	var damage_result = PlayerVariables.crit_roll(num)
+	var damage = damage_result[0]
+	var critted = damage_result[1]
 	
-	hitpoints -= num
+	hitpoints -= damage
 	
 	var number_ui = damage_number.instantiate()
-	number_ui.numtype = number_ui.NUMTYPE.DAMAGE
-	number_ui.number = num
+	if critted:
+		number_ui.numtype = number_ui.NUMTYPE.CRIT
+	else:
+		number_ui.numtype = number_ui.NUMTYPE.DAMAGE
+	number_ui.number = damage
 	add_child(number_ui)
 	
 	if hitpoints <= 0:

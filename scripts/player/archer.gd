@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var speed : float = 50.0
 var attack : bool = false
 var dead : bool = false
 var knockback_coef = 200.0
@@ -12,9 +11,16 @@ var trap_scene = preload("res://scenes/characters/archer/bear_trap.tscn")
 @export var l_texture : Texture
 @onready var _animation = $AnimationPlayer
 @onready var _sprite = $Sprite2D
-var stats : Dictionary = {"str": 0, "dex": 0, "cons": 0, 
-	"intel": 0, "wisdom": 0, "charisma": 0,  "health": 10}
-
+var stats : Dictionary = {
+		"str": 3, 
+		"dex": 5, 
+		"cons": 4, 
+		"intel": 1, 
+		"wisdom": 2, 
+		"charisma": 2,
+		"health": 10
+		}
+var speed : float = 50.0 + (2.5 * stats.dex)
 func _ready():
 	pass
 
@@ -23,8 +29,8 @@ func fire_arrow():
 	arrow_instance.position = global_position
 	
 	# stat scaling
-	var base_damage = 8
-	arrow_instance.damage = base_damage + (PlayerVariables.strength * 0.7) # Bow still scales with Strength but less
+	var base_damage = 3
+	arrow_instance.damage = roundf(base_damage + (PlayerVariables.strength * 0.7)) # Bow still scales with Strength but less
 	
 	get_tree().current_scene.add_child(arrow_instance)
 	arrow_instance.set_direction(get_parent().attack_dir)
@@ -34,9 +40,9 @@ func fire_charged_shot():
 	charged_shot_instance.position = global_position
 	
 	# stat scaling
-	var base_damage = 15
-	charged_shot_instance.pierce_amount = 8 + (PlayerVariables.dexterity * 0.5) # Dexterity increases pierce count
-	charged_shot_instance.damage = base_damage + (PlayerVariables.strength * 0.7) # Bow still scales with Strength but less
+	var base_damage = 2
+	charged_shot_instance.pierce_amount = roundf(3 + (PlayerVariables.dexterity * 0.5)) # Dexterity increases pierce count
+	charged_shot_instance.damage = roundf(base_damage + (PlayerVariables.strength * 0.4)) # Bow still scales with Strength but less
 	PlayerVariables.k_cooldown.wait_time = 1.0 - (PlayerVariables.dexterity * 0.05) # Dex reduces cooldown
 	
 	get_tree().current_scene.add_child(charged_shot_instance)
