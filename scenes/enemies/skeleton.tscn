@@ -1,4 +1,5 @@
-[gd_scene load_steps=20 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=29 format=3 uid="uid://3gspkn7wbrat"]
+
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
@@ -8,6 +9,11 @@
 [ext_resource type="Script" path="res://scripts/skeleton/attack.gd" id="5_d3qlm"]
 [ext_resource type="Script" path="res://scripts/skeleton/hit.gd" id="6_bp8s2"]
 [ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_2c1ic"]
+[ext_resource type="AudioStream" uid="uid://bfv4jjlhhd7r8" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/02_Skeleton_damage.wav" id="9_cyjxx"]
+[ext_resource type="AudioStream" uid="uid://cjts1iotfha76" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/01_Skeleton_attack.wav" id="10_jjbiu"]
+[ext_resource type="AudioStream" uid="uid://w3ltj2muvqd1" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/07_Skeleton_walk_1.wav" id="11_gk7d7"]
+[ext_resource type="AudioStream" uid="uid://ntu66l1gryqk" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/08_Skeleton_walk_2.wav" id="12_kk6e3"]
+[ext_resource type="AudioStream" uid="uid://dcqjapu3o7a48" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Skeleton/03_Skeleton_death.wav" id="13_unwoo"]
 [ext_resource type="Script" path="res://scripts/skeleton/stun.gd" id="9_qexxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axffb"]
@@ -85,6 +91,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_Attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_f4r8n"]
 resource_name = "die"
@@ -100,6 +120,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/SFX_Death")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ax8t4"]
@@ -128,6 +162,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_Hurt")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_sfvf3"]
@@ -163,6 +211,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/SFX_Walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ck52t"]
 _data = {
@@ -173,6 +238,37 @@ _data = {
 "idle": SubResource("Animation_sfvf3"),
 "walk": SubResource("Animation_fkewm")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m2vfh"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("9_cyjxx")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lnmbv"]
+random_pitch = 1.75
+streams_count = 1
+stream_0/stream = ExtResource("10_jjbiu")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStream" id="AudioStream_aw7bb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l8oel"]
+playback_mode = 1
+random_pitch = 1.7
+streams_count = 3
+stream_0/stream = ExtResource("11_gk7d7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("12_kk6e3")
+stream_1/weight = 1.0
+stream_2/stream = SubResource("AudioStream_aw7bb")
+stream_2/weight = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p7dv7"]
+random_pitch = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("13_unwoo")
+stream_0/weight = 1.0
 
 [node name="Skeleton" type="CharacterBody2D"]
 z_index = 2
@@ -240,6 +336,25 @@ parent = NodePath("../..")
 
 [node name="Dead" type="Node" parent="SkeletonMachine"]
 script = ExtResource("7_2c1ic")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SFX_Hurt" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_m2vfh")
+volume_db = -4.0
+
+[node name="SFX_Attack" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_lnmbv")
+volume_db = -6.0
+
+[node name="SFX_Walk" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_l8oel")
+volume_db = -8.0
+attenuation = 7.5
+
+[node name="SFX_Death" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_p7dv7")
+volume_db = -12.0
 
 [node name="Stun" type="Node" parent="SkeletonMachine"]
 script = ExtResource("9_qexxw")
