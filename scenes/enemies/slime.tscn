@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=22 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/slime/hit.gd" id="6_lib44"]
 [ext_resource type="Script" path="res://scripts/slime/dead.gd" id="7_r0np6"]
 [ext_resource type="Script" path="res://scripts/slime/summon.gd" id="8_pyw5i"]
+[ext_resource type="Script" path="res://scripts/slime/stun.gd" id="10_d1kii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3pcjk"]
 radius = 4.0
@@ -228,7 +229,7 @@ collision_layer = 8
 collision_mask = 10
 script = ExtResource("1_j5enk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.66667)
 shape = SubResource("CircleShape2D_3pcjk")
 
@@ -288,6 +289,9 @@ script = ExtResource("7_r0np6")
 
 [node name="Summon" type="Node" parent="SlimeMachine"]
 script = ExtResource("8_pyw5i")
+
+[node name="Stun" type="Node" parent="SlimeMachine"]
+script = ExtResource("10_d1kii")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

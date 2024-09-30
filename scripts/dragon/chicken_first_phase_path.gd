@@ -23,6 +23,8 @@ func on_physics_process(_delta: float) -> void:
 
 
 func _on_peck_sensor_body_entered(body):
+	if parent.dead:
+		return
 	if !parent.phase_two:
 		if body.is_in_group("player_hurtbox"):
 			state_machine.change_state("Peck")

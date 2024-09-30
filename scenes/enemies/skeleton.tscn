@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://3gspkn7wbrat"]
+[gd_scene load_steps=20 format=3 uid="uid://3gspkn7wbrat"]
 
 [ext_resource type="Texture2D" uid="uid://iowdc4ys7uav" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton/Skeleton.png" id="1_etx3f"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton.gd" id="1_fxnhd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/skeleton/attack.gd" id="5_d3qlm"]
 [ext_resource type="Script" path="res://scripts/skeleton/hit.gd" id="6_bp8s2"]
 [ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="7_2c1ic"]
+[ext_resource type="Script" path="res://scripts/skeleton/stun.gd" id="9_qexxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axffb"]
 radius = 4.0
@@ -181,9 +182,10 @@ collision_mask = 10
 script = ExtResource("1_fxnhd")
 movement_speed = 5.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 3)
 shape = SubResource("CircleShape2D_axffb")
+debug_color = Color(0.635294, 0.52549, 0, 0.690196)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -238,5 +240,8 @@ parent = NodePath("../..")
 
 [node name="Dead" type="Node" parent="SkeletonMachine"]
 script = ExtResource("7_2c1ic")
+
+[node name="Stun" type="Node" parent="SkeletonMachine"]
+script = ExtResource("9_qexxw")
 
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
