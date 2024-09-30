@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7axa6x7ucs38"]
+[gd_scene load_steps=13 format=3 uid="uid://7axa6x7ucs38"]
 
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_kulum"]
 [ext_resource type="PackedScene" uid="uid://jkwc6y6akd4m" path="res://scenes/characters/player/player.tscn" id="3_siw42"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgse00mbor3jw" path="res://scenes/ui/xp_textured_bar.tscn" id="7_cbrkd"]
 [ext_resource type="PackedScene" uid="uid://dhvjys782asf2" path="res://scenes/ui/deathpopup.tscn" id="8_7aptp"]
 [ext_resource type="PackedScene" uid="uid://6mb8nigb5j13" path="res://scenes/enemies/enemy_manager.tscn" id="8_dml2e"]
+[ext_resource type="PackedScene" uid="uid://c32u78j6geawe" path="res://scenes/ui/beatDragonScreen.tscn" id="9_ia8rx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohjmb"]
 texture = ExtResource("1_kulum")
@@ -417,3 +418,6 @@ offset_left = -25.92
 offset_top = -28.72
 offset_right = 22.0798
 offset_bottom = 19.28
+
+[node name="DragonPopUp" parent="CanvasLayer" instance=ExtResource("9_ia8rx")]
+visible = false

@@ -1,5 +1,7 @@
 extends StateMachineState
 
+
+
 func on_enter():
 	state_machine.animation_player.play("die")
 	
@@ -12,3 +14,7 @@ func on_enter():
 	
 func _on_death_timeout():
 	state_machine.get_parent().queue_free()
+
+func on_animation_finished(_anim_name: StringName) -> void:
+	print("boss dead")
+	GameManager.boss_dead.emit()
