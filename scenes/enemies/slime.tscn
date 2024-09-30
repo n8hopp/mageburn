@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cmcoxviyvpkk7" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/04_Slime_jump.wav" id="12_6n2sb"]
 [ext_resource type="AudioStream" uid="uid://fpk2w3w2rfkl" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/05_Slime_land.wav" id="13_jc70f"]
 [ext_resource type="AudioStream" uid="uid://bwj148ygf06dh" path="res://assets/sfx/Minifantasy_Creatures_SFX_v3.0/Monsters/Evil_Snowman/07_Evil_Snowman_Throw_ball.wav" id="14_w7er4"]
+[ext_resource type="Script" path="res://scripts/slime/stun.gd" id="10_d1kii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3pcjk"]
 radius = 4.0
@@ -330,7 +331,7 @@ collision_layer = 8
 collision_mask = 10
 script = ExtResource("1_j5enk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.66667)
 shape = SubResource("CircleShape2D_3pcjk")
 
@@ -390,6 +391,9 @@ script = ExtResource("7_r0np6")
 
 [node name="Summon" type="Node" parent="SlimeMachine"]
 script = ExtResource("8_pyw5i")
+
+[node name="Stun" type="Node" parent="SlimeMachine"]
+script = ExtResource("10_d1kii")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
