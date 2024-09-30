@@ -19,7 +19,7 @@ func _process(delta):
 
 func _on_enemy_timer_timeout():
 	var enemy
-	if randf() > 1:
+	if randf() > 0.25:
 		enemy = skeleton.instantiate()
 	else:
 		enemy = slime.instantiate()
@@ -29,10 +29,10 @@ func _on_enemy_timer_timeout():
 func _on_wave_timer_timeout():
 	for x in range(1,10):
 		var enemy
-		if randf() > 0.0025:
+		if randf() > 0.25:
 			enemy = skeleton.instantiate()
 		else:
-			enemy = slime.instantiate()
+			enemy = boar.instantiate()
 		instance_new_enemy(enemy)
 	print("Wave incoming!!")
 
