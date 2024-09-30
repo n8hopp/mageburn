@@ -399,6 +399,8 @@ z_index = 5
 position = Vector2(320, 320)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
+process_mode = 4
+visible = false
 zoom = Vector2(4, 4)
 limit_left = -128
 limit_top = -128

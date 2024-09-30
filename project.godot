@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 
 PlayerVariables="*res://scenes/basic_items/PlayerVariables.tscn"
 GameManager="*res://scenes/basic_items/game_manager.tscn"
+GlobalMusic="*res://scenes/basic_items/global_music.tscn"
 
 [display]
 

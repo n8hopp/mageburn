@@ -1,10 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyj5krx8y6t6q"]
+[gd_scene load_steps=32 format=3 uid="uid://dyj5krx8y6t6q"]
 
 [ext_resource type="Script" path="res://scripts/player/paladin.gd" id="1_o2e00"]
 [ext_resource type="Texture2D" uid="uid://dtsfq8k3g4hg6" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons34.png" id="2_ipi7j"]
 [ext_resource type="Texture2D" uid="uid://m0yaxwx2au0v" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Knight/Knight/Knight.png" id="2_v2ixv"]
 [ext_resource type="Texture2D" uid="uid://bawy4lrx8by71" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons51.png" id="3_e5o8j"]
 [ext_resource type="Texture2D" uid="uid://djvmgcu4jak5d" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons2.png" id="4_t0pnx"]
+[ext_resource type="AudioStream" uid="uid://bf6qrkten0fdn" path="res://assets/sfx/Minifantasy_True_Heroes_III_SFX_Pack/_Generic_Human/Step_grass_1.wav" id="6_4lyuk"]
+[ext_resource type="AudioStream" uid="uid://bcokyjahgsqyx" path="res://assets/sfx/Minifantasy_True_Heroes_III_SFX_Pack/_Generic_Human/Step_grass_2.wav" id="7_gups5"]
+[ext_resource type="AudioStream" uid="uid://bujj80qk8vct1" path="res://assets/sfx/Minifantasy_True_Heroes_III_SFX_Pack/_Generic_Human/Step_grass_3.wav" id="8_yw1my"]
+[ext_resource type="AudioStream" uid="uid://b4nptns8k8sos" path="res://assets/sfx/Minifantasy_Dungeon_SFX/07_human_atk_sword_1.wav" id="9_ttlp3"]
+[ext_resource type="AudioStream" uid="uid://3xxqvwdardt8" path="res://assets/sfx/Minifantasy_Dungeon_SFX/07_human_atk_sword_2.wav" id="10_6deok"]
+[ext_resource type="AudioStream" uid="uid://8f1y1s42kmnq" path="res://assets/sfx/Minifantasy_Dungeon_SFX/07_human_atk_sword_3.wav" id="11_l76xp"]
+[ext_resource type="AudioStream" uid="uid://bxe63nrcdedgw" path="res://assets/sfx/Minifantasy_Dungeon_SFX/10_human_special_atk_1.wav" id="12_dhhbf"]
+[ext_resource type="AudioStream" uid="uid://ckflha0bihqui" path="res://assets/sfx/Minifantasy_Dungeon_SFX/10_human_special_atk_2.wav" id="13_gbds5"]
+[ext_resource type="AudioStream" uid="uid://ckio4xuwkdbgx" path="res://assets/sfx/Minifantasy_True_Heroes_III_SFX_Pack/Wizard/Special/09_Wizard_Fire_Torrent.wav" id="14_3qtag"]
+[ext_resource type="AudioStream" uid="uid://djmjjlwyspw2g" path="res://assets/sfx/Minifantasy_True_Heroes_III_SFX_Pack/Fighter/Special/09_Fighter_Cataclism.wav" id="14_qafkq"]
+[ext_resource type="AudioStream" uid="uid://dvciwmwnd8s6r" path="res://assets/sfx/Minifantasy_True_Heroes_III_SFX_Pack/Fighter/General/05_Fighter_Death.wav" id="15_ym64r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmel2"]
 size = Vector2(12, 12)
@@ -63,6 +74,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SFX_Sword")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_qyj7c"]
 resource_name = "attack2"
@@ -111,6 +136,23 @@ tracks/2/keys = {
 "method": &"_start_cooldown"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFX/SFX_WaveAttack")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.375, 0.875),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rbfbn"]
 resource_name = "attack3"
@@ -156,6 +198,23 @@ tracks/2/keys = {
 "method": &"_start_cooldown"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFX/SFX_ThrowFire")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.125, 0.625),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_eqjji"]
 resource_name = "death"
@@ -171,6 +230,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [77, 78, 79, 80]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/SFX_Death")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_xr2ul"]
@@ -226,6 +299,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [11, 12, 13, 14, 15, 16, 17, 18]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/SFX_Walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ryptq"]
 _data = {
@@ -241,6 +331,39 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar0cw"]
 size = Vector2(27, 26)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_66wmt"]
+streams_count = 3
+stream_0/stream = ExtResource("6_4lyuk")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_gups5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_yw1my")
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kylkf"]
+streams_count = 3
+stream_0/stream = ExtResource("9_ttlp3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_6deok")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_l76xp")
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2yxjj"]
+streams_count = 2
+stream_0/stream = ExtResource("12_dhhbf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("13_gbds5")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_51a00"]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("14_qafkq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("14_3qtag")
+stream_1/weight = 1.0
 
 [node name="Paladin" type="CharacterBody2D" groups=["player_hurtbox"]]
 texture_filter = 2
@@ -259,7 +382,6 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
 texture_filter = 1
 texture = ExtResource("2_v2ixv")
 hframes = 11
@@ -285,6 +407,28 @@ limit_bottom = 2240
 limit_smoothed = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SFX_Walk" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_66wmt")
+volume_db = -6.0
+
+[node name="SFX_Sword" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_kylkf")
+
+[node name="SFX_WaveAttack" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_2yxjj")
+
+[node name="SFX_ThrowFire" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_51a00")
+max_polyphony = 2
+
+[node name="SFX_Death" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_ym64r")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [connection signal="area_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
