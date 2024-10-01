@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D
 
 @export var follow_target : CharacterBody2D
-@export var hitpoints = 10
+@export var hitpoints = 100
 @onready var max_hp = hitpoints
 
 @export var movement_speed : float = 30.0
