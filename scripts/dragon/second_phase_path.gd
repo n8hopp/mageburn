@@ -30,7 +30,7 @@ func on_physics_process(_delta: float) -> void:
 
 
 func _on_slash_sensor_body_entered(body):
-	if parent.dead:
+	if parent.dead or state_machine == null:
 		return
 	if parent.phase_two and !parent.sleeby:
 		if body.is_in_group("player_hurtbox"):
