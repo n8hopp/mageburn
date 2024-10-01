@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b7jqkl2qbv4p1" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Boss Chicken/ChickenWalking.png" id="7_fmnqs"]
 [ext_resource type="Script" path="res://scripts/skeleton/skeleton_machine.gd" id="7_jy7pc"]
 [ext_resource type="Texture2D" uid="uid://d3nf8w1t1pdvq" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Boss Chicken/ChickenSleeping-Sheet.png" id="9_g015m"]
-[ext_resource type="Script" path="res://scripts/skeleton/dead.gd" id="11_7sngf"]
 [ext_resource type="Script" path="res://scripts/dragon/chicken_first_phase_path.gd" id="11_ifjwv"]
 [ext_resource type="Script" path="res://scripts/dragon/chicken_hit.gd" id="12_6ppdp"]
+[ext_resource type="Script" path="res://scenes/enemies/boss_dead.gd" id="13_52ueq"]
 [ext_resource type="Script" path="res://scripts/dragon/peck.gd" id="14_uw3nb"]
 [ext_resource type="Script" path="res://scripts/dragon/slash.gd" id="15_24xe2"]
 [ext_resource type="Script" path="res://scripts/dragon/tantrum.gd" id="16_ldxhm"]
@@ -918,7 +918,7 @@ script = ExtResource("12_6ppdp")
 parent = NodePath("../..")
 
 [node name="Dead" type="Node" parent="BossMachine"]
-script = ExtResource("11_7sngf")
+script = ExtResource("13_52ueq")
 
 [node name="Peck" type="Node" parent="BossMachine"]
 script = ExtResource("14_uw3nb")
