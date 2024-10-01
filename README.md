@@ -1,4 +1,10 @@
-All the player has to do is run the executable and select the character they want. Once the character has been selected they will spawn in and the game starts! 
+All the player has to do is run the executable - due to missing Publisher on both platforms, you need:
+  - On Windows, when security prompt opens:
+    - More Info button
+    - Open Anyway
+  - On MacOS, when you open the DMG file, you need to right click and click "Open". Then click "Open" again.
+
+and then the Player can select the character they want. Once the character has been selected they will spawn in and the game starts! 
 
 Nux Mode: In order to run Nux Mode, the player has to select the Nux Mode checkbox on the character select screen.
 
