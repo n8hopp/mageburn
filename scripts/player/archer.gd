@@ -29,7 +29,7 @@ func fire_arrow():
 	arrow_instance.position = global_position
 	
 	# stat scaling
-	var base_damage = 3
+	var base_damage = 5
 	arrow_instance.damage = roundf(base_damage + (PlayerVariables.strength * 0.7)) # Bow still scales with Strength but less
 	
 	get_tree().current_scene.add_child(arrow_instance)
