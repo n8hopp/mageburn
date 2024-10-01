@@ -14,13 +14,13 @@ shape = SubResource("RectangleShape2D_7hidy")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 5.0
 
 [node name="WaveTimer" type="Timer" parent="."]
-wait_time = 29.0
+wait_time = 15.0
 
 [node name="DragonTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 120.0
 one_shot = true
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
