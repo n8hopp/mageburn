@@ -34,7 +34,9 @@ func _on_wave_timer_timeout():
 	
 	for x in range(1,wave_size):
 		var enemy
-		if randf() > 0.25:
+		if randf() > 0.5:
+			enemy = skeleton.instantiate()
+		elif randf() > 0.9:
 			enemy = skeleton.instantiate()
 		else:
 			enemy = boar.instantiate()
