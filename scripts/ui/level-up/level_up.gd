@@ -116,7 +116,10 @@ func _toggle_visible():
 	
 func con_update(value):
 	# if we change constitution in the stat block, change the displayed modifier with what it would be upon levelup
-	con_increase_mod = floori((value-10.0)/2.0)
+	if(((value-10.0)/2.0)<0):
+		con_increase_mod = 0
+	else:
+		con_increase_mod = floori((value-10.0)/2.0)
 	modifier_symbol = PlayerVariables.modifier_symbol(con_increase_mod)
 	var fixed_format_label = "fixed %s %s %s hp"
 	fixed_increase_label.text = fixed_format_label % [standard_increase,modifier_symbol,abs(con_increase_mod)]
