@@ -95,7 +95,10 @@ func _ready():
 func calculate_bonuses():
 	str_bonus = floori((strength-10.0)/2.0)
 	dex_bonus = floori((dexterity-10.0)/2.0)
-	con_bonus = floori((constitution-10.0)/2.0)
+	if(((constitution-10.0)/2.0)>0):
+		con_bonus = floori((constitution-10.0)/2.0)
+	else:
+		con_bonus = 0
 	int_bonus = floori((intelligence-10.0)/2.0)
 	wis_bonus = floori((wisdom-10.0)/2.0)
 	cha_bonus = floori((charisma-10.0)/2.0)
