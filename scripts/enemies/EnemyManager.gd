@@ -5,6 +5,8 @@ var slime = preload("res://scenes/enemies/slime.tscn")
 var dragon = preload("res://scenes/enemies/boss_chicken.tscn")
 var boar = preload("res://scenes/enemies/boar.tscn")
 
+var num_wave = 0
+
 @onready var playable_area = find_child("CollisionShape2D").shape.size
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +21,7 @@ func _process(delta):
 
 func _on_enemy_timer_timeout():
 	var enemy
-	if randf() > 0.25:
+	if randf() > 0.1:
 		enemy = skeleton.instantiate()
 	else:
 		enemy = slime.instantiate()
@@ -27,7 +29,10 @@ func _on_enemy_timer_timeout():
 	print("Enemy incoming!")
 
 func _on_wave_timer_timeout():
-	for x in range(1,10):
+	num_wave += 1
+	var wave_size = 3 * log(num_wave) + 1
+	
+	for x in range(1,wave_size):
 		var enemy
 		if randf() > 0.25:
 			enemy = skeleton.instantiate()
