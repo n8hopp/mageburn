@@ -834,6 +834,7 @@ radius = 4.0
 [node name="BossChicken" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_6yaju")
+sleeby = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

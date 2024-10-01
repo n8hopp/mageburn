@@ -3,6 +3,7 @@ extends Area2D
 var skeleton = preload("res://scenes/enemies/skeleton.tscn")
 var slime = preload("res://scenes/enemies/slime.tscn")
 var dragon = preload("res://scenes/enemies/boss_chicken.tscn")
+var boar = preload("res://scenes/enemies/boar.tscn")
 
 var num_wave = 0
 
@@ -33,10 +34,10 @@ func _on_wave_timer_timeout():
 	
 	for x in range(1,wave_size):
 		var enemy
-		if randf() > 0.3:
+		if randf() > 0.25:
 			enemy = skeleton.instantiate()
 		else:
-			enemy = slime.instantiate()
+			enemy = boar.instantiate()
 		instance_new_enemy(enemy)
 	print("Wave incoming!!")
 
