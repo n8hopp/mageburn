@@ -16,13 +16,14 @@ func _on_quit_game_button_pressed():
 func _on_try_again_button_pressed():
 	PlayerVariables.current_health_pool = 10
 	PlayerVariables.current_hp = 10
-	PlayerVariables.current_experience = 23
+	PlayerVariables.current_experience = 0
 	PlayerVariables.level = 1
 	# Reset unlocked abilities
 	PlayerVariables.k_locked = true
 	PlayerVariables.l_locked = true
 	# Makes sure that Nux Mode isn't still active
 	PlayerVariables.nux_mode = false
+	PlayerVariables.experience_to_level = 5
 	
 	get_tree().change_scene_to_file("res://scenes/ui/CharacterSelect.tscn")
 
