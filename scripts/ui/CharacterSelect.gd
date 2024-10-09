@@ -17,3 +17,7 @@ func _on_check_box_toggled(toggled_on):
 		PlayerVariables.nux_mode = true
 	else:
 		PlayerVariables.nux_mode = false
+
+
+func _on_leaderboard_pressed():
+	get_tree().change_scene_to_file("res://addons/silent_wolf/Scores/Leaderboard-Mageburn.tscn")
