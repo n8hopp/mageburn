@@ -20,6 +20,7 @@ config/icon="res://assets/icon.svg"
 PlayerVariables="*res://scenes/basic_items/player_variables.tscn"
 GameManager="*res://scenes/basic_items/game_manager.tscn"
 GlobalMusic="*res://scenes/basic_items/global_music.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [display]
 
@@ -40,7 +41,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/finite_state_machine/plugin.cfg")
+enabled=PackedStringArray("res://addons/finite_state_machine/plugin.cfg", "res://addons/silent_wolf/plugin.cfg")
 
 [gui]
 
