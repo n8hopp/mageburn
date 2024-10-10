@@ -25,7 +25,7 @@ func _on_try_again_button_pressed():
 	PlayerVariables.nux_mode = false
 	PlayerVariables.experience_to_level = 5
 	
-	get_tree().change_scene_to_file("res://scenes/ui/CharacterSelect.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/character_select.tscn")
 
 func _toggle_visible():
 	if shown:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dih7r6yshu0xn"]
 
-[ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_dumui"]
-[ext_resource type="Script" path="res://scripts/ui/startscreen.gd" id="2_rmt6j"]
+[ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_jutog"]
+[ext_resource type="Script" path="res://scripts/ui/start_screen.gd" id="2_4wjah"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
 line_spacing = 1.0
@@ -15,8 +15,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_dumui")
-script = ExtResource("2_rmt6j")
+theme = ExtResource("1_jutog")
+script = ExtResource("2_4wjah")
 
 [node name="Panel" type="Panel" parent="."]
 texture_filter = 1
@@ -59,7 +59,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-theme = ExtResource("1_dumui")
+theme = ExtResource("1_jutog")
 theme_override_font_sizes/font_size = 80
 text = "Start"
 

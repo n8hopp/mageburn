@@ -3,9 +3,9 @@
 [ext_resource type="Theme" uid="uid://cisdto7c2727r" path="res://assets/ui/theme_ability_ui.tres" id="1_t05ou"]
 [ext_resource type="Texture2D" uid="uid://cagscsebu3w2p" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons17.png" id="2_7pr8f"]
 [ext_resource type="Shader" path="res://scenes/ui/locked_icon.gdshader" id="3_8xg11"]
-[ext_resource type="Script" path="res://scenes/ui/j_texture.gd" id="3_lfrxw"]
-[ext_resource type="Script" path="res://scenes/ui/k_texture.gd" id="4_yqebk"]
-[ext_resource type="Script" path="res://scenes/ui/l_texture.gd" id="5_cb3dd"]
+[ext_resource type="Script" path="res://scripts/ui/j_texture.gd" id="3_lfrxw"]
+[ext_resource type="Script" path="res://scripts/ui/k_texture.gd" id="4_yqebk"]
+[ext_resource type="Script" path="res://scripts/ui/l_texture.gd" id="5_cb3dd"]
 
 [sub_resource type="Theme" id="Theme_nt77n"]
 

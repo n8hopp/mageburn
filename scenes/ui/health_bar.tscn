@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://bpsu201lxxu0o"]
 
-[ext_resource type="Texture2D" uid="uid://bnxr8xhalahkq" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_1x.png" id="1_0eei4"]
-[ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="2_3ui4i"]
-[ext_resource type="Script" path="res://scripts/texture_progress_bar.gd" id="3_elvms"]
+[ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="1_omndr"]
+[ext_resource type="Texture2D" uid="uid://bnxr8xhalahkq" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_1x.png" id="2_gko6d"]
+[ext_resource type="Script" path="res://scripts/ui/hp_bar.gd" id="3_dfv22"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndtnt"]
-atlas = ExtResource("2_3ui4i")
+atlas = ExtResource("1_omndr")
 region = Rect2(399, 36, 45, 43)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqkwk"]
-atlas = ExtResource("1_0eei4")
+atlas = ExtResource("2_gko6d")
 region = Rect2(0, 88, 40, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpj8d"]
-atlas = ExtResource("2_3ui4i")
+atlas = ExtResource("1_omndr")
 region = Rect2(0, 440, 64, 8)
 margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
@@ -33,4 +33,4 @@ stretch_margin_bottom = 4
 texture_under = SubResource("AtlasTexture_ndtnt")
 texture_over = SubResource("AtlasTexture_tqkwk")
 texture_progress = SubResource("AtlasTexture_mpj8d")
-script = ExtResource("3_elvms")
+script = ExtResource("3_dfv22")
