@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://hlf75qg8wppn"]
+[gd_scene load_steps=36 format=3 uid="uid://hlf75qg8wppn"]
 
 [ext_resource type="Script" path="res://scripts/enemies/dragon/dragon_chicken.gd" id="1_6yaju"]
 [ext_resource type="Texture2D" uid="uid://bt530oxu4o4n2" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Boss Chicken/ChickenIdle-Sheet.png" id="1_l4kip"]
@@ -813,6 +813,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:sleeby")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86o6h"]
