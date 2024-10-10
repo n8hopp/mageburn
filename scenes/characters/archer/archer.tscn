@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnql14nutk7il"]
+[gd_scene load_steps=26 format=3 uid="uid://bnql14nutk7il"]
 
 [ext_resource type="Script" path="res://scripts/player/archer.gd" id="1_31qcb"]
 [ext_resource type="Texture2D" uid="uid://bl1xfj2jmdptc" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons9.png" id="2_7qr5t"]
@@ -260,6 +260,10 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("14_80w0u")
 stream_1/weight = 1.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dsvt"]
+radius = 26.0
+height = 66.0
+
 [node name="Archer" type="CharacterBody2D" groups=["player_hurtbox"]]
 z_index = 3
 texture_filter = 1
@@ -315,3 +319,9 @@ stream = SubResource("AudioStreamRandomizer_4dkkk")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="XPPickupRadius" type="Area2D" parent="." groups=["xp_magnet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XPPickupRadius"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2dsvt")

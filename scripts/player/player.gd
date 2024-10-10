@@ -121,8 +121,6 @@ func _physics_process(delta):
 	speed = 50.0 + (1.5 * PlayerVariables.dexterity)
 	player_class.velocity = input_dir * speed
 	player_class.move_and_slide()
-	
-
 
 func _on_death_timer_timeout():
 	PlayerVariables.death.emit()
