@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bnxr8xhalahkq" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_1x.png" id="1_0eei4"]
 [ext_resource type="Texture2D" uid="uid://cg74l6devy00b" path="res://assets/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="2_3ui4i"]
-[ext_resource type="Script" path="res://scripts/texture_progress_bar.gd" id="3_elvms"]
+[ext_resource type="Script" path="res://scripts/ui/texture_progress_bar.gd" id="3_elvms"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndtnt"]
 atlas = ExtResource("2_3ui4i")

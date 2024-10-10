@@ -1,7 +1,7 @@
 All the player has to do is run the executable - due to missing Publisher on both platforms, you need:
   - On Windows, when security prompt opens:
-    - More Info button
-    - Open Anyway
+	- More Info button
+	- Open Anyway
   - On MacOS, when you open the DMG file, you need to right click and click "Open". Then click "Open" again.
 
 and then the Player can select the character they want. Once the character has been selected they will spawn in and the game starts! 
@@ -23,6 +23,7 @@ L - Third attack (Unlocked at level 10)
 Leveling
 X - Level Up (Only in Nux Mode)
 Mouse - Used to select stats and health amount
+
 ## Acknowledgements:
  - Minifantasy SFX and Music by Leopahz on itch.io (https://itch.io/s/79857/leohpaz-complete-sfx-bundle)
  - Animated Traps by stealthix on itch.io (https://stealthix.itch.io/animated-traps)
