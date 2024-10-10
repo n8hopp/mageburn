@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byjefcies42ni" path="res://assets/ui/Cryo's Mini GUI/Buttons/buttons_4x.png" id="2_n3din"]
 [ext_resource type="Script" path="res://scripts/ui/level-up/stat_selector.gd" id="3_nrh0t"]
 [ext_resource type="Texture2D" uid="uid://doqjlx5ghppvk" path="res://assets/ui/icon_levelarrow.tres" id="4_jehdm"]
-[ext_resource type="Script" path="res://scripts/ui/level-up/dicebutton.gd" id="5_0deqm"]
+[ext_resource type="Script" path="res://scripts/ui/level-up/dice_button.gd" id="5_0deqm"]
 [ext_resource type="Script" path="res://scripts/ui/level-up/con_selector.gd" id="6_mub86"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gr8gi"]

@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Mageburn"
-run/main_scene="res://scenes/ui/startscreen.tscn"
+run/main_scene="res://scenes/ui/start_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-PlayerVariables="*res://scenes/basic_items/PlayerVariables.tscn"
+PlayerVariables="*res://scenes/basic_items/player_variables.tscn"
 GameManager="*res://scenes/basic_items/game_manager.tscn"
 GlobalMusic="*res://scenes/basic_items/global_music.tscn"
 
