@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c32u78j6geawe"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_ve14l"]
-[ext_resource type="Script" path="res://scenes/ui/beatDragonScreen.gd" id="2_1iehi"]
+[ext_resource type="Script" path="res://scripts/ui/beatDragonScreen.gd" id="2_1iehi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
 line_spacing = 1.0
