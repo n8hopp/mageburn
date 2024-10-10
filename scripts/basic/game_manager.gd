@@ -9,6 +9,7 @@ func _unhandled_key_input(event):
 		game_paused.emit()
 	if event.is_action_pressed("placeholder_levelup"):
 		if PlayerVariables.nux_mode == true:
+			PlayerVariables.current_experience = PlayerVariables.experience_to_level
 			level_up.emit()
 			
 func _ready():

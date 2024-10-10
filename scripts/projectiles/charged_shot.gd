@@ -14,7 +14,7 @@ func _ready():
 	
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * speed
-	rotation = velocity.angle()
+	scale.x = direction.normalized().x
 
 func _process(delta: float):
 	global_position += velocity * delta

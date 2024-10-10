@@ -36,9 +36,15 @@ func _toggle_visible():
 		$Panel/VBoxContainer/LeaderboardSubmit/submitbox.show()
 		$Panel/VBoxContainer/LeaderboardSubmit/submitted.hide()
 		$Panel/VBoxContainer/HBoxContainer2/levelnum.text = str(PlayerVariables.level)
+		if PlayerVariables.nux_mode:
+			$Panel/VBoxContainer/LeaderboardSubmit/NUXMODE_DISABLE.show()
+		else:
+			$Panel/VBoxContainer/LeaderboardSubmit/NUXMODE_DISABLE.hide()
 		show()
 		
 func _on_submit_score_button_pressed():
+	if PlayerVariables.nux_mode:
+		return
 	var name = $Panel/VBoxContainer/LeaderboardSubmit/submitbox/LineEdit.text
 	if name == "":
 		return

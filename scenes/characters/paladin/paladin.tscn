@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dyj5krx8y6t6q"]
+[gd_scene load_steps=33 format=3 uid="uid://dyj5krx8y6t6q"]
 
 [ext_resource type="Script" path="res://scripts/player/paladin.gd" id="1_o2e00"]
 [ext_resource type="Texture2D" uid="uid://dtsfq8k3g4hg6" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons34.png" id="2_ipi7j"]
@@ -365,6 +365,10 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("14_3qtag")
 stream_1/weight = 1.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_drkpm"]
+radius = 26.0
+height = 66.0
+
 [node name="Paladin" type="CharacterBody2D" groups=["player_hurtbox"]]
 texture_filter = 2
 collision_mask = 2
@@ -430,6 +434,12 @@ stream = ExtResource("15_ym64r")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="XPPickupRadius" type="Area2D" parent="." groups=["xp_magnet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XPPickupRadius"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_drkpm")
 
 [connection signal="area_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
