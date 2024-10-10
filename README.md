@@ -23,3 +23,12 @@ L - Third attack (Unlocked at level 10)
 Leveling
 X - Level Up (Only in Nux Mode)
 Mouse - Used to select stats and health amount
+## Acknowledgements:
+ - Minifantasy SFX and Music by Leopahz on itch.io (https://itch.io/s/79857/leohpaz-complete-sfx-bundle)
+ - Animated Traps by stealthix on itch.io (https://stealthix.itch.io/animated-traps)
+ - TinyRPG Character Asset Pack by zerie on itch.io (https://zerie.itch.io/tiny-rpg-character-asset-pack)
+ - fantasy_ tilesets by Kevins Moms House on itch.io (https://kevins-moms-house.itch.io/fantasy)
+ - Cryo's Mini GUI by paperhatlizard on itch.io (https://paperhatlizard.itch.io/cryos-mini-gui)
+ - Skill Icons by Quintino Pixels on itch.io (https://quintino-pixels.itch.io/free-pixel-art-skill-icons-pack)
+ - Dice Icons from skullreaper on itch.io (https://skullreaper.itch.io/dice-icons)
+ - Alagard font by Hewett Tsoi on dafont (https://www.dafont.com/alagard.font)
