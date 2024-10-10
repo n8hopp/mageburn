@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemies/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
-[ext_resource type="Script" path="res://scenes/enemies/hurtbox.gd" id="3_2rym7"]
+[ext_resource type="Script" path="res://scripts/enemies/hurtbox.gd" id="3_2rym7"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/slime_machine.gd" id="3_2wdpa"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/path.gd" id="4_4cjjn"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/attack.gd" id="5_4kgq1"]
