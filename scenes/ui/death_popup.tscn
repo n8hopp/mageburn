@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhvjys782asf2"]
+[gd_scene load_steps=5 format=3 uid="uid://dhvjys782asf2"]
 
 [ext_resource type="Theme" uid="uid://ca1ktew34wyrx" path="res://assets/ui/theme_paper_panel.tres" id="1_6745f"]
-[ext_resource type="Script" path="res://scripts/ui/death_popup.gd" id="2_35amj"]
+[ext_resource type="Script" path="res://scripts/ui/deathpopup.gd" id="2_35amj"]
+[ext_resource type="Texture2D" uid="uid://cgcswhrxsklxc" path="res://assets/ui/Cryo's Mini GUI/Buttons/checkno.png" id="3_e4l2q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwdhi"]
 line_spacing = 1.0
@@ -71,12 +72,13 @@ theme_override_constants/margin_bottom = 0
 
 [node name="submitbox" type="HBoxContainer" parent="Panel/VBoxContainer/LeaderboardSubmit"]
 layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/LeaderboardSubmit/submitbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "submit score to leaderboard: "
+text = "submit to leaderboard: "
 
 [node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/LeaderboardSubmit/submitbox"]
 layout_mode = 2
@@ -97,6 +99,29 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "submitted score to leaderboard!"
 horizontal_alignment = 1
+
+[node name="NUXMODE_DISABLE" type="Control" parent="Panel/VBoxContainer/LeaderboardSubmit"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/LeaderboardSubmit/NUXMODE_DISABLE"]
+layout_mode = 2
+offset_right = 1183.0
+offset_bottom = 62.0
+texture = ExtResource("3_e4l2q")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/LeaderboardSubmit/NUXMODE_DISABLE"]
+layout_mode = 2
+offset_top = 14.0
+offset_right = 1183.0
+offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+text = "CAN'T SUBMIT TO LEADERBOARD IN NUX MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuitGameButton" type="Button" parent="Panel"]
 layout_mode = 0
