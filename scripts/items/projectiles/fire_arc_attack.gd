@@ -17,7 +17,11 @@ func _ready():
 
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * speed
-	scale.x = direction.normalized().x
+	rotation = velocity.angle()
+	if direction.normalized().x > 0: # looking right (including diagonals)
+		scale.y = 1
+	else: # looking left (including diagonals)
+		scale.y = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
