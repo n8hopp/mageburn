@@ -164,10 +164,3 @@ func crit_roll(damage):
 		
 	print("damage: " + str(damage))
 	return [damage, critted]
-
-
-
-
-
-
-
