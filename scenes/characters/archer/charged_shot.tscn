@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6ub5lh25deje"]
 
 [ext_resource type="Texture2D" uid="uid://vi0hemqlotq" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Archer/Archer(Split Effects)/Archer-Attack02_Effect.png" id="1_kgrrt"]
-[ext_resource type="Script" path="res://scripts/projectiles/charged_shot.gd" id="1_xuckw"]
+[ext_resource type="Script" path="res://scripts/items/projectiles/charged_shot.gd" id="1_xuckw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxkq4"]
 size = Vector2(51, 7)
