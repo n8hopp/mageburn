@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_x2w3e"]
 [ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_rjg5j"]
 [ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_ywfel"]
-[ext_resource type="Script" path="res://scripts/enemies/EnemyManager.gd" id="4_78idk"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_manager.gd" id="4_78idk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohjmb"]
 texture = ExtResource("1_x2w3e")

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://5h3mlo158u6r" path="res://assets/environment/fantasy_ [version 2.0]/forest_/forest_.png" id="1_q3ak7"]
 [ext_resource type="PackedScene" uid="uid://3gspkn7wbrat" path="res://scenes/enemies/skeleton.tscn" id="2_mqi4e"]
 [ext_resource type="PackedScene" uid="uid://dyj5krx8y6t6q" path="res://scenes/characters/paladin/paladin.tscn" id="3_l6py8"]
-[ext_resource type="Script" path="res://scripts/enemies/EnemyManager.gd" id="4_1qvy7"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_manager.gd" id="4_1qvy7"]
 [ext_resource type="PackedScene" uid="uid://ddfbn1ajlagis" path="res://scenes/ui/level_up.tscn" id="5_1vaqq"]
 [ext_resource type="PackedScene" uid="uid://bpsu201lxxu0o" path="res://scenes/ui/texture_progress_bar.tscn" id="6_tuqw4"]
 [ext_resource type="PackedScene" uid="uid://cgse00mbor3jw" path="res://scenes/ui/xp_textured_bar.tscn" id="7_pp0bm"]
