@@ -17,7 +17,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-PlayerVariables="*res://scenes/basic_items/PlayerVariables.tscn"
+PlayerVariables="*res://scenes/basic_items/player_variables.tscn"
 GameManager="*res://scenes/basic_items/game_manager.tscn"
 GlobalMusic="*res://scenes/basic_items/global_music.tscn"
 
