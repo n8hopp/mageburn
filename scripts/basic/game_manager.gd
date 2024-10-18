@@ -9,6 +9,17 @@ func _unhandled_key_input(event):
 		game_paused.emit()
 	if event.is_action_pressed("placeholder_levelup"):
 		if PlayerVariables.nux_mode == true:
+			PlayerVariables.current_experience = PlayerVariables.experience_to_level
 			level_up.emit()
-	
+			
+func _ready():
+	SilentWolf.configure({
+	"api_key": "xV0qSrPBrt5x59MB9ND31avop9WbjxfO4t9uIt1i",
+	"game_id": "Mageburn",
+	"log_level": 1
+	})
 
+	SilentWolf.configure_scores({
+	"open_scene_on_close": "res://scenes/ui/start_screen.tscn"
+	})
+	

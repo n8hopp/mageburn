@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://de8a8yumgw07q"]
+[gd_scene load_steps=31 format=3 uid="uid://de8a8yumgw07q"]
 
 [ext_resource type="Script" path="res://scripts/enemies/slime/slime.gd" id="1_j5enk"]
 [ext_resource type="Texture2D" uid="uid://cy1a3lhd55gyl" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime/Slime.png" id="2_gulqv"]
@@ -295,33 +295,21 @@ _data = {
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hsi74"]
 playback_mode = 1
-random_pitch = 3.0
 streams_count = 1
 stream_0/stream = ExtResource("10_5bwt2")
-stream_0/weight = 1.0
-
-[sub_resource type="AudioStream" id="AudioStream_dffpe"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vfge1"]
-random_pitch = 1.5
-streams_count = 2
+streams_count = 1
 stream_0/stream = ExtResource("12_6n2sb")
-stream_0/weight = 1.0
-stream_1/stream = SubResource("AudioStream_dffpe")
-stream_1/weight = 3.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1li26"]
 playback_mode = 1
-random_pitch = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("13_jc70f")
-stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ew6fi"]
-random_pitch = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("14_w7er4")
-stream_0/weight = 1.0
 
 [node name="Slime" type="CharacterBody2D"]
 z_index = 2
@@ -398,29 +386,44 @@ script = ExtResource("10_d1kii")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="SFX" type="Node" parent="."]
+[node name="SFX" type="Node2D" parent="."]
 
 [node name="SFX_Hurt" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_hsi74")
 volume_db = -4.0
+max_distance = 400.0
+attenuation = 4.0
+playback_type = 2
 
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("11_cq4t6")
 volume_db = -8.0
+max_distance = 400.0
+attenuation = 4.0
+playback_type = 2
 
 [node name="SFX_UpMove" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_vfge1")
 volume_db = -8.0
 pitch_scale = 0.6
+max_distance = 400.0
+attenuation = 4.0
 max_polyphony = 2
+playback_type = 2
 
 [node name="SFX_DownMove" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_1li26")
+max_distance = 400.0
+attenuation = 4.0
 max_polyphony = 2
+playback_type = 2
 
 [node name="SFX_Attack" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_ew6fi")
 volume_db = -8.0
+max_distance = 400.0
+attenuation = 4.0
+playback_type = 2
 
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timer" to="SlimeMachine/Dead" method="_on_timer_timeout"]

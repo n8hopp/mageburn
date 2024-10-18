@@ -118,9 +118,14 @@ func level_up():
 		l_locked = false
 		unlock_l.emit()
 	
-	current_experience = 0
+	current_experience = current_experience - experience_to_level
 	experience_to_level = experience_to_level + 5
 	follow_target.speed = 50.0 + (2.5 * dexterity)
+	
+	# if we still have xp over the level up amount, call the level up sequence again
+	# will call this function again at the end of the whole sequence
+	if current_experience > experience_to_level:
+		GameManager.level_up.emit()
 	
 func cooldown_ability(ability_name):
 	match ability_name:
@@ -159,10 +164,3 @@ func crit_roll(damage):
 		
 	print("damage: " + str(damage))
 	return [damage, critted]
-
-
-
-
-
-
-
