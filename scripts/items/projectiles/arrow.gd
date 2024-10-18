@@ -1,7 +1,7 @@
 extends Area2D
 
 var velocity = Vector2.ZERO
-var range = 100.0
+var range = 400.0
 var speed = 200.0
 var damage
 var start_position = Vector2.ZERO
