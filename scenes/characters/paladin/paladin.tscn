@@ -395,32 +395,37 @@ debug_color = Color(2.69532e-06, 0.722601, 0.841319, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-limit_left = -128
-limit_top = -128
-limit_right = 4032
-limit_bottom = 2240
+limit_left = -96
+limit_top = -96
+limit_right = 1008
+limit_bottom = 560
 limit_smoothed = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
 
-[node name="SFX" type="Node" parent="."]
+[node name="SFX" type="Node2D" parent="."]
 
 [node name="SFX_Walk" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_66wmt")
 volume_db = -6.0
+playback_type = 2
 
 [node name="SFX_Sword" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_kylkf")
+playback_type = 2
 
 [node name="SFX_WaveAttack" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_2yxjj")
+playback_type = 2
 
 [node name="SFX_ThrowFire" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_51a00")
 max_polyphony = 2
+playback_type = 2
 
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("15_ym64r")
+playback_type = 2
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true

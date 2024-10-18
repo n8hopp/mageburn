@@ -285,32 +285,37 @@ frame = 24
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-limit_left = -128
-limit_top = -128
-limit_right = 4032
-limit_bottom = 2240
+limit_left = -96
+limit_top = -96
+limit_right = 1008
+limit_bottom = 560
 limit_smoothed = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
 
-[node name="SFX" type="Node" parent="."]
+[node name="SFX" type="Node2D" parent="."]
 
 [node name="SFX_Shoot" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_q7ajl")
+playback_type = 2
 
 [node name="SFX_ChargeShot" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("8_fj7co")
 attenuation = 1.86607
+playback_type = 2
 
 [node name="SFX_Walk" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_5vevq")
 volume_db = -6.0
+playback_type = 2
 
 [node name="SFX_Die" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("12_njwkb")
+playback_type = 2
 
 [node name="SFX_Hurt" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_4dkkk")
+playback_type = 2
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true

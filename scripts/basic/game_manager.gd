@@ -20,7 +20,6 @@ func _ready():
 	})
 
 	SilentWolf.configure_scores({
-	"open_scene_on_close": "res://scenes/ui/startscreen.tscn"
+	"open_scene_on_close": "res://scenes/ui/start_screen.tscn"
 	})
 	
-
