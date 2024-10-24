@@ -4,6 +4,8 @@ signal game_paused
 signal level_up
 signal boss_dead
 
+@export var max_enemies := 300
+
 func _unhandled_key_input(event):
 	if event.is_action_pressed("pause"):
 		game_paused.emit()

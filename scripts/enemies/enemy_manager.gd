@@ -21,6 +21,7 @@ func _process(delta):
 
 func _on_enemy_timer_timeout():
 	var enemy
+	
 	if randf() > 0.2:
 		enemy = skeleton.instantiate()
 	else:
@@ -51,6 +52,11 @@ func _on_dragon_timer_timeout():
 # find valid position to spawn enemy, then spawn it.
 # if it fails to find a valid location 10 times: give up
 func instance_new_enemy(enemy_instance):
+	var num_enemies = get_tree().get_node_count_in_group("hurtbox")
+		
+	if num_enemies >= GameManager.max_enemies:
+		return
+	
 	# create an enemy obj and get its size
 	var enemy = enemy_instance
 	var enemy_size = enemy.find_child("HurtboxShape").shape.size
