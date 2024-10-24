@@ -74,6 +74,8 @@ func instance_xp_orb():
 	var xp_orb = xp_orb_drop.instantiate()
 	xp_orb.global_position = global_position
 	xp_orb.z_index = 1
+	xp_orb.value = 20
+	xp_orb.modulate = Color("ff00ff")
 	get_tree().current_scene.add_child(xp_orb)
 
 func _on_peck_hitbox_body_entered(body):

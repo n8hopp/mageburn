@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://2wy4d8d5av0l"]
+
+[ext_resource type="Theme" uid="uid://x7v70g2k2cb" path="res://assets/ui/theme_leaderboard_item.tres" id="1_4vgut"]
+
+[node name="ScoreItem" type="Panel"]
+custom_minimum_size = Vector2(500, 50)
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_4vgut")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 32
+text = "1. Godzilla"
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.552941, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "13"
+horizontal_alignment = 2

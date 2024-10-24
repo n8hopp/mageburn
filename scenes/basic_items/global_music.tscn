@@ -2,7 +2,8 @@
 
 [ext_resource type="AudioStream" uid="uid://coh2tnx66id73" path="res://assets/sfx/Minifantasy_Dungeon_Music/Music/Goblins_Dance_(Battle).wav" id="1_20mxu"]
 
-[node name="GlobalMusic" type="AudioStreamPlayer2D"]
+[node name="GlobalMusic" type="AudioStreamPlayer"]
 process_mode = 3
 stream = ExtResource("1_20mxu")
+volume_db = -8.0
 autoplay = true

@@ -39,7 +39,7 @@ func wave_attack():
 	
 	get_tree().current_scene.add_child(wave_attack_instance)
 	wave_attack_instance.set_direction(get_parent().attack_dir)
-	
+
 func fire_attack():
 	var fire_attack_instance = fire_attack_scene.instantiate()
 	fire_attack_instance.position = global_position
@@ -62,6 +62,6 @@ func _on_hitbox_area_entered(area):
 		var base_damage = 5
 		var damage = roundf(base_damage + (PlayerVariables.strength * 0.8)) # Sword swing scales with Strength
 		area.take_damage(damage)
-		
+
 func _start_cooldown(attack_name : String):
 	PlayerVariables.cooldown_ability(attack_name)

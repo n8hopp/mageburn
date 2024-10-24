@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnql14nutk7il"]
+[gd_scene load_steps=26 format=3 uid="uid://bnql14nutk7il"]
 
 [ext_resource type="Script" path="res://scripts/player/archer.gd" id="1_31qcb"]
 [ext_resource type="Texture2D" uid="uid://bl1xfj2jmdptc" path="res://assets/ui/skill_icons_by_quintino_pixels/96x96/skill_icons9.png" id="2_7qr5t"]
@@ -247,18 +247,17 @@ _data = {
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5vevq"]
 streams_count = 3
 stream_0/stream = ExtResource("9_dpjnn")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("10_666sq")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("11_edogq")
-stream_2/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4dkkk"]
 streams_count = 2
 stream_0/stream = ExtResource("13_j0bc1")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("14_80w0u")
-stream_1/weight = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dsvt"]
+radius = 26.0
+height = 66.0
 
 [node name="Archer" type="CharacterBody2D" groups=["player_hurtbox"]]
 z_index = 3
@@ -286,32 +285,43 @@ frame = 24
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-limit_left = -128
-limit_top = -128
-limit_right = 4032
-limit_bottom = 2240
+limit_left = -96
+limit_top = -96
+limit_right = 1008
+limit_bottom = 560
 limit_smoothed = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
 
-[node name="SFX" type="Node" parent="."]
+[node name="SFX" type="Node2D" parent="."]
 
 [node name="SFX_Shoot" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_q7ajl")
+playback_type = 2
 
 [node name="SFX_ChargeShot" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("8_fj7co")
 attenuation = 1.86607
+playback_type = 2
 
 [node name="SFX_Walk" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_5vevq")
 volume_db = -6.0
+playback_type = 2
 
 [node name="SFX_Die" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("12_njwkb")
+playback_type = 2
 
 [node name="SFX_Hurt" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_4dkkk")
+playback_type = 2
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="XPPickupRadius" type="Area2D" parent="." groups=["xp_magnet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XPPickupRadius"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2dsvt")

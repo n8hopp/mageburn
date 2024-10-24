@@ -33,4 +33,23 @@ func _toggle_visible():
 		hide()
 	else:
 		shown = true
+		$Panel/VBoxContainer/LeaderboardSubmit/submitbox.show()
+		$Panel/VBoxContainer/LeaderboardSubmit/submitted.hide()
+		$Panel/VBoxContainer/HBoxContainer2/levelnum.text = str(PlayerVariables.level)
+		if PlayerVariables.nux_mode:
+			$Panel/VBoxContainer/LeaderboardSubmit/NUXMODE_DISABLE.show()
+		else:
+			$Panel/VBoxContainer/LeaderboardSubmit/NUXMODE_DISABLE.hide()
 		show()
+		
+func _on_submit_score_button_pressed():
+	if PlayerVariables.nux_mode:
+		return
+	var name = $Panel/VBoxContainer/LeaderboardSubmit/submitbox/LineEdit.text
+	if name == "":
+		return
+	else:
+		var score := int($Panel/VBoxContainer/HBoxContainer2/levelnum.text)
+		SilentWolf.Scores.save_score(name, score)
+		$Panel/VBoxContainer/LeaderboardSubmit/submitbox.hide()
+		$Panel/VBoxContainer/LeaderboardSubmit/submitted.show()

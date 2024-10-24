@@ -33,24 +33,24 @@ func _on_btn_down_pressed():
 			down_button.disabled = true
 
 func _on_btn_up_pressed():
-	if (label_num + 1) > max_num:
-		return
-	else:
-		# if valid up click, update label & remaining skill pts
-		label_num += 1
-		label.text = str(label_num)
-		PlayerVariables.skill_points = PlayerVariables.skill_points - 1
+	#if (label_num + 1) > max_num:
+		#return
+	#else:
+	# if valid up click, update label & remaining skill pts
+	label_num += 1
+	label.text = str(label_num)
+	PlayerVariables.skill_points = PlayerVariables.skill_points - 1
 
-		# if valid up click, then has to be points we can remove
-		down_button.disabled = false
+	# if valid up click, then has to be points we can remove
+	down_button.disabled = false
+	
+	## if we're at max level (20 by default) disable upgrading
+	#if label_num == max_num:
+		#up_button.disabled = true
 		
-		# if we're at max level (20 by default) disable upgrading
-		if label_num == max_num:
-			up_button.disabled = true
-			
-		# if we are out of skill points, emit signal to lock all buttons
-		if PlayerVariables.skill_points <= 0:
-			parent_panel.out_of_points.emit()
+	# if we are out of skill points, emit signal to lock all buttons
+	if PlayerVariables.skill_points <= 0:
+		parent_panel.out_of_points.emit()
 			
 func _oop():
 	confirm.disabled = false
