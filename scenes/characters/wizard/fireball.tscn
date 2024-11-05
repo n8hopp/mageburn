@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://c32hp3b2ppytg"]
+
+[ext_resource type="Texture2D" uid="uid://bk0cd723yu1ov" path="res://assets/character/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Magic(Projectile)/Wizard-Attack02_Effect.png" id="1_32nv4"]
+[ext_resource type="Script" path="res://scripts/items/projectiles/fireball.gd" id="1_dygvp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk35j"]
+size = Vector2(15.5, 14.5)
+
+[sub_resource type="Animation" id="Animation_wo5gu"]
+resource_name = "fireball"
+length = 0.3
+loop_mode = 1
+step = 0.0741
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0741, 0.1482, 0.2223),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_c3fub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_gk35j")]
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdjr2"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6t2f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ek72i"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_ortdy"]
+resource_name = "fireball_hit"
+length = 0.2
+step = 0.0741
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0741, 0.1482),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0769231, 0.153846),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("CircleShape2D_fdjr2"), SubResource("CircleShape2D_w6t2f"), SubResource("CircleShape2D_ek72i")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.230769),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove_fireball"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0qty"]
+_data = {
+"RESET": SubResource("Animation_c3fub"),
+"fireball": SubResource("Animation_wo5gu"),
+"fireball_hit": SubResource("Animation_ortdy")
+}
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_dygvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.25, 1.75)
+shape = SubResource("RectangleShape2D_gk35j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_32nv4")
+hframes = 7
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p0qty")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

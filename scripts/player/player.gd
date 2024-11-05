@@ -11,6 +11,7 @@ var knockback_coef = 200.0
 
 var paladin_scene = preload("res://scenes/characters/paladin/paladin.tscn")
 var archer_scene = preload("res://scenes/characters/archer/archer.tscn")
+var wizard_scene = preload("res://scenes/characters/wizard/wizard.tscn")
 
 func take_hit(dmg_amount : int):
 	if dead:
@@ -39,6 +40,12 @@ func _ready():
 		player_class = archer
 		add_child(archer)
 		PlayerVariables.follow_target = archer
+		
+	elif PlayerVariables.selected_class == "Wizard":
+		var wizard = wizard_scene.instantiate()
+		player_class = wizard
+		add_child(wizard)
+		PlayerVariables.follow_target = wizard
 		
 	if PlayerVariables.nux_mode == true:
 		PlayerVariables.current_health_pool = 1000

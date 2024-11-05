@@ -21,6 +21,7 @@ var stats : Dictionary = {
 		"health": 10
 		}
 var speed : float = 50.0 + (2.5 * stats.dex)
+
 func _ready():
 	pass
 
